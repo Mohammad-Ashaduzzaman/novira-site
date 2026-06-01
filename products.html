@@ -146,7 +146,7 @@ td:first-child{font-weight:500;color:var(--ink-2)}
 .jstep .j-out{font-size:.8rem;color:#b8bcbc;line-height:1.4}
 .jstep .j-art{margin-top:12px;padding-top:11px;border-top:1px solid rgba(255,255,255,.1);font-size:.72rem;color:#7fc6a4;font-weight:500;display:flex;align-items:center;justify-content:center;gap:6px}
 .jarrow{display:flex;align-items:center;color:rgba(255,255,255,.3);font-size:1.1rem;padding:0 4px;flex-shrink:0}
-@media(max-width:760px){.jarrow{display:none}.journey{gap:10px}}
+@media(max-width:760px){.jarrow{display:none}.journey{display:grid;grid-template-columns:1fr;gap:10px;overflow:visible}.jstep{min-width:0;width:100%}section [style*="grid-template-columns:repeat(4,1fr)"],section [style*="grid-template-columns:repeat(5,1fr)"],section [style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important}}
 #platform .band-head h2{color:#fff}
 #platform .sec-label{color:#7fd9bd}
 .plat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.1);border-radius:16px;overflow:hidden}
@@ -325,7 +325,7 @@ footer{background:var(--surface-2);border-top:1px solid var(--line);padding:40px
     </div>
     <div class="hw-grid">
 
-      <div class="hw-card">
+      <div class="hw-card" id="novafive">
         <span class="hw-tier-tag">Flagship</span>
         <div class="hw-img">
           <div class="hw-render"><svg viewBox="0 0 24 24" fill="none" stroke="#0f6e56" stroke-width="1.3"><rect x="5" y="2.5" width="14" height="19" rx="3.2"/><circle cx="12" cy="8.5" r="2.6"/><path d="M7.5 14h9M7.5 17h6" stroke-linecap="round"/><path d="M9.5 5h5" stroke-linecap="round" opacity=".5"/></svg></div>
@@ -335,13 +335,13 @@ footer{background:var(--surface-2);border-top:1px solid var(--line);padding:40px
           <div class="hw-tagline">The Complete Intelligence Tracker</div>
           <div class="hw-cap">Flagship multi-sensor tracker. GPS plus full environmental intelligence.</div>
           <div class="hw-price">$199</div>
-          <div class="hw-lite"><span><b>NovaFive Lite</b> · core sensors</span><span><b>$99</b> &nbsp;<a href="#">Buy →</a></span></div>
+          <div class="hw-lite" id="novafive-lite"><span><b>NovaFive Lite</b> · core sensors</span><span><b>$99</b> &nbsp;<a href="#">Buy →</a></span></div>
           <div class="hw-sub"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6l7-3z" stroke-linejoin="round"/></svg>Requires Novira platform subscription</div>
           <div class="hw-ctas"><a class="btn btn-primary btn-block" href="#">Buy online</a><a class="btn btn-ghost btn-block" href="#">View details →</a></div>
         </div>
       </div>
 
-      <div class="hw-card">
+      <div class="hw-card" id="novagps">
         <span class="hw-tier-tag">Essential</span>
         <div class="hw-img">
           <div class="hw-render"><svg viewBox="0 0 24 24" fill="none" stroke="#0f6e56" stroke-width="1.3"><path d="M12 22s7-6.8 7-12.5A7 7 0 1 0 5 9.5C5 15.2 12 22 12 22z" stroke-linejoin="round"/><circle cx="12" cy="9.2" r="2.8"/></svg></div>
@@ -351,13 +351,13 @@ footer{background:var(--surface-2);border-top:1px solid var(--line);padding:40px
           <div class="hw-tagline">The Essential Location Tracker</div>
           <div class="hw-cap">Location-focused tracker. Precise, reliable positioning at the lowest entry cost.</div>
           <div class="hw-price">$99</div>
-          <div class="hw-lite"><span><b>NovaGPS Lite</b> · core location</span><span><b>$49</b> &nbsp;<a href="#">Buy →</a></span></div>
+          <div class="hw-lite" id="novagps-lite"><span><b>NovaGPS Lite</b> · core location</span><span><b>$49</b> &nbsp;<a href="#">Buy →</a></span></div>
           <div class="hw-sub"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6l7-3z" stroke-linejoin="round"/></svg>Requires Novira platform subscription</div>
           <div class="hw-ctas"><a class="btn btn-primary btn-block" href="#">Buy online</a><a class="btn btn-ghost btn-block" href="#">View details →</a></div>
         </div>
       </div>
 
-      <div class="hw-card">
+      <div class="hw-card" id="novaaqua">
         <span class="hw-tier-tag">Specialist</span>
         <div class="hw-img">
           <div class="hw-render"><svg viewBox="0 0 24 24" fill="none" stroke="#0f6e56" stroke-width="1.3"><path d="M12 2.5s6.5 7 6.5 11.8a6.5 6.5 0 0 1-13 0C5.5 9.5 12 2.5 12 2.5z" stroke-linejoin="round"/><path d="M9 14.5a3 3 0 0 0 3 3" stroke-linecap="round"/></svg></div>
@@ -373,7 +373,7 @@ footer{background:var(--surface-2);border-top:1px solid var(--line);padding:40px
         </div>
       </div>
 
-      <div class="hw-card">
+      <div class="hw-card" id="novaflex">
         <span class="hw-soon">Coming soon</span>
         <div class="hw-img">
           <div class="hw-render"><svg viewBox="0 0 24 24" fill="none" stroke="#0f6e56" stroke-width="1.3"><rect x="2.5" y="7" width="19" height="10" rx="3.5"/><path d="M7 11v2M11 11v2M15 11v2M19 11v2" stroke-linecap="round" opacity=".7"/></svg></div>

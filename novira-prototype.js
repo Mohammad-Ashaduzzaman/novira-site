@@ -12,8 +12,17 @@
     platform: 'docs-platform-overview.html',
     journey: 'shipment-journey.html',
     products: 'products.html',
+    novaFive: 'products.html#novafive',
+    novaFiveLite: 'products.html#novafive-lite',
+    novaGps: 'products.html#novagps',
+    novaGpsLite: 'products.html#novagps-lite',
+    novaAqua: 'products.html#novaaqua',
+    novaFlex: 'products.html#novaflex',
     pricing: 'pricing.html',
     resources: 'resources.html',
+    caseStudies: 'case-studies.html',
+    partners: 'partners.html',
+    contact: 'contact.html',
     about: 'about.html',
     docs: 'docs.html',
     gettingStarted: 'docs-getting-started.html',
@@ -88,18 +97,19 @@
     var file = currentFile();
     if ([pages.solutions, pages.logistics, pages.coldChain, pages.insurance, pages.manufacturing, pages.assetProtection, pages.useCases, pages.coldUse, pages.insuranceUse, pages.manufacturingUse, pages.theftUse].indexOf(file) !== -1) return 'solutions';
     if ([pages.platform, pages.journey, pages.track, pages.novacheck, pages.novaproof, pages.novalink, pages.novaprotect, pages.dost, pages.happened, pages.next, pages.protectLoss].indexOf(file) !== -1) return 'platform';
-    if ([pages.products, pages.compare, pages.build, pages.checkout, pages.quote].indexOf(file) !== -1) return 'products';
+    if ([pages.products, pages.compare].indexOf(file) !== -1) return 'products';
     if (file === pages.pricing) return 'pricing';
-    if ([pages.blog, pages.cargoBlog, pages.chainBlog, pages.parametricBlog, pages.nobodyBlog, pages.tempBlog, pages.trackingBlog, pages.claimsBlog].indexOf(file) !== -1) return 'blog';
-    if ([pages.resources, pages.docs, pages.gettingStarted, pages.productsOverview, pages.security, pages.faq, pages.api].indexOf(file) !== -1) return 'resources';
-    if ([pages.about, pages.login, pages.portal].indexOf(file) !== -1) return 'company';
+    if ([pages.build, pages.checkout, pages.quote].indexOf(file) !== -1) return 'build';
+    if (file === pages.portal || file === pages.login) return 'portal';
+    if ([pages.blog, pages.cargoBlog, pages.chainBlog, pages.parametricBlog, pages.nobodyBlog, pages.tempBlog, pages.trackingBlog, pages.claimsBlog, pages.resources, pages.caseStudies, pages.docs, pages.gettingStarted, pages.productsOverview, pages.security, pages.faq, pages.api].indexOf(file) !== -1) return 'resources';
+    if (file === pages.partners) return 'partners';
+    if (file === pages.contact) return 'contact';
+    if (file === pages.about) return 'about';
     return 'home';
   }
 
   function navTheme() {
-    var file = currentFile();
-    var lightPages = [pages.home, pages.products, pages.compare, pages.pricing, pages.build, pages.checkout, pages.quote, pages.login, pages.portal];
-    return lightPages.indexOf(file) === -1 ? 'dark' : 'light';
+    return 'dark';
   }
 
   function nearestContext(anchor) {
@@ -112,7 +122,14 @@
       'platform': pages.platform,
       'products': pages.products,
       'pricing': pages.pricing,
+      'compare devices': pages.compare,
+      'customer portal': pages.portal,
       'resources': pages.resources,
+      'case studies': pages.caseStudies,
+      'partners': pages.partners,
+      'partner': pages.partners,
+      'contact': pages.contact,
+      'contact us': pages.contact,
       'about us': pages.about,
       'about': pages.about,
       'documentation': pages.docs,
@@ -127,6 +144,8 @@
       'api and integrations': pages.api,
       'developer portal': pages.portal,
       'blog': pages.blog,
+      'blog resources': pages.blog,
+      'blog and resources': pages.blog,
       'intelligence': pages.blog,
       'build your solution': pages.build,
       'build your solution now': pages.build,
@@ -142,7 +161,6 @@
       'send my quote request': pages.quote,
       'see pricing': pages.pricing,
       'view pricing': pages.pricing,
-      'compare devices': pages.compare,
       'device comparison guide': pages.compare,
       'full comparison': pages.compare,
       'compare': pages.compare,
@@ -162,6 +180,12 @@
       'support': pages.faq,
       'forgot password': pages.login,
       'explore products': pages.products,
+      'novafive': pages.novaFive,
+      'novafive lite': pages.novaFiveLite,
+      'novagps': pages.novaGps,
+      'novagps lite': pages.novaGpsLite,
+      'novaaqua': pages.novaAqua,
+      'novaflex': pages.novaFlex,
       'explore the platform': pages.platform,
       'see one shipment move through the whole system': pages.journey,
       'shipment journey': pages.journey,
@@ -235,6 +259,9 @@
 
     if (has(joined, ['checkout']) || has(joined, ['order']) || has(joined, ['buy'])) return pages.checkout;
     if (has(joined, ['quote']) || has(joined, ['solutions', 'expert']) || has(joined, ['sales'])) return pages.quote;
+    if (has(joined, ['case', 'studies'])) return pages.caseStudies;
+    if (has(joined, ['partner']) || has(joined, ['partnership'])) return pages.partners;
+    if (has(joined, ['contact'])) return pages.contact;
     if (has(joined, ['pricing'])) return pages.pricing;
     if (has(joined, ['products'])) return pages.products;
     if (has(joined, ['resources'])) return pages.resources;
@@ -295,9 +322,9 @@
       'body>.novira-original-nav{display:none!important}',
       '.site-shell-nav{position:sticky;top:0;z-index:9000;background:var(--site-nav-bg);color:var(--site-nav-ink);border-bottom:1px solid var(--site-nav-line);backdrop-filter:blur(16px);font-family:var(--sans,"Spline Sans",system-ui,sans-serif)}',
       '.site-shell-nav.theme-dark{--site-nav-bg:rgba(13,15,14,.94);--site-nav-ink:#f4f1e8;--site-nav-muted:#a8a89e;--site-nav-line:rgba(244,241,232,.12);--site-nav-accent:#4fae84}',
-      '.site-nav-inner{max-width:1180px;margin:0 auto;padding:0 28px;height:68px;display:flex;align-items:center;justify-content:space-between;gap:18px}',
+      '.site-nav-inner{max-width:1320px;margin:0 auto;padding:0 22px;height:68px;display:flex;align-items:center;justify-content:space-between;gap:14px}',
       '.site-logo{font-family:var(--display,"Fraunces",Georgia,serif);font-size:23px;font-weight:600;letter-spacing:-.01em;color:var(--site-nav-ink);text-decoration:none;white-space:nowrap}.site-logo span{color:var(--site-nav-accent)}',
-      '.site-main-nav{display:flex;align-items:center;gap:4px;height:100%}.site-nav-item{height:100%;display:flex;align-items:center}.site-nav-link{display:inline-flex;align-items:center;gap:6px;height:100%;padding:0 12px;color:var(--site-nav-muted);font-size:14px;font-weight:500;text-decoration:none}.site-nav-link:hover,.site-nav-item:focus-within>.site-nav-link,.site-nav-link.is-active{color:var(--site-nav-ink)!important}.site-nav-item>.site-nav-link::after{content:"";width:5px;height:5px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg);margin-top:-3px;opacity:.6}.site-nav-item[data-section="company"] .site-nav-link::after{display:none}',
+      '.site-main-nav{display:flex;align-items:center;gap:0;height:100%;min-width:0}.site-nav-item{height:100%;display:flex;align-items:center}.site-nav-link{display:inline-flex;align-items:center;gap:6px;height:100%;padding:0 8px;color:var(--site-nav-muted);font-size:13px;font-weight:500;text-decoration:none;white-space:nowrap}.site-nav-link:hover,.site-nav-item:focus-within>.site-nav-link,.site-nav-link.is-active{color:var(--site-nav-ink)!important}.site-nav-item.has-mega>.site-nav-link::after{content:"";width:5px;height:5px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg);margin-top:-3px;opacity:.6}',
       '.site-nav-actions{display:flex;align-items:center;gap:10px}.site-nav-action{display:inline-flex;align-items:center;justify-content:center;height:38px;padding:0 15px;border-radius:8px;border:1px solid var(--site-nav-line);font-size:13px;font-weight:600;text-decoration:none;color:var(--site-nav-ink);white-space:nowrap}.site-nav-action.primary{background:var(--site-nav-accent);border-color:var(--site-nav-accent);color:#fff}.site-shell-nav.theme-dark .site-nav-action.primary{color:#06140e}.site-nav-action:hover{transform:translateY(-1px)}',
       '.site-mega{position:absolute;left:50%;top:68px;transform:translateX(-50%) translateY(8px);width:min(1040px,calc(100vw - 32px));display:grid;grid-template-columns:1.1fr .9fr .9fr;gap:18px;padding:20px;border:1px solid var(--site-nav-line);border-radius:8px;background:var(--site-mega-bg,#fff);color:var(--site-nav-ink);box-shadow:0 24px 60px rgba(21,23,28,.16);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .18s ease,transform .18s ease,visibility .18s ease}.site-shell-nav.theme-dark .site-mega{--site-mega-bg:#14171a;box-shadow:0 24px 60px rgba(0,0,0,.38)}.site-nav-item:hover>.site-mega,.site-nav-item:focus-within>.site-mega,.site-nav-item.open>.site-mega{opacity:1;visibility:visible;pointer-events:auto;transform:translateX(-50%) translateY(0)}',
       '.site-mega::before{content:"";position:absolute;left:0;right:0;top:-14px;height:14px}.mega-lead{border:1px solid var(--site-nav-line);border-radius:8px;padding:18px;background:var(--site-mega-lead,#fbfaf7)}.site-shell-nav.theme-dark .mega-lead{--site-mega-lead:#0d0f0e}.mega-eyebrow{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--site-nav-accent);margin-bottom:10px}.mega-title{font-family:var(--display,"Fraunces",Georgia,serif);font-size:1.35rem;font-weight:500;line-height:1.15;margin-bottom:8px}.mega-copy{font-size:13px;line-height:1.55;color:var(--site-nav-muted);margin-bottom:14px}.mega-all{display:inline-flex;color:var(--site-nav-accent);font-size:13px;font-weight:700;text-decoration:none}',
@@ -310,7 +337,8 @@
       '.prototype-menu-toggle span{display:block;width:18px;height:2px;background:currentColor;box-shadow:0 6px 0 currentColor,0 -6px 0 currentColor}',
       '.prototype-menu-panel{display:none}',
       '.prototype-toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);z-index:9999;max-width:min(92vw,520px);padding:13px 16px;border-radius:10px;background:#15171c;color:#fff;box-shadow:0 14px 40px rgba(0,0,0,.25);font-family:var(--sans,system-ui,sans-serif);font-size:14px;line-height:1.45}',
-      '@media(max-width:980px){.site-main-nav,.site-nav-actions{display:none}.site-mobile-toggle{display:inline-flex}.site-nav-inner{height:64px}.site-mobile-panel{top:64px}.site-shell-nav{top:0}.site-mega{display:none}}',
+      '@media(max-width:1180px){.site-nav-link{padding:0 6px;font-size:12.5px}.site-logo{font-size:21px}.site-nav-actions{display:none}}',
+      '@media(max-width:1120px){.site-main-nav,.site-nav-actions{display:none}.site-mobile-toggle{display:inline-flex}.site-nav-inner{height:64px}.site-mobile-panel{top:64px}.site-shell-nav{top:0}.site-mega{display:none}}',
       '@media(max-width:860px){.prototype-menu-toggle{display:inline-flex}.nav-in,.topbar-in{position:relative}.prototype-menu-panel{position:absolute;top:100%;left:16px;right:16px;z-index:80;padding:14px;gap:8px;border:1px solid var(--line,rgba(255,255,255,.14));border-radius:8px;background:var(--surface,var(--card,var(--bg-card,var(--bg,#fff))));box-shadow:0 18px 44px rgba(0,0,0,.18)}.prototype-menu-panel a{display:flex;align-items:center;justify-content:space-between;padding:11px 12px;border-radius:8px;color:inherit;text-decoration:none}.prototype-menu-panel a:hover{background:rgba(127,127,127,.12)}.prototype-menu-open .prototype-menu-panel{display:grid}}'
     ].join('\n');
     document.head.appendChild(style);
@@ -371,42 +399,62 @@
       },
       products: {
         eyebrow: 'Products',
-        title: 'Devices, plans, and buying paths.',
-        copy: 'Pick hardware, compare devices, estimate pricing, or configure a deployment.',
+        title: 'Choose the device family.',
+        copy: 'Each device route takes buyers to the right hardware, comparison, and configuration path.',
         all: pages.products,
         allLabel: 'Explore products',
         cols: [
-          ['Shop', [
-            [pages.products, 'Products', 'Device family and platform plans'],
-            [pages.compare, 'Compare devices', 'Side-by-side specs and fit'],
-            [pages.pricing, 'Pricing', 'Hardware and platform plan guidance'],
-            [pages.checkout, 'Checkout', 'Prototype online order flow']
+          ['Device family', [
+            [pages.novaFive, 'NovaFive', 'Flagship multi-sensor tracker'],
+            [pages.novaFiveLite, 'NovaFive Lite', 'Core condition sensing at lower cost'],
+            [pages.novaGps, 'NovaGPS', 'Location-first shipment tracker'],
+            [pages.novaGpsLite, 'NovaGPS Lite', 'Core location tracking for scale']
           ]],
-          ['Plan', [
-            [pages.build, 'Build your solution', 'Configure devices, plan, and protection'],
-            [pages.quote, 'Request a quote', 'For fleets, coverage, and enterprise needs'],
+          ['Specialized devices', [
+            [pages.novaAqua, 'NovaAqua', 'Condition protection for sensitive cargo'],
+            [pages.novaFlex, 'NovaFlex', 'High-volume smart label deployments'],
+            [pages.compare, 'Compare devices', 'Side-by-side specs and fit'],
             [pages.productsOverview, 'Products overview', 'Documentation for product selection']
+          ]]
+        ]
+      },
+      build: {
+        eyebrow: 'Build your solution',
+        title: 'Configure, quote, or check out.',
+        copy: 'Move from fit-finding to a prototype purchase path without leaving the top navigation.',
+        all: pages.build,
+        allLabel: 'Open builder',
+        cols: [
+          ['Purchase path', [
+            [pages.build, 'Build your solution', 'Configure devices, plan, and protection'],
+            [pages.checkout, 'Checkout', 'Prototype online order flow'],
+            [pages.quote, 'Request quote', 'For fleets, coverage, and enterprise needs']
+          ]],
+          ['Helpful next steps', [
+            [pages.pricing, 'Pricing', 'Hardware and platform plan guidance'],
+            [pages.compare, 'Compare devices', 'Confirm the best device fit'],
+            [pages.contact, 'Contact', 'Talk through edge cases or rollout needs']
           ]]
         ]
       },
       resources: {
         eyebrow: 'Resources',
-        title: 'Everything in one folder.',
-        copy: 'Documentation, use cases, support, trust, and company pages in one reliable place.',
+        title: 'Case studies, docs, and articles.',
+        copy: 'A focused resource folder for proof, implementation, customer stories, and field thinking.',
         all: pages.resources,
         allLabel: 'Open resource center',
         cols: [
           ['Resource library', [
+            [pages.caseStudies, 'Case studies', 'Customer-style stories and use-case outcomes'],
             [pages.docs, 'Documentation', 'Start here, setup, platform, products, trust'],
-            [pages.gettingStarted, 'Getting started', 'First deployment and account setup'],
-            [pages.useCases, 'Use cases', 'Real-world scenarios and outcomes'],
-            [pages.faq, 'FAQ', 'Answers for common buying and platform questions']
+            [pages.blog, 'Blog / resources', 'Articles on verification, claims, and cold chain'],
+            [pages.useCases, 'Use cases', 'Scenario pages across key industries']
           ]],
-          ['Team & company', [
+          ['Support & trust', [
+            [pages.gettingStarted, 'Getting started', 'First deployment and account setup'],
             [pages.security, 'Security & trust', 'Verification, integrity, and evidence model'],
-            [pages.about, 'About Novira', 'Company story and operating philosophy'],
-            [pages.login, 'Customer portal', 'Prototype account and operations view'],
-            [pages.quote, 'Talk to the team', 'Contact a solutions expert']
+            [pages.faq, 'FAQ', 'Answers for common buying and platform questions'],
+            [pages.api, 'API integrations', 'Connect records and workflows to other tools']
           ]]
         ]
       },
@@ -440,8 +488,12 @@
       '</div>';
   }
 
-  function topNavItem(section, label, page) {
-    return '<div class="site-nav-item" data-section="' + section + '"><a class="site-nav-link" href="' + routeHref(page) + '">' + label + '</a>' + (section === 'company' ? '' : megaPanel(section)) + '</div>';
+  function topNavItem(section, label, page, hasDropdown) {
+    return '<div class="site-nav-item' + (hasDropdown ? ' has-mega' : '') + '" data-section="' + section + '"><a class="site-nav-link" href="' + routeHref(page) + '">' + label + '</a>' + (hasDropdown ? megaPanel(section) : '') + '</div>';
+  }
+
+  function topNavLink(section, label, page) {
+    return '<a class="site-nav-link" data-section="' + section + '" href="' + routeHref(page) + '">' + label + '</a>';
   }
 
   function mobileGroup(title, items) {
@@ -463,22 +515,26 @@
       '<div class="site-nav-inner">' +
         '<a class="site-logo" href="' + routeHref(pages.home) + '">Nov<span>ira</span></a>' +
         '<nav class="site-main-nav" aria-label="Primary navigation">' +
-          topNavItem('solutions', 'Solutions', pages.solutions) +
-          topNavItem('platform', 'Platform', pages.platform) +
-          topNavItem('products', 'Products', pages.products) +
-          '<a class="site-nav-link" data-section="pricing" href="' + routeHref(pages.pricing) + '">Pricing</a>' +
-          topNavItem('resources', 'Resources', pages.resources) +
-          topNavItem('blog', 'Blog', pages.blog) +
-          topNavItem('company', 'About', pages.about) +
+          topNavItem('solutions', 'Solutions', pages.solutions, true) +
+          topNavItem('platform', 'Platform', pages.platform, true) +
+          topNavItem('products', 'Products', pages.products, true) +
+          topNavLink('compare', 'Compare Devices', pages.compare) +
+          topNavLink('pricing', 'Pricing', pages.pricing) +
+          topNavItem('build', 'Build Your Solution', pages.build, true) +
+          topNavLink('portal', 'Customer Portal', pages.portal) +
+          topNavItem('resources', 'Resources', pages.resources, true) +
+          topNavLink('partners', 'Partners', pages.partners) +
+          topNavLink('about', 'About Us', pages.about) +
+          topNavLink('contact', 'Contact', pages.contact) +
         '</nav>' +
-        '<div class="site-nav-actions"><a class="site-nav-action" href="' + routeHref(pages.login) + '">Sign in</a><a class="site-nav-action primary" href="' + routeHref(pages.build) + '">Build your solution</a></div>' +
         '<button class="site-mobile-toggle" type="button" aria-label="Open navigation menu" aria-expanded="false"><span aria-hidden="true"></span></button>' +
         '<div class="site-mobile-panel" aria-label="Mobile navigation">' +
           mobileGroup('Solutions', [[pages.solutions, 'All solutions'], [pages.logistics, 'Logistics'], [pages.coldChain, 'Cold chain'], [pages.insurance, 'Insurance'], [pages.manufacturing, 'Manufacturing'], [pages.assetProtection, 'Asset protection'], [pages.useCases, 'Use cases']]) +
           mobileGroup('Platform', [[pages.platform, 'Platform overview'], [pages.journey, 'Shipment journey'], [pages.track, 'Track'], [pages.novacheck, 'NovaCheck'], [pages.novaproof, 'NovaProof'], [pages.novalink, 'NovaLink'], [pages.novaprotect, 'NovaProtect'], [pages.dost, 'DOST']]) +
-          mobileGroup('Products', [[pages.products, 'Products'], [pages.compare, 'Compare devices'], [pages.pricing, 'Pricing'], [pages.build, 'Build your solution'], [pages.quote, 'Request a quote']]) +
-          mobileGroup('Resources', [[pages.resources, 'Resource center'], [pages.docs, 'Documentation'], [pages.gettingStarted, 'Getting started'], [pages.useCases, 'Use cases'], [pages.faq, 'FAQ'], [pages.security, 'Security & trust'], [pages.about, 'About Novira']]) +
-          mobileGroup('Blog', [[pages.blog, 'All posts'], [pages.trackingBlog, 'Why tracking is not enough'], [pages.nobodyBlog, 'Nobody can agree'], [pages.chainBlog, 'Chain-of-custody failures'], [pages.cargoBlog, 'Cargo disputes'], [pages.claimsBlog, 'Verified events and claims'], [pages.parametricBlog, 'Parametric insurance'], [pages.tempBlog, 'Temperature excursions']]) +
+          mobileGroup('Products', [[pages.products, 'Products'], [pages.novaFive, 'NovaFive'], [pages.novaFiveLite, 'NovaFive Lite'], [pages.novaGps, 'NovaGPS'], [pages.novaGpsLite, 'NovaGPS Lite'], [pages.novaAqua, 'NovaAqua'], [pages.novaFlex, 'NovaFlex'], [pages.compare, 'Compare devices']]) +
+          mobileGroup('Buy', [[pages.pricing, 'Pricing'], [pages.build, 'Build your solution'], [pages.checkout, 'Checkout'], [pages.quote, 'Request quote'], [pages.portal, 'Customer portal']]) +
+          mobileGroup('Resources', [[pages.resources, 'Resource center'], [pages.caseStudies, 'Case studies'], [pages.docs, 'Documentation'], [pages.blog, 'Blog / resources'], [pages.useCases, 'Use cases'], [pages.faq, 'FAQ'], [pages.security, 'Security & trust']]) +
+          mobileGroup('Company', [[pages.partners, 'Partners'], [pages.about, 'About us'], [pages.contact, 'Contact']]) +
         '</div>' +
       '</div>';
 
@@ -525,9 +581,14 @@
       ['Solutions', pages.solutions],
       ['Platform', pages.platform],
       ['Products', pages.products],
+      ['Compare Devices', pages.compare],
       ['Pricing', pages.pricing],
+      ['Build Your Solution', pages.build],
+      ['Customer Portal', pages.portal],
       ['Resources', pages.resources],
-      ['About Us', pages.about]
+      ['Partners', pages.partners],
+      ['About Us', pages.about],
+      ['Contact', pages.contact]
     ];
     var found = [];
     var seen = {};
