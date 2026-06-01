@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NovaProof — One version of the truth — Novira</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,400i&family=Spline+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0d0f0e;            /* near-black, document-vault dark */
+  --bg-2:#12100c;
+  --paper:#f6f3ea;         /* the "record" is warm paper */
+  --ink:#f4f1e8;
+  --ink-2:#a8a89e;
+  --ink-3:#6f6f67;
+  --line:rgba(246,243,234,0.10);
+  --seal:#4fae84;          /* verified green */
+  --seal-deep:#0f6e56;
+  --conflict:#c77b4a;      /* the dispute color */
+  --gold:#c9a25a;
+  --display:"Fraunces",Georgia,serif;
+  --sans:"Spline Sans",system-ui,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:300;line-height:1.65;overflow-x:hidden}
+.wrap{max-width:980px;margin:0 auto;padding:0 32px}
+a{text-decoration:none;color:inherit}
+.eyebrow{font-family:var(--sans);font-weight:500;font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--seal);margin-bottom:26px}
+
+nav{position:absolute;top:0;left:0;right:0;z-index:20}
+.nav-in{max-width:1180px;margin:0 auto;padding:26px 32px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-family:var(--display);font-weight:600;font-size:22px;color:var(--ink)}.logo span{color:var(--seal)}
+.nav-links{display:flex;gap:28px;font-size:14px;font-weight:400;color:var(--ink-2)}
+.nav-links a:hover{color:var(--ink)}
+.btn{font-family:var(--sans);font-weight:500;font-size:14px;padding:12px 24px;border-radius:8px;cursor:pointer;border:1px solid transparent;display:inline-flex;align-items:center;gap:9px;transition:transform .3s,background .3s,border-color .3s,color .3s}
+.btn-seal{background:var(--seal);color:#06140e}.btn-seal:hover{background:#6fc69e;transform:translateY(-2px)}
+.btn-line{background:transparent;color:var(--ink);border-color:var(--line)}.btn-line:hover{border-color:rgba(246,243,234,.4);transform:translateY(-2px)}
+@media(max-width:820px){.nav-links{display:none}}
+
+/* HERO */
+#hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden}
+.hero-grain{position:absolute;inset:0;opacity:.5;background-image:radial-gradient(circle at 1px 1px,rgba(246,243,234,.05) 1px,transparent 0);background-size:30px 30px;-webkit-mask-image:radial-gradient(ellipse 70% 60% at 50% 50%,#000,transparent);mask-image:radial-gradient(ellipse 70% 60% at 50% 50%,#000,transparent)}
+.hero-in{position:relative;z-index:2}
+.kicker{font-family:var(--display);font-style:italic;font-size:clamp(1.1rem,2vw,1.5rem);color:var(--seal);margin-bottom:18px;font-weight:400}
+h1{font-family:var(--display);font-weight:400;font-size:clamp(2.8rem,7vw,5.4rem);line-height:1.02;letter-spacing:-.02em;max-width:14ch}
+h1 em{font-style:italic}
+.hero-sub{font-size:clamp(1.1rem,1.7vw,1.4rem);color:var(--ink-2);max-width:560px;margin:32px 0 40px;font-weight:300}
+.hero-ctas{display:flex;gap:14px;flex-wrap:wrap}
+.scroll-cue{position:absolute;bottom:36px;left:50%;transform:translateX(-50%);z-index:2;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-3);display:flex;flex-direction:column;align-items:center;gap:10px}
+.scroll-cue .l{width:1px;height:40px;background:linear-gradient(var(--ink-3),transparent);animation:cue 2.4s ease-in-out infinite}
+@keyframes cue{0%,100%{opacity:.3;transform:scaleY(.6)}50%{opacity:1;transform:scaleY(1)}}
+
+section{position:relative}
+.band{padding:120px 0;border-top:1px solid var(--line)}
+
+/* THE PROBLEM */
+.lead{font-family:var(--display);font-weight:300;font-size:clamp(1.9rem,4vw,3rem);line-height:1.16;letter-spacing:-.015em;max-width:18ch}
+.lead em{font-style:italic;color:var(--conflict)}
+.problem-cols{display:grid;grid-template-columns:1fr 1fr;gap:50px;margin-top:56px;align-items:start}
+.pc h3{font-family:var(--sans);font-weight:600;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin-bottom:16px}
+.pc p{color:var(--ink-2);font-size:1.05rem;font-weight:300}
+@media(max-width:760px){.problem-cols{grid-template-columns:1fr;gap:34px}}
+
+/* CONFLICTING STORIES → ONE TRUTH (the centerpiece) */
+#collapse{background:var(--bg-2)}
+.collapse-stage{display:grid;grid-template-columns:1fr auto 1fr;gap:30px;align-items:center;margin-top:50px}
+.stories{display:flex;flex-direction:column;gap:16px}
+.story{border:1px solid var(--line);border-left:3px solid var(--conflict);border-radius:10px;padding:18px 20px;background:rgba(199,123,74,.04)}
+.story .who{font-size:.76rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--conflict);margin-bottom:6px}
+.story .claim{font-family:var(--display);font-style:italic;font-size:1.1rem;color:var(--ink);font-weight:300}
+.collapse-arrow{font-family:var(--display);font-size:2rem;color:var(--ink-3);text-align:center}
+.truth{border:1px solid rgba(79,174,132,.4);border-radius:14px;padding:30px 28px;background:rgba(79,174,132,.06);position:relative}
+.truth .seal-mark{display:flex;align-items:center;gap:9px;font-size:.76rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--seal);margin-bottom:14px}
+.truth .seal-mark svg{width:16px;height:16px}
+.truth .t-claim{font-family:var(--display);font-size:1.35rem;color:var(--ink);font-weight:400;line-height:1.3}
+.truth .t-meta{font-size:.84rem;color:var(--ink-3);margin-top:14px;font-family:var(--sans)}
+@media(max-width:760px){.collapse-stage{grid-template-columns:1fr;gap:18px}.collapse-arrow{transform:rotate(90deg)}}
+
+/* WHAT CHANGES */
+.change-line{font-family:var(--display);font-weight:300;font-size:clamp(1.7rem,3.4vw,2.6rem);line-height:1.2;max-width:20ch}
+.change-line b{font-weight:500;font-style:italic;color:var(--seal)}
+.afters{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-top:54px}
+.after{background:var(--bg);padding:30px 26px}
+.after .a-n{font-family:var(--display);font-size:1.2rem;font-weight:500;margin-bottom:8px}
+.after .a-d{color:var(--ink-2);font-size:.95rem;font-weight:300}
+@media(max-width:760px){.afters{grid-template-columns:1fr}}
+
+/* QUOTE / BELIEF */
+#belief{text-align:center}
+.belief-q{font-family:var(--display);font-weight:300;font-style:italic;font-size:clamp(2rem,5vw,3.6rem);line-height:1.15;letter-spacing:-.01em;max-width:16ch;margin:0 auto}
+.belief-q .u{font-style:normal;color:var(--seal)}
+.belief-sub{color:var(--ink-2);margin-top:30px;font-size:1.05rem;max-width:520px;margin-left:auto;margin-right:auto}
+
+/* WHERE IT SITS (one line to platform, not a feature dump) */
+.sits{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:40px;justify-content:center}
+.sits .node{font-family:var(--sans);font-size:.9rem;color:var(--ink-3);padding:8px 16px;border:1px solid var(--line);border-radius:100px}
+.sits .node.me{color:#06140e;background:var(--seal);border-color:var(--seal);font-weight:600}
+.sits .sep{color:var(--ink-3)}
+
+/* CTA */
+#cta{text-align:center;padding:130px 0}
+#cta h2{font-family:var(--display);font-weight:400;font-size:clamp(2.2rem,5vw,3.6rem);letter-spacing:-.02em;margin-bottom:20px}
+#cta h2 em{font-style:italic;color:var(--seal)}
+#cta p{color:var(--ink-2);max-width:480px;margin:0 auto 36px;font-weight:300}
+.cta-ctas{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+footer{border-top:1px solid var(--line);padding:38px 0;text-align:center;color:var(--ink-3);font-size:13px}
+
+/* reveal on scroll */
+.rv{opacity:0;transform:translateY(20px);transition:opacity .9s ease,transform .9s ease}
+.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none}.scroll-cue .l{animation:none}}
+
+/* THE ARTIFACT — a sealed evidence document, not a UI card */
+#artifact{background:var(--bg-2)}
+.record-frame{max-width:560px;margin:50px auto 0;position:relative}
+.record{background:var(--paper);color:#23211a;border-radius:6px;padding:0;overflow:hidden;box-shadow:0 40px 90px -40px rgba(0,0,0,.7),0 0 0 1px rgba(0,0,0,.05);position:relative}
+.record::before{content:"";position:absolute;inset:0;background-image:radial-gradient(circle at 1px 1px,rgba(35,33,26,.04) 1px,transparent 0);background-size:14px 14px;pointer-events:none}
+.rec-top{display:flex;align-items:center;justify-content:space-between;padding:22px 30px;border-bottom:1px solid rgba(35,33,26,.12)}
+.rec-brand{font-family:var(--display);font-weight:600;font-size:1.15rem;color:#23211a}
+.rec-brand span{color:var(--seal-deep)}
+.rec-id{font-family:var(--sans);font-size:.74rem;letter-spacing:.06em;color:#8a8678;text-transform:uppercase}
+.rec-title{padding:26px 30px 10px}
+.rec-title .rt-lbl{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:#a39d8c;font-weight:600}
+.rec-title .rt-event{font-family:var(--display);font-size:1.7rem;font-weight:500;color:#23211a;margin-top:6px;line-height:1.1}
+.rec-grid{display:grid;grid-template-columns:1fr 1fr;gap:0}
+.rec-cell{padding:16px 30px;border-top:1px solid rgba(35,33,26,.1)}
+.rec-cell:nth-child(odd){border-right:1px solid rgba(35,33,26,.1)}
+.rec-cell .rc-k{font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:#a39d8c;font-weight:600}
+.rec-cell .rc-v{font-size:1rem;color:#23211a;margin-top:4px;font-weight:500}
+.rec-seal{display:flex;align-items:center;gap:14px;padding:20px 30px;background:rgba(15,110,86,.07);border-top:1px solid rgba(35,33,26,.12)}
+.rec-seal .seal-badge{width:46px;height:46px;border-radius:50%;background:var(--seal-deep);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.rec-seal .seal-badge svg{width:24px;height:24px;color:var(--paper)}
+.rec-seal .seal-txt .st-1{font-weight:600;color:#23211a;font-size:.98rem}
+.rec-seal .seal-txt .st-2{font-size:.8rem;color:#6f6a5c}
+.rec-chain{padding:18px 30px 24px;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.chain-step{display:flex;align-items:center;gap:7px;font-size:.78rem;color:#6f6a5c}
+.chain-step .cd{width:7px;height:7px;border-radius:50%;background:var(--seal-deep)}
+.chain-sep{color:#c3bca8}
+.record-note{text-align:center;color:var(--ink-3);font-size:.84rem;margin-top:26px;font-style:italic}
+@media(max-width:560px){.rec-grid{grid-template-columns:1fr}.rec-cell:nth-child(odd){border-right:none}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-in">
+    <div class="logo">Nov<span>ira</span></div>
+    <div class="nav-links"><a href="#">Solutions</a><a href="#">Platform</a><a href="#">Products</a><a href="#">Pricing</a><a href="#">Resources</a><a href="#">About Us</a></div>
+    <a class="btn btn-line" href="#">Build your solution</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-grain"></div>
+  <div class="wrap hero-in">
+    <div class="eyebrow">NovaProof</div>
+    <div class="kicker">When something goes wrong in the physical world —</div>
+    <h1>everyone has a <em>story.</em><br>Only one is <em>true.</em></h1>
+    <p class="hero-sub">NovaProof turns what happened into evidence no one can dispute. One verified account. One version of the truth.</p>
+    <div class="hero-ctas">
+      <a class="btn btn-seal" href="#collapse">See how →</a>
+      <a class="btn btn-line" href="#">Talk to a solutions expert</a>
+    </div>
+  </div>
+  <div class="scroll-cue"><span>Scroll</span><span class="l"></span></div>
+</section>
+
+<!-- THE PROBLEM -->
+<section class="band">
+  <div class="wrap">
+    <div class="eyebrow rv">The problem</div>
+    <p class="lead rv">When goods are damaged, delayed, or lost, the argument that follows is rarely about <em>what to do</em>. It's about <em>what happened.</em></p>
+    <div class="problem-cols">
+      <div class="pc rv">
+        <h3>Everyone is guessing</h3>
+        <p>The shipper believes the cargo left in perfect condition. The carrier believes it was handled correctly. The receiver sees damage. The insurer trusts no one. Each holds a piece. None holds proof.</p>
+      </div>
+      <div class="pc rv">
+        <h3>And the cost is real</h3>
+        <p>Disputes drag for weeks. Claims stall waiting for evidence that doesn't exist. Relationships fray. The loss isn't only the damaged goods — it's the time, the doubt, and the deals that don't survive the argument.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY EVIDENCE IS HARD -->
+<section class="band">
+  <div class="wrap">
+    <div class="eyebrow rv">Why this is hard</div>
+    <p class="lead rv" style="max-width:24ch">Data isn't the problem. <em style="color:var(--ink)">Trusted</em> data is.</p>
+    <p class="rv" style="color:var(--ink-2);font-size:1.15rem;max-width:60ch;margin-top:30px;font-weight:300">
+      Sensors produce readings. Logs fill up. Dashboards glow. But a number on a screen proves nothing when money is on the line — because anyone can question where it came from, whether it was changed, and whether it really describes <em style="font-style:italic;color:var(--ink)">this</em> shipment, at <em style="font-style:italic;color:var(--ink)">this</em> moment. Raw data is an opinion with a timestamp. Evidence is something else entirely.
+    </p>
+  </div>
+</section>
+
+<!-- THE COLLAPSE — conflicting stories to one truth -->
+<section id="collapse" class="band">
+  <div class="wrap">
+    <div class="eyebrow rv">What NovaProof changes</div>
+    <p class="lead rv" style="max-width:22ch">Many stories collapse into <em style="color:var(--seal)">one verified record.</em></p>
+    <div class="collapse-stage">
+      <div class="stories rv">
+        <div class="story"><div class="who">The shipper says</div><div class="claim">"It left us in perfect condition."</div></div>
+        <div class="story"><div class="who">The carrier says</div><div class="claim">"Nothing happened in transit."</div></div>
+        <div class="story"><div class="who">The receiver says</div><div class="claim">"It arrived damaged."</div></div>
+      </div>
+      <div class="collapse-arrow rv">→</div>
+      <div class="truth rv">
+        <div class="seal-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6l7-3z" stroke-linejoin="round"/><path d="M9 11.5l2 2 4-4.5" stroke-linecap="round"/></svg>Verified · sealed</div>
+        <div class="t-claim">A temperature breach occurred in transit, at a known time and place — confirmed, and unaltered since.</div>
+        <div class="t-meta">SHP-3318 · 41°F for 17 min · sealed 14:23 UTC · NP-7C0A-118E — one record every party can trust</div>
+      </div>
+    </div>
+    <p class="rv" style="color:var(--ink-2);font-size:1.05rem;max-width:58ch;margin-top:44px;font-weight:300">NovaProof doesn't add another opinion to the pile. It replaces the pile — with a single account of what happened that every party can rely on, because none of them could have changed it.</p>
+  </div>
+</section>
+
+<!-- THE ARTIFACT — what a NovaProof actually looks like -->
+<section id="artifact" class="band">
+  <div class="wrap">
+    <div class="eyebrow rv" style="text-align:center">What a NovaProof looks like</div>
+    <p class="lead rv" style="text-align:center;margin:0 auto;max-width:20ch">This is the artifact. <em style="color:var(--seal)">The thing you can hand to anyone.</em></p>
+    <div class="record-frame rv">
+      <div class="record">
+        <div class="rec-top">
+          <div class="rec-brand">Nova<span>Proof</span></div>
+          <div class="rec-id">Record · sample</div>
+        </div>
+        <div class="rec-title">
+          <div class="rt-lbl">Verified event</div>
+          <div class="rt-event">Temperature excursion</div>
+        </div>
+        <div class="rec-grid">
+          <div class="rec-cell"><div class="rc-k">Asset</div><div class="rc-v">Pharmaceutical shipment</div></div>
+          <div class="rec-cell"><div class="rc-k">Route</div><div class="rc-v">Dallas → Chicago</div></div>
+          <div class="rec-cell"><div class="rc-k">Condition</div><div class="rc-v">41°F threshold exceeded</div></div>
+          <div class="rec-cell"><div class="rc-k">Duration</div><div class="rc-v">17 minutes</div></div>
+        </div>
+        <div class="rec-seal">
+          <div class="seal-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6l7-3z" stroke-linejoin="round"/><path d="M9 11.5l2 2 4-4.5" stroke-linecap="round"/></svg></div>
+          <div class="seal-txt"><div class="st-1">Verified &amp; sealed</div><div class="st-2">Unaltered since the moment it was recorded.</div></div>
+        </div>
+        <div class="rec-chain">
+          <span class="chain-step"><span class="cd"></span>Captured</span><span class="chain-sep">→</span>
+          <span class="chain-step"><span class="cd"></span>Verified</span><span class="chain-sep">→</span>
+          <span class="chain-step"><span class="cd"></span>Sealed</span><span class="chain-sep">·</span>
+          <span class="chain-step" style="color:var(--seal-deep);font-weight:600">Shareable to any party</span>
+        </div>
+      </div>
+    </div>
+    <p class="record-note rv">An illustrative example, not a real shipment. Your records carry the live event, route, and conditions — sealed and ready to share.</p>
+    <p style="text-align:center;margin-top:14px"><a href="../artifacts/artifact-novaproof.html" target="_blank" style="color:var(--seal,#4fae84);font-weight:500;font-size:.95rem;text-decoration:none">View full sample record &rarr;</a></p>
+  </div>
+</section>
+
+<!-- WHAT BECOMES POSSIBLE -->
+<section class="band">
+  <div class="wrap">
+    <div class="eyebrow rv">What becomes possible</div>
+    <p class="change-line rv">Once what happened is <b>settled,</b> everything downstream gets easier.</p>
+    <div class="afters">
+      <div class="after rv"><div class="a-n">Disputes end</div><div class="a-d">There's nothing left to argue about. The record is the answer, and everyone accepts it.</div></div>
+      <div class="after rv"><div class="a-n">Claims move</div><div class="a-d">Evidence is ready the moment it's needed — no scramble, no reconstruction, no doubt.</div></div>
+      <div class="after rv"><div class="a-n">Protection can act</div><div class="a-d">Because the event is verified, protection can respond to it automatically — trust is what makes action safe.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- BELIEF -->
+<section id="belief" class="band">
+  <div class="wrap">
+    <p class="belief-q rv">The most valuable thing Novira gives you isn't data.<br>It's <span class="u">certainty.</span></p>
+    <p class="belief-sub rv">NovaProof is the layer that turns what your sensors see into something the whole world will believe.</p>
+    <div class="sits rv">
+      <span class="node">Track</span><span class="sep">·</span>
+      <span class="node">NovaCheck</span><span class="sep">→</span>
+      <span class="node me">NovaProof</span><span class="sep">→</span>
+      <span class="node">NovaLink</span><span class="sep">·</span>
+      <span class="node">NovaProtect</span><span class="sep">·</span>
+      <span class="node">DOST</span>
+    </div>
+    <p class="rv" style="color:var(--ink-3);font-size:.9rem;margin-top:20px">NovaProof sits at the center. See how it connects on the <a href="#" style="color:var(--seal)">platform overview →</a></p>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <div class="wrap">
+    <h2>Stop arguing about <em>what happened.</em></h2>
+    <p>See how NovaProof gives every shipment a single, verified version of the truth.</p>
+    <div class="cta-ctas">
+      <a class="btn btn-seal" href="#">Talk to a solutions expert →</a>
+      <a class="btn btn-line" href="#">Explore the platform</a>
+    </div>
+  </div>
+</section>
+
+<footer>Novira · Trust what you track. Know what happens next.</footer>
+
+<script>
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:.18});
+document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
+</script>
+<script src="novira-prototype.js"></script>
+</body>
+</html>

@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NovaLink — One truth, in every hand — Novira</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,400i&family=Spline+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0a0d12;--bg-2:#0b1018;
+  --paper:#f3f4f6;
+  --ink:#eef1f5;--ink-2:#9fa6b2;--ink-3:#646c78;
+  --line:rgba(238,241,245,0.10);
+  --link:#5b96e0;--link-deep:#2c5fa8;--link-soft:rgba(91,150,224,0.14);  /* connection blue */
+  --drift:#b06a6a;     /* the diverging-copies problem */
+  --gold:#c9a25a;
+  --display:"Fraunces",Georgia,serif;--sans:"Spline Sans",system-ui,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:300;line-height:1.65;overflow-x:hidden}
+.wrap{max-width:980px;margin:0 auto;padding:0 32px}
+a{text-decoration:none;color:inherit}
+.eyebrow{font-family:var(--sans);font-weight:500;font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--link);margin-bottom:26px}
+nav{position:absolute;top:0;left:0;right:0;z-index:20}
+.nav-in{max-width:1180px;margin:0 auto;padding:26px 32px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-family:var(--display);font-weight:600;font-size:22px;color:var(--ink)}.logo span{color:var(--link)}
+.nav-links{display:flex;gap:28px;font-size:14px;color:var(--ink-2)}.nav-links a:hover{color:var(--ink)}
+.btn{font-family:var(--sans);font-weight:500;font-size:14px;padding:12px 24px;border-radius:8px;cursor:pointer;border:1px solid transparent;display:inline-flex;align-items:center;gap:9px;transition:transform .3s,background .3s,border-color .3s,color .3s}
+.btn-link{background:var(--link);color:#08101c}.btn-link:hover{background:#79abe8;transform:translateY(-2px)}
+.btn-line{background:transparent;color:var(--ink);border-color:var(--line)}.btn-line:hover{border-color:rgba(238,241,245,.4);transform:translateY(-2px)}
+@media(max-width:820px){.nav-links{display:none}}
+
+#hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden}
+.hero-grain{position:absolute;inset:0;opacity:.5;background-image:radial-gradient(circle at 1px 1px,rgba(91,150,224,.06) 1px,transparent 0);background-size:32px 32px;-webkit-mask-image:radial-gradient(ellipse 70% 60% at 50% 50%,#000,transparent);mask-image:radial-gradient(ellipse 70% 60% at 50% 50%,#000,transparent)}
+.hero-in{position:relative;z-index:2}
+.kicker{font-family:var(--display);font-style:italic;font-size:clamp(1.1rem,2vw,1.5rem);color:var(--link);margin-bottom:18px;font-weight:400}
+h1{font-family:var(--display);font-weight:400;font-size:clamp(2.8rem,7vw,5.4rem);line-height:1.02;letter-spacing:-.02em;max-width:15ch}
+h1 em{font-style:italic}
+.hero-sub{font-size:clamp(1.1rem,1.7vw,1.4rem);color:var(--ink-2);max-width:580px;margin:32px 0 40px;font-weight:300}
+.hero-ctas{display:flex;gap:14px;flex-wrap:wrap}
+.scroll-cue{position:absolute;bottom:36px;left:50%;transform:translateX(-50%);z-index:2;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-3);display:flex;flex-direction:column;align-items:center;gap:10px}
+.scroll-cue .l{width:1px;height:40px;background:linear-gradient(var(--ink-3),transparent);animation:cue 2.4s ease-in-out infinite}
+@keyframes cue{0%,100%{opacity:.3;transform:scaleY(.6)}50%{opacity:1;transform:scaleY(1)}}
+
+section{position:relative}
+.band{padding:120px 0;border-top:1px solid var(--line)}
+.lead{font-family:var(--display);font-weight:300;font-size:clamp(1.9rem,4vw,3rem);line-height:1.16;letter-spacing:-.015em;max-width:20ch}
+.lead em{font-style:italic;color:var(--link)}
+.problem-cols{display:grid;grid-template-columns:1fr 1fr;gap:50px;margin-top:56px;align-items:start}
+.pc h3{font-family:var(--sans);font-weight:600;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin-bottom:16px}
+.pc p{color:var(--ink-2);font-size:1.05rem;font-weight:300}
+@media(max-width:760px){.problem-cols{grid-template-columns:1fr;gap:34px}}
+
+/* CENTERPIECE — one record radiating to every party */
+#radiate{background:var(--bg-2)}
+.radiate-stage{display:grid;grid-template-columns:1fr 1.1fr;gap:50px;align-items:center;margin-top:54px}
+.one-record{border:1px solid rgba(91,150,224,.4);border-radius:14px;padding:28px;background:var(--link-soft);position:relative}
+.one-record .or-k{display:flex;align-items:center;gap:9px;font-size:.74rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--link);margin-bottom:12px}
+.one-record .or-k svg{width:16px;height:16px}
+.one-record .or-v{font-family:var(--display);font-size:1.3rem;color:var(--ink);font-weight:400;line-height:1.3}
+.one-record .or-d{font-size:.85rem;color:var(--ink-3);margin-top:10px}
+.parties{display:flex;flex-direction:column;gap:14px}
+.party{display:flex;align-items:center;gap:14px;border:1px solid var(--line);border-radius:12px;padding:16px 20px;position:relative}
+.party .p-line{position:absolute;left:-50px;top:50%;width:50px;height:1px;background:repeating-linear-gradient(90deg,var(--link) 0 5px,transparent 5px 10px);display:none}
+.party .p-ic{width:34px;height:34px;border-radius:50%;background:var(--link-soft);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.party .p-ic svg{width:17px;height:17px;color:var(--link)}
+.party .p-who{font-weight:500;color:var(--ink)}
+.party .p-see{font-size:.8rem;color:var(--link);margin-left:auto;font-weight:500}
+@media(max-width:760px){.radiate-stage{grid-template-columns:1fr;gap:30px}}
+
+/* ARTIFACT — shared record */
+#artifact{background:var(--bg-2)}
+.record-frame{max-width:540px;margin:50px auto 0}
+.record{background:var(--paper);color:#1d2026;border-radius:6px;overflow:hidden;box-shadow:0 40px 90px -40px rgba(0,0,0,.7),0 0 0 1px rgba(0,0,0,.05);position:relative}
+.rec-top{display:flex;align-items:center;justify-content:space-between;padding:20px 28px;border-bottom:1px solid rgba(29,32,38,.12)}
+.rec-brand{font-family:var(--display);font-weight:600;font-size:1.1rem;color:#1d2026}.rec-brand span{color:var(--link-deep)}
+.rec-id{font-family:var(--sans);font-size:.72rem;letter-spacing:.06em;color:#838996;text-transform:uppercase}
+.rec-title{padding:22px 28px 6px}
+.rec-title .rt-lbl{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:#838996;font-weight:600}
+.rec-title .rt-event{font-family:var(--display);font-size:1.45rem;font-weight:500;color:#1d2026;margin-top:6px}
+.rec-sub{padding:0 28px 14px;font-size:.9rem;color:#5e6470}
+.shared-hd{padding:14px 28px 4px;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:#838996;font-weight:600;border-top:1px solid rgba(29,32,38,.1)}
+.shared-list{padding:4px 28px 16px}
+.srow{display:flex;align-items:center;justify-content:space-between;padding:11px 0;border-bottom:1px solid rgba(29,32,38,.07)}
+.srow:last-child{border-bottom:none}
+.srow .sn{font-size:.95rem;color:#1d2026;font-weight:500;display:flex;align-items:center;gap:10px}
+.srow .sn .sd{width:7px;height:7px;border-radius:50%;background:var(--link-deep)}
+.srow .ss{font-size:.78rem;color:#838996}
+.rec-foot{padding:14px 28px;background:rgba(91,150,224,.07);border-top:1px solid rgba(29,32,38,.12);font-size:.84rem;color:#5e6470}
+.rec-foot b{color:#1d2026;font-weight:600}
+.record-note{text-align:center;color:var(--ink-3);font-size:.84rem;margin-top:26px;font-style:italic}
+
+.change-line{font-family:var(--display);font-weight:300;font-size:clamp(1.7rem,3.4vw,2.6rem);line-height:1.2;max-width:22ch}
+.change-line b{font-weight:500;font-style:italic;color:var(--link)}
+.afters{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-top:54px}
+.after{background:var(--bg);padding:30px 26px}
+.after .a-n{font-family:var(--display);font-size:1.2rem;font-weight:500;margin-bottom:8px}
+.after .a-d{color:var(--ink-2);font-size:.95rem;font-weight:300}
+@media(max-width:760px){.afters{grid-template-columns:1fr}}
+
+#belief{text-align:center}
+.belief-q{font-family:var(--display);font-weight:300;font-style:italic;font-size:clamp(2rem,5vw,3.6rem);line-height:1.15;letter-spacing:-.01em;max-width:20ch;margin:0 auto}
+.belief-q .u{font-style:normal;color:var(--link)}
+.belief-sub{color:var(--ink-2);margin-top:30px;font-size:1.05rem;max-width:540px;margin-left:auto;margin-right:auto}
+.sits{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:40px;justify-content:center}
+.sits .node{font-family:var(--sans);font-size:.9rem;color:var(--ink-3);padding:8px 16px;border:1px solid var(--line);border-radius:100px}
+.sits .node.me{color:#08101c;background:var(--link);border-color:var(--link);font-weight:600}
+.sits .sep{color:var(--ink-3)}
+
+#cta{text-align:center;padding:130px 0}
+#cta h2{font-family:var(--display);font-weight:400;font-size:clamp(2.2rem,5vw,3.6rem);letter-spacing:-.02em;margin-bottom:20px}
+#cta h2 em{font-style:italic;color:var(--link)}
+#cta p{color:var(--ink-2);max-width:480px;margin:0 auto 36px;font-weight:300}
+.cta-ctas{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+footer{border-top:1px solid var(--line);padding:38px 0;text-align:center;color:var(--ink-3);font-size:13px}
+
+.rv{opacity:0;transform:translateY(20px);transition:opacity .9s ease,transform .9s ease}
+.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none}.scroll-cue .l{animation:none}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-in">
+    <div class="logo">Nov<span>ira</span></div>
+    <div class="nav-links"><a href="#">Solutions</a><a href="#">Platform</a><a href="#">Products</a><a href="#">Pricing</a><a href="#">Resources</a><a href="#">About Us</a></div>
+    <a class="btn btn-line" href="#">Build your solution</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-grain"></div>
+  <div class="wrap hero-in">
+    <div class="eyebrow">NovaLink</div>
+    <div class="kicker">Truth only ends an argument —</div>
+    <h1>when everyone is holding <em>the same one.</em></h1>
+    <p class="hero-sub">NovaLink puts a single verified record into every party's hands at once. Not copies. Not forwards. One truth, shared — and impossible to alter.</p>
+    <div class="hero-ctas">
+      <a class="btn btn-link" href="#radiate">See how →</a>
+      <a class="btn btn-line" href="#">Talk to a solutions expert</a>
+    </div>
+  </div>
+  <div class="scroll-cue"><span>Scroll</span><span class="l"></span></div>
+</section>
+
+<!-- THE PROBLEM -->
+<section class="band">
+  <div class="wrap">
+    <div class="eyebrow rv">The problem</div>
+    <p class="lead rv">The moment you send a copy, the truth starts to drift.</p>
+    <div class="problem-cols">
+      <div class="pc rv">
+        <h3>Everyone ends up with their own version</h3>
+        <p>A PDF emailed here, a screenshot forwarded there, a spreadsheet exported and edited. Within days, each party holds a slightly different account — and no one can say which is the real one. You've shared the file, but not the truth.</p>
+      </div>
+      <div class="pc rv">
+        <h3>And a copy can always be questioned</h3>
+        <p>Was this the original? Was it changed before it reached me? A forwarded document carries no proof of its own integrity — so the moment it matters, it's back to doubt, and back to the argument you were trying to settle.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY IT'S HARD -->
+<section class="band">
+  <div class="wrap">
+    <div class="eyebrow rv">Why this is hard</div>
+    <p class="lead rv" style="max-width:26ch">Sharing a file is easy. Sharing <em style="color:var(--ink)">trust</em> is not.</p>
+    <p class="rv" style="color:var(--ink-2);font-size:1.15rem;max-width:62ch;margin-top:30px;font-weight:300">
+      Anyone can send a document. The hard part is that everyone who receives it can still doubt it — because a copy is just a copy, severed from whatever made the original trustworthy. To truly share truth, every party has to see the <em style="font-style:italic;color:var(--ink)">same</em> record, know it's the real one, and know it hasn't been touched. That's not a sharing problem. It's a trust problem. <em style="font-style:italic;color:var(--ink)">NovaLink solves the trust problem.</em>
+    </p>
+  </div>
+</section>
+
+<!-- CENTERPIECE — one record, every party -->
+<section id="radiate" class="band">
+  <div class="wrap">
+    <div class="eyebrow rv">What NovaLink changes</div>
+    <p class="lead rv" style="max-width:24ch">One record. Every party. <em style="color:var(--link)">The same truth.</em></p>
+    <div class="radiate-stage">
+      <div class="one-record rv">
+        <div class="or-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6l7-3z" stroke-linejoin="round"/><path d="M9 11.5l2 2 4-4.5" stroke-linecap="round"/></svg>One verified NovaProof</div>
+        <div class="or-v">The single sealed record of what happened.</div>
+        <div class="or-d">Not duplicated. Not forwarded. Shared by reference — so everyone sees the original, never a copy.</div>
+      </div>
+      <div class="parties rv">
+        <div class="party"><span class="p-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 21V8l9-5 9 5v13" stroke-linejoin="round"/><path d="M9 21v-6h6v6"/></svg></span><span class="p-who">The shipper</span><span class="p-see">sees the original</span></div>
+        <div class="party"><span class="p-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="1" y="6" width="15" height="11" rx="1.5"/><path d="M16 9h4l3 3v5h-7z"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="18" r="2"/></svg></span><span class="p-who">The carrier</span><span class="p-see">sees the original</span></div>
+        <div class="party"><span class="p-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6l7-3z" stroke-linejoin="round"/></svg></span><span class="p-who">The insurer</span><span class="p-see">sees the original</span></div>
+      </div>
+    </div>
+    <p class="rv" style="color:var(--ink-2);font-size:1.05rem;max-width:62ch;margin-top:44px;font-weight:300">No party holds a copy that could drift from the others. They all reference the one sealed record — so there's nothing to reconcile, and nothing to dispute. <em style="font-style:italic;color:var(--ink)">When everyone sees the same truth, the argument is over before it begins.</em></p>
+  </div>
+</section>
+
+<!-- THE ARTIFACT — shared record -->
+<section id="artifact" class="band">
+  <div class="wrap">
+    <div class="eyebrow rv" style="text-align:center">What a shared record looks like</div>
+    <p class="lead rv" style="text-align:center;margin:0 auto;max-width:22ch">One truth, with everyone <em style="color:var(--link)">who holds it.</em></p>
+    <div class="record-frame rv">
+      <div class="record">
+        <div class="rec-top"><div class="rec-brand">Nova<span>Link</span></div><div class="rec-id">Shared record · sample</div></div>
+        <div class="rec-title"><div class="rt-lbl">Sharing</div><div class="rt-event">Temperature excursion · verified</div></div>
+        <div class="rec-sub">Pharmaceutical shipment · Dallas → Chicago · sealed NovaProof</div>
+        <div class="shared-hd">Shared with</div>
+        <div class="shared-list">
+          <div class="srow"><span class="sn"><span class="sd"></span>The shipper</span><span class="ss">viewing the original</span></div>
+          <div class="srow"><span class="sn"><span class="sd"></span>The carrier</span><span class="ss">viewing the original</span></div>
+          <div class="srow"><span class="sn"><span class="sd"></span>The insurer</span><span class="ss">viewing the original</span></div>
+        </div>
+        <div class="rec-foot"><b>One record, three parties.</b> Everyone is looking at the same sealed truth — not a copy of it.</div>
+      </div>
+    </div>
+    <p class="record-note rv">An illustrative example. Access is granted by reference to the original — never by sending a copy that could be altered.</p>
+  </div>
+</section>
+
+<!-- WHAT BECOMES POSSIBLE -->
+<section class="band">
+  <div class="wrap">
+    <div class="eyebrow rv">What becomes possible</div>
+    <p class="change-line rv">When the truth is shared, <b>not just sent,</b> everyone can move forward together.</p>
+    <div class="afters">
+      <div class="after rv"><div class="a-n">No reconciling versions</div><div class="a-d">There's only one record. Nothing to compare, nothing to argue is the "real" copy.</div></div>
+      <div class="after rv"><div class="a-n">Faster resolution</div><div class="a-d">Insurers, carriers, and partners act on the same trusted record — no waiting to confirm what's authentic.</div></div>
+      <div class="after rv"><div class="a-n">Control over who sees what</div><div class="a-d">Share a record with exactly the parties who need it — and know they're seeing the truth, not a forward.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- BELIEF -->
+<section id="belief" class="band">
+  <div class="wrap">
+    <p class="belief-q rv">Sending a file is easy.<br>Sharing <span class="u">the truth</span> is the hard part.</p>
+    <p class="belief-sub rv">NovaLink is how one verified record reaches every party — the same truth, in every hand, impossible to alter.</p>
+    <div class="sits rv">
+      <span class="node">Track</span><span class="sep">·</span>
+      <span class="node">NovaCheck</span><span class="sep">·</span>
+      <span class="node">NovaProof</span><span class="sep">→</span>
+      <span class="node me">NovaLink</span><span class="sep">·</span>
+      <span class="node">NovaProtect</span><span class="sep">·</span>
+      <span class="node">DOST</span>
+    </div>
+    <p class="rv" style="color:var(--ink-3);font-size:.9rem;margin-top:20px">NovaLink turns a verified record into shared truth. See the full chain on the <a href="#" style="color:var(--link)">platform overview →</a></p>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <div class="wrap">
+    <h2>Stop sending copies. <em>Share the truth.</em></h2>
+    <p>See how NovaLink puts one verified record into every party's hands — the same truth, impossible to alter.</p>
+    <div class="cta-ctas">
+      <a class="btn btn-link" href="#">Talk to a solutions expert →</a>
+      <a class="btn btn-line" href="#">Explore the platform</a>
+    </div>
+  </div>
+</section>
+
+<footer>Novira · Trust what you track. Know what happens next.</footer>
+
+<script>
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:.18});
+document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
+</script>
+<script src="novira-prototype.js"></script>
+</body>
+</html>

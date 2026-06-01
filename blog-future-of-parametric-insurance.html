@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The future of parametric insurance — Novira Intelligence</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,400i&family=Spline+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0d0f0e;--bg-2:#12100c;--bg-card:#14171a;
+  --ink:#f4f1e8;--ink-2:#b4b3a8;--ink-3:#6f6f67;
+  --line:rgba(244,241,232,0.10);
+  --seal:#4fae84;--seal-deep:#0f6e56;--gold:#c9a25a;
+  --display:"Fraunces",Georgia,serif;--sans:"Spline Sans",system-ui,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:300;line-height:1.7;overflow-x:hidden}
+.wrap{max-width:1040px;margin:0 auto;padding:0 32px}
+.col{max-width:680px;margin:0 auto;padding:0 32px}
+a{text-decoration:none;color:inherit}
+nav{position:sticky;top:0;z-index:50;background:rgba(13,15,14,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1180px;margin:0 auto;padding:0 32px;height:64px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-family:var(--display);font-weight:600;font-size:22px;color:var(--ink)}.logo span{color:var(--seal)}
+.nav-links{display:flex;gap:28px;font-size:14px;color:var(--ink-2)}.nav-links a:hover{color:var(--ink)}
+.btn{font-family:var(--sans);font-weight:500;font-size:14px;padding:12px 24px;border-radius:8px;cursor:pointer;border:1px solid transparent;display:inline-flex;align-items:center;gap:9px;transition:transform .3s,background .3s}
+.btn-seal{background:var(--seal);color:#06140e}.btn-seal:hover{background:#6fc69e;transform:translateY(-2px)}
+.btn-line{background:transparent;color:var(--ink);border:1px solid var(--line)}.btn-line:hover{border-color:rgba(244,241,232,.4)}
+@media(max-width:820px){.nav-links{display:none}}
+.crumb{font-size:13px;color:var(--ink-3)}.crumb a:hover{color:var(--ink-2)}.crumb span{color:var(--seal)}
+.art-head{padding:58px 0 36px;border-bottom:1px solid var(--line)}
+.tags{margin:16px 0 18px}
+.tag{display:inline-block;font-size:.68rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--seal);border:1px solid rgba(79,174,132,.3);border-radius:100px;padding:4px 11px;margin-right:7px}
+h1{font-family:var(--display);font-weight:400;font-size:clamp(2.2rem,4.8vw,3.4rem);line-height:1.08;letter-spacing:-.02em;max-width:20ch}
+.dek{font-size:clamp(1.15rem,1.8vw,1.4rem);color:var(--ink-2);max-width:60ch;margin-top:22px;font-weight:300;font-style:italic}
+.byline{display:flex;align-items:center;gap:12px;margin-top:26px;font-size:.9rem;color:var(--ink-3)}
+.byline .b-dot{width:4px;height:4px;border-radius:50%;background:var(--ink-3)}
+article{padding:52px 0 40px}
+article p{font-size:1.16rem;color:var(--ink-2);margin-bottom:26px;font-weight:300}
+article p strong,article p b{color:var(--ink);font-weight:500}
+article h2{font-family:var(--display);font-weight:500;font-size:clamp(1.5rem,2.6vw,1.9rem);color:var(--ink);margin:46px 0 18px;letter-spacing:-.01em}
+article em{font-style:italic;color:var(--ink)}
+.pull{font-family:var(--display);font-weight:300;font-style:italic;font-size:clamp(1.5rem,2.8vw,2rem);line-height:1.3;color:var(--seal);border-left:2px solid var(--seal);padding:6px 0 6px 26px;margin:40px 0}
+.takeaways{background:var(--bg-card);border:1px solid var(--line);border-radius:14px;padding:30px 32px;margin:44px 0 10px}
+.takeaways .tk-h{font-family:var(--sans);font-weight:600;font-size:.76rem;letter-spacing:.12em;text-transform:uppercase;color:var(--seal);margin-bottom:18px}
+.takeaways ul{list-style:none}
+.takeaways li{display:flex;align-items:flex-start;gap:12px;margin-bottom:13px;font-size:1.04rem;color:var(--ink-2);font-weight:300;line-height:1.55}
+.takeaways li:last-child{margin-bottom:0}
+.takeaways li svg{width:17px;height:17px;flex-shrink:0;margin-top:4px;color:var(--seal)}
+.sig{font-family:var(--display);font-style:italic;font-size:1.25rem;color:var(--ink);border-top:1px solid var(--line);padding-top:34px;margin-top:10px}
+.related{border-top:1px solid var(--line);padding:50px 0}
+.related .r-h{font-family:var(--sans);font-weight:500;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin-bottom:8px}
+.related .r-sub{color:var(--ink-2);font-size:1rem;font-weight:300;margin-bottom:26px}
+.rel-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.rel{background:var(--bg-card);border:1px solid var(--line);border-radius:12px;padding:24px 24px;transition:transform .3s,border-color .3s}
+.rel:hover{transform:translateY(-2px);border-color:rgba(79,174,132,.4)}
+.rel .rl-tag{font-size:.66rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--seal);margin-bottom:10px}
+.rel .rl-t{font-family:var(--display);font-size:1.1rem;font-weight:500;color:var(--ink);line-height:1.22}
+.rel .rl-go{font-size:.8rem;color:var(--seal);margin-top:12px}
+@media(max-width:680px){.rel-grid{grid-template-columns:1fr}}
+.cta-box{background:var(--bg-card);border:1px solid var(--line);border-radius:16px;padding:38px 38px;text-align:center;margin-top:14px}
+.cta-box h3{font-family:var(--display);font-weight:400;font-size:1.7rem;margin-bottom:10px}
+.cta-box p{color:var(--ink-2);margin-bottom:24px;font-size:1.02rem;font-weight:300}
+.cta-ctas{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.more{border-top:1px solid var(--line);padding:48px 0}
+.more .m-h{font-family:var(--sans);font-weight:500;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin-bottom:22px}
+.more-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.mcard{background:var(--bg-card);border:1px solid var(--line);border-radius:12px;padding:22px 24px;transition:transform .3s,border-color .3s}
+.mcard:hover{transform:translateY(-2px);border-color:rgba(244,241,232,.25)}
+.mcard .mc-t{font-family:var(--display);font-size:1.08rem;font-weight:500;color:var(--ink);line-height:1.25}
+.mcard .mc-go{font-size:.8rem;color:var(--seal);margin-top:10px}
+@media(max-width:640px){.more-grid{grid-template-columns:1fr}}
+footer{border-top:1px solid var(--line);padding:38px 0;text-align:center;color:var(--ink-3);font-size:13px}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-in">
+    <div class="logo">Nov<span>ira</span></div>
+    <div class="nav-links"><a href="#">Solutions</a><a href="#">Platform</a><a href="#">Products</a><a href="#">Pricing</a><a href="#">Resources</a><a href="#">About Us</a></div>
+    <a class="btn btn-seal" href="#">Build your solution</a>
+  </div>
+</nav>
+<div class="art-head">
+  <div class="col">
+    <div class="crumb"><a href="#">Resources</a> / <a href="#">Intelligence</a> / <span>Insurance Intelligence</span></div>
+    <div class="tags"><span class="tag">Insurance</span></div>
+    <h1>The future of parametric insurance</h1>
+    <p class="dek">Parametric insurance has always had one weak point. It isn't the model — it's the trigger.</p>
+    <div class="byline"><span>Kamal Anandpuri · Founder & CEO</span><span class="b-dot"></span><span>8 min read</span></div>
+  </div>
+</div>
+<article>
+  <div class="col">
+    
+    <p>Parametric insurance is a beautiful idea. Instead of paying against a loss you have to investigate and adjust, you pay against a defined event: a measurable thing happened, the conditions were met, the response follows automatically. No reconstruction, no lengthy claim, no argument. Fast, clean, and cheap to administer.</p>
+    <p>It works wonderfully — wherever the trigger is something no one can dispute. A hurricane's wind speed at a weather station. An earthquake's magnitude. A flight's recorded delay. The reason parametric products thrive in those domains is that the trigger is measured by a trusted, independent source. The whole model rests on one assumption: <em>everyone agrees the event happened.</em></p>
+    <h2>The trigger problem</h2>
+    <p>Now try to extend parametric coverage to the things that actually move through the physical economy — a shipment, a piece of equipment, a perishable cargo. The model immediately runs into its weak point. The trigger for these events isn't measured by an independent weather station. It's measured by a device that sits with the insured's goods, on the insured's side of the transaction.</p>
+    <p>That's a problem. If the payout fires automatically when a sensor says a threshold was crossed, then the trustworthiness of the entire product depends on the trustworthiness of that sensor reading — and a reading from a party with an interest in the payout is exactly the kind of trigger an insurer can't build a product on. The thing that makes parametric work in catastrophe lines, an undisputed trigger, is missing.</p>
+    <div class="pull">Parametric insurance doesn't have a modeling problem. It has a trust problem at the trigger.</div>
+    <p>This is why parametric products remain rare for granular, asset-level risks despite obvious demand. The economics are appealing. The model is sound. But the trigger can't be trusted, so the product can't be written — or it gets written with so much manual verification bolted on that it stops being parametric at all.</p>
+    <h2>Verification is the missing ingredient</h2>
+    <p>The unlock isn't a better model or more data. It's a trigger that can be trusted by both sides without either having to take the other's word for it. That requires the event itself to be verified at the source — confirmed genuine, unaltered, and tied to the right asset — and sealed into a record neither party can quietly revise.</p>
+    <p>Make the trigger verifiable, and the parametric model suddenly extends to everything it couldn't reach before. A verified temperature excursion can be a trigger. A verified shock event can be a trigger. A verified deviation from an approved route can be a trigger. Not because the insured says so, and not because the insurer eventually accepts it after investigation, but because the event is established as fact the moment it occurs.</p>
+    <h2>What this makes possible</h2>
+    <p>An insurer building on verified events can write parametric products for risks that were previously uninsurable in that form. When a verified event meets the policy's defined conditions, the response can initiate in the moment — the workflow activating automatically, with benefit delivery handled alongside the insured. Settlement compresses from weeks to near-immediate, because there was never a reconstruction to perform. Administrative cost falls. Fraud has little room, because the trigger isn't a claim to be tested — it's a verified fact.</p>
+    <p>And underwriting changes too. Pricing parametric risk has always been hard partly because the historical data is self-reported and noisy. Build the book on verified events and the risk models sharpen, because they're learning from what genuinely happened rather than what was claimed.</p>
+    <p>I think the next decade of insurance innovation in the physical economy runs through this single point. Not better catastrophe models — those are mature. The frontier is granular, asset-level parametric coverage for shipments, equipment, and goods in motion. That frontier has been blocked by one thing: the trigger couldn't be trusted. Make the physical event verifiable, and the block is gone.</p>
+    <p>Parametric insurance has been waiting for a trustworthy trigger. That's the part we're building.</p>
+  
+    <div class="takeaways">
+      <div class="tk-h">Key takeaways</div>
+      <ul>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Parametric insurance works wherever the trigger is an undisputed, independently measured event.</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg><span>For asset-level risks, the trigger sits on the insured's side — so it can't be trusted, and the product can't be written.</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg><span>The unlock isn't a better model; it's a verifiable trigger both sides can trust without taking each other's word.</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Verified events make granular parametric coverage possible — faster settlement, less fraud, sharper underwriting.</span></li>
+      </ul>
+    </div>
+    <p class="sig">You can't price what you can't trust. The verifiable event is the trigger parametric insurance was missing.</p>
+  </div>
+</article>
+<div class="related">
+  <div class="wrap">
+    <div class="r-h">Related use cases</div>
+    <div class="r-sub">See the chain solve this problem, step by step.</div>
+    <div class="rel-grid">
+      <a class="rel" href="#"><div class="rl-tag">Insurance</div><div class="rl-t">Insurance claim validation</div><div class="rl-go">See how it works &rarr;</div></a>
+      <a class="rel" href="#"><div class="rl-tag">Cold chain</div><div class="rl-t">Cold chain excursion</div><div class="rl-go">See how it works &rarr;</div></a>
+      <a class="rel" href="#"><div class="rl-tag">Logistics</div><div class="rl-t">Cargo damage in transit</div><div class="rl-go">See how it works &rarr;</div></a>
+    </div>
+  </div>
+</div>
+<div class="wrap" style="padding-bottom:20px">
+  <div class="cta-box">
+    <h3>Build products on verified events.</h3>
+    <p>See how Novira gives insurers a trigger both sides can trust — and settle against in the moment.</p>
+    <div class="cta-ctas">
+      <a class="btn btn-seal" href="#">Build your solution &rarr;</a>
+      <a class="btn btn-line" href="#">Talk to a solutions expert</a>
+    </div>
+  </div>
+</div>
+<div class="more">
+  <div class="wrap">
+    <div class="m-h">Keep reading</div>
+    <div class="more-grid">
+      <a class="mcard" href="#"><div class="mc-t">How verified events reduce claims friction</div><div class="mc-go">Read &rarr;</div></a>
+      <a class="mcard" href="#"><div class="mc-t">What happens when nobody can agree what happened</div><div class="mc-go">Read &rarr;</div></a>
+    </div>
+  </div>
+</div>
+<footer>Novira &middot; Trust what you track. Know what happens next.</footer>
+<script src="novira-prototype.js"></script>
+</body>
+</html>

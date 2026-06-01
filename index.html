@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Novira — Trust what you track. Predict what comes next.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Spline+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#fbfaf7;--card:#fff;--ink:#15171c;--ink-2:#54585f;--ink-3:#8b8f97;
+  --line:#e7e4dc;--line-2:#d9d5ca;
+  --accent:#0f6e56;--accent-deep:#0a4f3e;--accent-soft:#e3f1ea;--gold:#b9892f;
+  --display:"Fraunces",Georgia,serif;--sans:"Spline Sans",system-ui,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:300;line-height:1.6}
+a{text-decoration:none;color:inherit}
+.wrap{max-width:1100px;margin:0 auto;padding:0 28px}
+.band{padding:92px 0}
+.sec-label{font-family:var(--sans);font-weight:600;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
+h1{font-family:var(--display);font-weight:500;letter-spacing:-.02em;line-height:1.05}
+h2{font-family:var(--display);font-weight:500;font-size:clamp(1.8rem,3.4vw,2.6rem);letter-spacing:-.01em;line-height:1.12}
+em{font-style:italic;color:var(--accent)}
+.btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--sans);font-weight:500;font-size:.95rem;padding:13px 24px;border-radius:8px;border:1px solid transparent;cursor:pointer;transition:transform .2s,box-shadow .2s,background .2s}
+.btn-primary{background:var(--accent);color:#fff}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(15,110,86,.28)}
+.btn-ghost{background:transparent;color:var(--ink);border-color:var(--line-2)}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
+.btn-lg{padding:15px 30px;font-size:1rem}
+
+/* NAV */
+.nav{position:sticky;top:0;z-index:50;background:rgba(251,250,247,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1100px;margin:0 auto;padding:16px 28px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-family:var(--display);font-weight:600;font-size:22px}.logo span{color:var(--accent)}
+.nav-links{display:flex;gap:26px;font-size:.92rem;color:var(--ink-2)}
+.nav-links a:hover{color:var(--ink)}
+.nav-cta{display:flex;gap:12px;align-items:center}
+@media(max-width:860px){.nav-links{display:none}.nav-cta .btn-ghost{display:none}}
+
+/* HERO */
+.hero{padding:96px 0 80px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;top:-30%;left:50%;transform:translateX(-50%);width:900px;height:600px;background:radial-gradient(ellipse,var(--accent-soft),transparent 65%);opacity:.6;pointer-events:none}
+.hero-tag{display:inline-block;font-size:.78rem;font-weight:500;letter-spacing:.04em;color:var(--accent);background:var(--accent-soft);border-radius:100px;padding:7px 16px;margin-bottom:26px;position:relative}
+.hero h1{font-size:clamp(2.6rem,5.6vw,4.4rem);max-width:16ch;margin:0 auto 22px;position:relative}
+.hero-sub{font-size:clamp(1.05rem,1.8vw,1.3rem);color:var(--ink-2);max-width:60ch;margin:0 auto 16px;position:relative}
+.hero-one{font-size:1rem;color:var(--ink-3);max-width:64ch;margin:0 auto 34px;position:relative}
+.hero-ctas{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;position:relative}
+.hero-vis{max-width:860px;margin:54px auto 0;position:relative}
+.hero-vis svg{width:100%;height:auto;overflow:visible}
+.hero-vis .hv-lbl{font-family:var(--sans);font-size:13px;font-weight:500;fill:var(--ink-2)}
+.hero-vis .hv-accent{fill:var(--accent);font-weight:600}
+@media(max-width:640px){.hero-vis{display:none}}
+
+/* METHODOLOGY (centerpiece) */
+#method{background:var(--ink);color:#f4f1e8}
+#method h2{color:#fff}
+.method-head{text-align:center;max-width:640px;margin:0 auto 50px}
+.method-head .sec-label{color:#7fc6a4}
+.method-head p{color:#9aa0a0;font-size:1.1rem;margin-top:14px}
+.flow{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid rgba(255,255,255,.12);border-radius:16px;overflow:hidden}
+.fstep{padding:32px 26px;position:relative;border-right:1px solid rgba(255,255,255,.12)}
+.fstep:last-child{border-right:none}
+.fstep .f-ic{width:46px;height:46px;border-radius:12px;background:rgba(127,198,164,.14);display:flex;align-items:center;justify-content:center;color:#7fc6a4;margin-bottom:18px}
+.fstep .f-ic svg{width:23px;height:23px}
+.fstep .f-verb{font-family:var(--display);font-size:1.5rem;font-weight:500;color:#fff;margin-bottom:8px}
+.fstep .f-out{font-size:.95rem;color:#b8bcbc}
+.fstep .f-name{font-size:.72rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#7fc6a4;margin-top:14px}
+.method-foot{text-align:center;margin-top:30px;font-size:1.05rem;color:#9aa0a0}
+@media(max-width:860px){.flow{grid-template-columns:1fr 1fr}.fstep:nth-child(2){border-right:none}.fstep{border-bottom:1px solid rgba(255,255,255,.12)}}
+
+/* BEFORE THE DAMAGE */
+.before-head{text-align:center;max-width:680px;margin:0 auto 46px}
+.cards-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.vcard{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:30px 28px;transition:transform .25s,box-shadow .25s}
+.vcard:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(21,23,28,.07)}
+.vcard .v-ic{width:42px;height:42px;border-radius:11px;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;color:var(--accent);margin-bottom:18px}
+.vcard .v-ic svg{width:21px;height:21px}
+.vcard .v-n{font-family:var(--display);font-size:1.3rem;font-weight:500;margin-bottom:8px}
+.vcard .v-d{font-size:.96rem;color:var(--ink-2)}
+.protect-card{margin-top:18px;background:var(--accent);color:#fff;border-radius:14px;padding:28px 30px;display:flex;align-items:center;gap:20px}
+.protect-card .pc-ic{width:48px;height:48px;border-radius:12px;background:rgba(255,255,255,.16);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.protect-card .pc-ic svg{width:24px;height:24px;color:#fff}
+.protect-card .pc-n{font-family:var(--display);font-size:1.4rem;font-weight:500}
+.protect-card .pc-d{font-size:.98rem;color:rgba(255,255,255,.85);margin-top:3px}
+
+/* INDUSTRIES */
+.ind-strip{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+.ind-pill{display:inline-flex;align-items:center;gap:9px;background:var(--card);border:1px solid var(--line);border-radius:100px;padding:12px 22px;font-size:.96rem;color:var(--ink-2)}
+.ind-pill svg{width:17px;height:17px;color:var(--accent)}
+
+/* PRODUCTS */
+.prod-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.pcard{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:26px 22px;text-align:center;transition:transform .25s,border-color .25s}
+.pcard:hover{transform:translateY(-3px);border-color:var(--accent)}
+.pcard .p-render{width:64px;height:64px;margin:0 auto 16px;border-radius:14px;background:var(--accent-soft);display:flex;align-items:center;justify-content:center}
+.pcard .p-render svg{width:30px;height:30px;color:var(--accent)}
+.pcard .p-n{font-family:var(--display);font-size:1.2rem;font-weight:600}
+.pcard .p-t{font-size:.8rem;font-weight:600;color:var(--accent);margin-top:3px}
+.pcard .p-d{font-size:.85rem;color:var(--ink-2);margin-top:8px}
+.prod-foot{text-align:center;margin-top:30px}
+
+/* TRUST */
+#trust{background:var(--accent-soft)}
+.trust-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:38px}
+.tcard{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:24px 18px;text-align:center}
+.tcard .t-ic{width:38px;height:38px;margin:0 auto 14px;border-radius:9px;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;color:var(--accent)}
+.tcard .t-ic svg{width:19px;height:19px}
+.tcard .t-n{font-weight:600;font-size:.95rem;margin-bottom:6px}
+.tcard .t-d{font-size:.82rem;color:var(--ink-2)}
+
+/* NEXT STEPS */
+#next{text-align:center}
+.next-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:44px;text-align:left}
+.ncard{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:32px 30px;transition:transform .25s,box-shadow .25s}
+.ncard:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(21,23,28,.08)}
+.ncard .n-k{font-family:var(--display);font-size:1.4rem;font-weight:500;margin-bottom:8px}
+.ncard .n-d{font-size:.95rem;color:var(--ink-2);margin-bottom:20px;min-height:48px}
+
+footer{background:var(--ink);color:#9aa0a0;padding:44px 0;font-size:.9rem}
+.foot-in{max-width:1100px;margin:0 auto;padding:0 28px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+.foot-in .logo{color:#f4f1e8}
+@media(max-width:860px){.cards-3,.prod-grid,.trust-grid,.next-grid{grid-template-columns:1fr 1fr}.protect-card{flex-direction:column;text-align:center}}
+@media(max-width:560px){.cards-3,.prod-grid,.trust-grid,.next-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-in">
+    <div class="logo">Nov<span>ira</span></div>
+    <div class="nav-links">
+      <a href="solutions.html">Solutions</a>
+      <a href="#method">Platform</a>
+      <a href="products.html">Products</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="resources.html">Resources</a>
+      <a href="about.html">About Us</a>
+    </div>
+    <div class="nav-cta">
+      <a class="btn btn-ghost" href="#">Talk to a solutions expert</a>
+      <a class="btn btn-primary" href="build-your-solution.html">Build your solution</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <span class="hero-tag">Operational intelligence for the physical world</span>
+    <h1>Trust what you track. <em>Predict what comes next.</em></h1>
+    <p class="hero-sub">Operational intelligence for the physical world — that proves what happened, and predicts what comes next.</p>
+    <p class="hero-one">Smart sensors, verified records, and predictive AI that help organizations prevent loss before it happens.</p>
+    <div class="hero-ctas">
+      <a class="btn btn-primary btn-lg" href="build-your-solution.html">Build your solution →</a>
+      <a class="btn btn-ghost btn-lg" href="products.html">Explore products</a>
+    </div>
+    <div class="hero-vis" aria-hidden="true">
+      <svg viewBox="0 0 880 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- connecting line -->
+        <path d="M70 75 H810" stroke="var(--line-2)" stroke-width="1.5" stroke-dasharray="3 5"/>
+        <path d="M70 75 H810" stroke="var(--accent)" stroke-width="1.5" stroke-dasharray="3 5" opacity="0.5">
+          <animate attributeName="stroke-dashoffset" from="0" to="-16" dur="1.2s" repeatCount="indefinite"/>
+        </path>
+        <!-- nodes -->
+        <g class="hv-node" transform="translate(70,75)">
+          <circle r="30" fill="var(--card)" stroke="var(--line)" stroke-width="1.5"/>
+          <g transform="translate(-11,-11)" stroke="var(--accent)" stroke-width="1.6" fill="none" stroke-linejoin="round"><rect x="1" y="5" width="13" height="10" rx="1"/><path d="M14 8h4l4 3v4h-8"/><circle cx="6" cy="17" r="1.6"/><circle cx="17" cy="17" r="1.6"/></g>
+        </g>
+        <g transform="translate(218,75)">
+          <circle r="30" fill="var(--card)" stroke="var(--line)" stroke-width="1.5"/>
+          <g transform="translate(-11,-11)" stroke="var(--accent)" stroke-width="1.6" fill="none" stroke-linecap="round"><circle cx="11" cy="11" r="3"/><path d="M11 2v3M11 17v3M2 11h3M17 11h3"/></g>
+        </g>
+        <g transform="translate(366,75)">
+          <circle r="30" fill="var(--card)" stroke="var(--line)" stroke-width="1.5"/>
+          <path transform="translate(-11,-11)" d="M5 13l4 4L19 7" stroke="var(--accent)" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        </g>
+        <g transform="translate(514,75)">
+          <circle r="30" fill="var(--card)" stroke="var(--line)" stroke-width="1.5"/>
+          <path transform="translate(-11,-11)" d="M12 2l8 3.5v6c0 5-3.5 8-8 9.5-4.5-1.5-8-4.5-8-9.5v-6L12 2z" stroke="var(--accent)" stroke-width="1.6" fill="none" stroke-linejoin="round"/>
+        </g>
+        <g transform="translate(662,75)">
+          <circle r="30" fill="var(--accent)" stroke="var(--accent)" stroke-width="1.5"/>
+          <path transform="translate(-11,-11)" d="M12 2l8 3.5v6c0 5-3.5 8-8 9.5-4.5-1.5-8-4.5-8-9.5v-6L12 2z M9 11l2 2 4-4" stroke="#fff" stroke-width="1.7" fill="none" stroke-linejoin="round" stroke-linecap="round"/>
+        </g>
+        <g transform="translate(810,75)">
+          <circle r="30" fill="var(--card)" stroke="var(--line)" stroke-width="1.5"/>
+          <path transform="translate(-11,-11)" d="M3 17l5-6 4 4 7-9" stroke="var(--accent)" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        </g>
+        <!-- labels -->
+        <text x="70" y="128" text-anchor="middle" class="hv-lbl">Shipment</text>
+        <text x="218" y="128" text-anchor="middle" class="hv-lbl">Sensor</text>
+        <text x="366" y="128" text-anchor="middle" class="hv-lbl">Verify</text>
+        <text x="514" y="128" text-anchor="middle" class="hv-lbl">Proof</text>
+        <text x="662" y="128" text-anchor="middle" class="hv-lbl hv-accent">Protect</text>
+        <text x="810" y="128" text-anchor="middle" class="hv-lbl">Predict</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING TEASER -->
+<div style="background:var(--card);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap" style="display:flex;align-items:center;justify-content:center;gap:18px;flex-wrap:wrap;padding:18px 28px;text-align:center">
+    <span style="font-size:.98rem;color:var(--ink-2)">Flexible device and platform plans for organizations of every size.</span>
+    <a href="pricing.html" style="color:var(--accent);font-weight:500;font-size:.95rem">View pricing →</a>
+  </div>
+</div>
+
+<!-- METHODOLOGY — centerpiece -->
+<section id="method" class="band">
+  <div class="wrap">
+    <div class="method-head">
+      <div class="sec-label">The Novira methodology</div>
+      <h2>Most platforms stop at tracking.</h2>
+      <p>Knowing where something is has become a commodity. Knowing — and proving — what happened to it, and what's likely next, is where loss is actually prevented.</p>
+    </div>
+    <div class="flow">
+      <div class="fstep">
+        <div class="f-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3" stroke-linecap="round"/></svg></div>
+        <div class="f-verb">Track</div>
+        <div class="f-out">Know where it is.</div>
+        <div class="f-name">Observe</div>
+      </div>
+      <div class="fstep">
+        <div class="f-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="f-verb">Verify</div>
+        <div class="f-out">Know what happened.</div>
+        <div class="f-name">NovaCheck · NovaProof</div>
+      </div>
+      <div class="fstep">
+        <div class="f-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M13 3L4 14h7l-1 7 9-11h-7l1-7z" stroke-linejoin="round"/></svg></div>
+        <div class="f-verb">Protect</div>
+        <div class="f-out">Respond automatically.</div>
+        <div class="f-name">NovaProtect</div>
+      </div>
+      <div class="fstep">
+        <div class="f-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 18l5-6 4 4 7-9" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="f-verb">Predict</div>
+        <div class="f-out">Know what's likely next.</div>
+        <div class="f-name">DOST</div>
+      </div>
+    </div>
+    <div class="method-foot">Know where it is. Prove what happened. Act before it happens again.<br><a href="shipment-journey.html" style="color:#7fc6a4;font-weight:500;font-size:.98rem;display:inline-block;margin-top:14px">See one shipment move through the whole system →</a></div>
+  </div>
+</section>
+
+<!-- WHY NOVIRA WINS -->
+<section class="band" style="padding-top:0">
+  <div class="wrap">
+    <div style="text-align:center;max-width:600px;margin:0 auto 40px">
+      <div class="sec-label" style="text-align:center">The difference</div>
+      <h2>Traditional tracking vs. Novira.</h2>
+    </div>
+    <div style="max-width:760px;margin:0 auto;border:1px solid var(--line);border-radius:16px;overflow:hidden">
+      <div style="display:grid;grid-template-columns:1fr 1fr;background:var(--card)">
+        <div style="padding:18px 26px;font-weight:600;font-size:.82rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);border-bottom:1px solid var(--line)">Traditional tracking</div>
+        <div style="padding:18px 26px;font-weight:600;font-size:.82rem;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);border-bottom:1px solid var(--line);border-left:1px solid var(--line);background:var(--accent-soft)">Novira</div>
+      </div>
+      <div id="vstbl">
+        <div style="display:grid;grid-template-columns:1fr 1fr">
+          <div style="padding:16px 26px;color:var(--ink-2);border-bottom:1px solid var(--line)">Location only</div>
+          <div style="padding:16px 26px;color:var(--ink);font-weight:500;border-bottom:1px solid var(--line);border-left:1px solid var(--line)">Location <span style="color:var(--accent)">+ verified condition</span></div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr">
+          <div style="padding:16px 26px;color:var(--ink-2);border-bottom:1px solid var(--line)">Reactive — you find out later</div>
+          <div style="padding:16px 26px;color:var(--ink);font-weight:500;border-bottom:1px solid var(--line);border-left:1px solid var(--line)">Predictive <span style="color:var(--accent)">— flagged early</span></div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr">
+          <div style="padding:16px 26px;color:var(--ink-2);border-bottom:1px solid var(--line)">Raw data you have to trust</div>
+          <div style="padding:16px 26px;color:var(--ink);font-weight:500;border-bottom:1px solid var(--line);border-left:1px solid var(--line)">Trusted records <span style="color:var(--accent)">— verified &amp; sealed</span></div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr">
+          <div style="padding:16px 26px;color:var(--ink-2);border-bottom:1px solid var(--line)">Disputes &amp; finger-pointing</div>
+          <div style="padding:16px 26px;color:var(--ink);font-weight:500;border-bottom:1px solid var(--line);border-left:1px solid var(--line)">Evidence <span style="color:var(--accent)">— nothing to argue</span></div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr">
+          <div style="padding:16px 26px;color:var(--ink-2)">Visibility</div>
+          <div style="padding:16px 26px;color:var(--ink);font-weight:500;border-left:1px solid var(--line)">Action <span style="color:var(--accent)">— protection in the moment</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BEFORE THE DAMAGE -->
+<section class="band">
+  <div class="wrap">
+    <div class="before-head">
+      <div class="sec-label" style="text-align:center">The value</div>
+      <h2>Before the damage. Before the delay. Before the loss.</h2>
+    </div>
+    <div class="cards-3">
+      <div class="vcard">
+        <div class="v-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3" stroke-linecap="round"/></svg></div>
+        <div class="v-n">Track</div>
+        <div class="v-d">Know where it is — continuously, bound to the asset.</div>
+      </div>
+      <div class="vcard">
+        <div class="v-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="v-n">Verify</div>
+        <div class="v-d">Know what happened — confirmed, sealed, beyond dispute.</div>
+      </div>
+      <div class="vcard">
+        <div class="v-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 18l5-6 4 4 7-9" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="v-n">Predict</div>
+        <div class="v-d">Know what's likely next — early enough to act. A likelihood, never a guarantee.</div>
+      </div>
+    </div>
+    <div class="protect-card">
+      <div class="pc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div>
+        <div class="pc-n">Protect</div>
+        <div class="pc-d">Automatic response when a verified event meets your conditions. Novira activates the protection workflow in the moment — benefit delivery is handled with you.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ILLUSTRATIVE SCENARIO -->
+<section class="band" style="padding-top:0">
+  <div class="wrap">
+    <div style="background:var(--ink);border-radius:18px;padding:44px 46px;color:#f4f1e8">
+      <div style="font-family:var(--sans);font-weight:600;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#7fc6a4;margin-bottom:10px">Illustrative scenario</div>
+      <div style="font-family:var(--display);font-size:clamp(1.4rem,2.6vw,2rem);font-weight:500;color:#fff;margin-bottom:30px">A temperature excursion, handled in seconds.</div>
+      <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:0">
+        <div style="text-align:left;padding-right:14px"><div style="font-family:var(--display);font-size:1.1rem;color:#7fc6a4;font-weight:600">01</div><div style="font-size:.86rem;color:#d8dcdc;margin-top:6px">Sensor detects the event</div></div>
+        <div style="text-align:left;padding-right:14px;border-left:1px solid rgba(255,255,255,.12);padding-left:14px"><div style="font-family:var(--display);font-size:1.1rem;color:#7fc6a4;font-weight:600">02</div><div style="font-size:.86rem;color:#d8dcdc;margin-top:6px">Novira verifies it's real</div></div>
+        <div style="text-align:left;padding-right:14px;border-left:1px solid rgba(255,255,255,.12);padding-left:14px"><div style="font-family:var(--display);font-size:1.1rem;color:#7fc6a4;font-weight:600">03</div><div style="font-size:.86rem;color:#d8dcdc;margin-top:6px">A sealed proof is created</div></div>
+        <div style="text-align:left;padding-right:14px;border-left:1px solid rgba(255,255,255,.12);padding-left:14px"><div style="font-family:var(--display);font-size:1.1rem;color:#7fc6a4;font-weight:600">04</div><div style="font-size:.86rem;color:#d8dcdc;margin-top:6px">Stakeholders see the same record</div></div>
+        <div style="text-align:left;padding-right:14px;border-left:1px solid rgba(255,255,255,.12);padding-left:14px"><div style="font-family:var(--display);font-size:1.1rem;color:#7fc6a4;font-weight:600">05</div><div style="font-size:.86rem;color:#d8dcdc;margin-top:6px">Protection workflow activates</div></div>
+        <div style="text-align:left;border-left:1px solid rgba(255,255,255,.12);padding-left:14px"><div style="font-family:var(--display);font-size:1.1rem;color:#7fc6a4;font-weight:600">06</div><div style="font-size:.86rem;color:#d8dcdc;margin-top:6px">AI flags the next shipment as likely at risk</div></div>
+      </div>
+      <div style="font-size:.76rem;color:#646b6b;margin-top:28px;font-style:italic">An illustrative example, not a specific customer. Novira activates the protection workflow — benefit delivery is handled with you. Predictions are likelihoods, not guarantees.</div>
+    </div>
+  </div>
+</section>
+
+<!-- INDUSTRIES (who uses it — high up) -->
+<section class="band" style="padding-top:0">
+  <div class="wrap" style="text-align:center">
+    <div class="sec-label" style="text-align:center">Who uses Novira</div>
+    <h2 style="margin-bottom:36px">Built for organizations that can't afford uncertainty.</h2>
+    <div class="ind-strip">
+      <span class="ind-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="7" width="13" height="10" rx="1"/><path d="M16 10h4l1 3v4h-5" stroke-linejoin="round"/><circle cx="7" cy="18" r="1.6"/><circle cx="18" cy="18" r="1.6"/></svg>Logistics</span>
+      <span class="ind-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3v18M6 8l6-4 6 4M6 8v8l6 4 6-4V8" stroke-linejoin="round"/></svg>Cold chain &amp; pharma</span>
+      <span class="ind-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7l8-4z" stroke-linejoin="round"/></svg>Insurance</span>
+      <span class="ind-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 20V10l5-3v3l5-3v3l6-3v13z" stroke-linejoin="round"/></svg>Manufacturing</span>
+      <span class="ind-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7l8-4z" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke-linecap="round"/></svg>Critical assets</span>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="band" style="background:var(--card);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <div style="text-align:center;max-width:600px;margin:0 auto 44px">
+      <div class="sec-label" style="text-align:center">The devices</div>
+      <h2>Choose the right device.</h2>
+    </div>
+    <div class="prod-grid">
+      <a class="pcard" href="products.html">
+        <div class="p-render"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="5" y="2.5" width="14" height="19" rx="3.2"/><circle cx="12" cy="8.5" r="2.6"/><path d="M7.5 14h9M7.5 17h6" stroke-linecap="round"/></svg></div>
+        <div class="p-n">NovaFive</div>
+        <div class="p-t">Complete Intelligence</div>
+        <div class="p-d">Flagship multi-sensor — GPS plus full environmental intelligence.</div>
+      </a>
+      <a class="pcard" href="products.html">
+        <div class="p-render"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M12 22s7-6.8 7-12.5A7 7 0 1 0 5 9.5C5 15.2 12 22 12 22z" stroke-linejoin="round"/><circle cx="12" cy="9.2" r="2.8"/></svg></div>
+        <div class="p-n">NovaGPS</div>
+        <div class="p-t">Essential Location</div>
+        <div class="p-d">Precise, reliable positioning at the lowest entry cost.</div>
+      </a>
+      <a class="pcard" href="products.html">
+        <div class="p-render"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M12 2.5s6.5 7 6.5 11.8a6.5 6.5 0 0 1-13 0C5.5 9.5 12 2.5 12 2.5z" stroke-linejoin="round"/><path d="M9 14.5a3 3 0 0 0 3 3" stroke-linecap="round"/></svg></div>
+        <div class="p-n">NovaAqua</div>
+        <div class="p-t">Condition Protection</div>
+        <div class="p-d">Water and environmental monitoring for sensitive cargo.</div>
+      </a>
+      <a class="pcard" href="products.html">
+        <div class="p-render"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M7 10h10M7 14h6" stroke-linecap="round"/></svg></div>
+        <div class="p-n">NovaFlex</div>
+        <div class="p-t">High-Volume Label</div>
+        <div class="p-d">Ultra-thin form factor for high-volume deployment.</div>
+      </a>
+    </div>
+    <div class="prod-foot"><a class="btn btn-ghost" href="products.html">Compare all devices →</a></div>
+  </div>
+</section>
+
+<!-- TRUST LAYER -->
+<section id="trust" class="band">
+  <div class="wrap">
+    <div style="text-align:center;max-width:640px;margin:0 auto">
+      <div class="sec-label" style="text-align:center">Why organizations trust Novira</div>
+      <h2>Five layers between a signal and a decision.</h2>
+    </div>
+    <div class="trust-grid">
+      <div class="tcard"><div class="t-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3" stroke-linecap="round"/></svg></div><div class="t-n">Sensors</div><div class="t-d">Capture what happens, bound to the asset.</div></div>
+      <div class="tcard"><div class="t-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="t-n">Verification</div><div class="t-d">Confirm each reading is genuine and unaltered.</div></div>
+      <div class="tcard"><div class="t-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z" stroke-linejoin="round"/></svg></div><div class="t-n">Sealed records</div><div class="t-d">Tamper-evident proof that holds up.</div></div>
+      <div class="tcard"><div class="t-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M13 3L4 14h7l-1 7 9-11h-7l1-7z" stroke-linejoin="round"/></svg></div><div class="t-n">Protection workflows</div><div class="t-d">Act the moment an event is verified.</div></div>
+      <div class="tcard"><div class="t-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 18l5-6 4 4 7-9" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="t-n">Predictive intelligence</div><div class="t-d">See what's likely — early enough to act.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROOF PREVIEW -->
+<section class="band" style="background:var(--ink);color:#f4f1e8">
+  <div class="wrap" style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center">
+    <div>
+      <div class="sec-label" style="color:#7fc6a4">See the proof</div>
+      <h2 style="color:#fff;margin-bottom:16px">Not "trust us." Here's the record.</h2>
+      <p style="color:#9aa0a0;font-size:1.08rem;margin-bottom:26px">Every verified event becomes a tamper-evident record you can hand to a partner, an auditor, or an insurer. This is what Novira actually produces.</p>
+      <a class="btn btn-primary" href="../artifacts/artifact-novaproof.html">View a sample NovaProof record →</a>
+    </div>
+    <div style="background:#f4f1e8;color:#1c1d18;border-radius:14px;padding:24px 26px;box-shadow:0 24px 60px rgba(0,0,0,.4)">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px">
+        <div style="display:flex;align-items:center;gap:9px"><span style="width:26px;height:26px;border-radius:7px;background:var(--accent);display:flex;align-items:center;justify-content:center"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="#fff" stroke-width="2"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span style="font-family:var(--display);font-weight:600;font-size:1.05rem">NovaProof</span></div>
+        <span style="font-size:.7rem;color:#8a8a7e;font-family:ui-monospace,monospace">NP-7C0A-118E</span>
+      </div>
+      <div style="font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:10px">Verified event</div>
+      <div style="font-family:var(--display);font-size:1.2rem;font-weight:500;margin-bottom:14px">Temperature excursion confirmed</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;font-size:.86rem">
+        <div style="background:#ebe6d8;border-radius:8px;padding:9px 12px"><div style="color:#5c5d54;font-size:.74rem">Reading</div><div style="font-weight:500;font-family:ui-monospace,monospace">41°F · 17 min</div></div>
+        <div style="background:#ebe6d8;border-radius:8px;padding:9px 12px"><div style="color:#5c5d54;font-size:.74rem">Shipment</div><div style="font-weight:500">SHP-3318</div></div>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px;margin-top:16px;font-size:.82rem;color:#5c5d54"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="var(--accent)" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M9 12l2 2 4-4" stroke-linecap="round" stroke-linejoin="round"/></svg>Tamper-evident · sealed record</div>
+      <div style="font-size:.68rem;color:#8a8a7e;margin-top:12px;font-style:italic">Illustrative sample.</div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPLORE RECORDS -->
+<section class="band" style="background:var(--accent-soft)">
+  <div class="wrap">
+    <div style="text-align:center;max-width:600px;margin:0 auto 38px">
+      <div class="sec-label" style="text-align:center">The records</div>
+      <h2>See the records Novira creates.</h2>
+      <p style="color:var(--ink-2);margin-top:12px">Each step of the chain produces a real, viewable record. These are illustrative samples.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;max-width:880px;margin:0 auto">
+      <a href="../artifacts/artifact-asset-intelligence.html" target="_blank" style="background:var(--card);border:1px solid var(--line);border-radius:12px;padding:22px 20px;display:block;transition:transform .2s,border-color .2s" onmouseover="this.style.transform='translateY(-3px)';this.style.borderColor='var(--accent)'" onmouseout="this.style.transform='';this.style.borderColor='var(--line)'">
+        <div style="width:34px;height:34px;border-radius:9px;background:var(--accent-soft);color:var(--accent);display:flex;align-items:center;justify-content:center;margin-bottom:12px"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 5h16v14H4z" stroke-linejoin="round"/><path d="M8 9h8M8 13h6" stroke-linecap="round"/></svg></div>
+        <div style="font-family:var(--display);font-size:1.05rem;font-weight:600">Asset Intelligence</div>
+        <div style="font-size:.84rem;color:var(--ink-2);margin-top:4px">The context for what follows.</div>
+      </a>
+      <a href="../artifacts/artifact-novacheck.html" target="_blank" style="background:var(--card);border:1px solid var(--line);border-radius:12px;padding:22px 20px;display:block;transition:transform .2s,border-color .2s" onmouseover="this.style.transform='translateY(-3px)';this.style.borderColor='var(--accent)'" onmouseout="this.style.transform='';this.style.borderColor='var(--line)'">
+        <div style="width:34px;height:34px;border-radius:9px;background:var(--accent-soft);color:var(--accent);display:flex;align-items:center;justify-content:center;margin-bottom:12px"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div style="font-family:var(--display);font-size:1.05rem;font-weight:600">NovaCheck Verification</div>
+        <div style="font-size:.84rem;color:var(--ink-2);margin-top:4px">A raw reading, confirmed true.</div>
+      </a>
+      <a href="../artifacts/artifact-novaproof.html" target="_blank" style="background:var(--card);border:1px solid var(--line);border-radius:12px;padding:22px 20px;display:block;transition:transform .2s,border-color .2s" onmouseover="this.style.transform='translateY(-3px)';this.style.borderColor='var(--accent)'" onmouseout="this.style.transform='';this.style.borderColor='var(--line)'">
+        <div style="width:34px;height:34px;border-radius:9px;background:var(--accent-soft);color:var(--accent);display:flex;align-items:center;justify-content:center;margin-bottom:12px"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div style="font-family:var(--display);font-size:1.05rem;font-weight:600">NovaProof Record</div>
+        <div style="font-size:.84rem;color:var(--ink-2);margin-top:4px">Verified, sealed proof.</div>
+      </a>
+      <a href="../artifacts/artifact-novaprotect-activation.html" target="_blank" style="background:var(--card);border:1px solid var(--line);border-radius:12px;padding:22px 20px;display:block;transition:transform .2s,border-color .2s" onmouseover="this.style.transform='translateY(-3px)';this.style.borderColor='var(--accent)'" onmouseout="this.style.transform='';this.style.borderColor='var(--line)'">
+        <div style="width:34px;height:34px;border-radius:9px;background:var(--accent-soft);color:var(--accent);display:flex;align-items:center;justify-content:center;margin-bottom:12px"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M13 3L4 14h7l-1 7 9-11h-7l1-7z" stroke-linejoin="round"/></svg></div>
+        <div style="font-family:var(--display);font-size:1.05rem;font-weight:600">NovaProtect Activation</div>
+        <div style="font-size:.84rem;color:var(--ink-2);margin-top:4px">A protection workflow, activated.</div>
+      </a>
+      <a href="../artifacts/artifact-dost-prediction.html" target="_blank" style="background:var(--card);border:1px solid var(--line);border-radius:12px;padding:22px 20px;display:block;transition:transform .2s,border-color .2s" onmouseover="this.style.transform='translateY(-3px)';this.style.borderColor='var(--accent)'" onmouseout="this.style.transform='';this.style.borderColor='var(--line)'">
+        <div style="width:34px;height:34px;border-radius:9px;background:var(--accent-soft);color:var(--accent);display:flex;align-items:center;justify-content:center;margin-bottom:12px"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 18l5-6 4 4 7-9" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div style="font-family:var(--display);font-size:1.05rem;font-weight:600">DOST Prediction</div>
+        <div style="font-size:.84rem;color:var(--ink-2);margin-top:4px">What's likely, never guaranteed.</div>
+      </a>
+      <a href="shipment-journey.html" style="background:var(--ink);border:1px solid var(--ink);border-radius:12px;padding:22px 20px;display:block;transition:transform .2s" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform=''">
+        <div style="width:34px;height:34px;border-radius:9px;background:rgba(127,198,164,.16);color:#7fc6a4;display:flex;align-items:center;justify-content:center;margin-bottom:12px"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 12h16M14 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div style="font-family:var(--display);font-size:1.05rem;font-weight:600;color:#fff">Shipment Timeline →</div>
+        <div style="font-size:.84rem;color:#9aa0a0;margin-top:4px">All of it, one journey.</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- NEXT STEPS -->
+<section id="next" class="band" style="background:var(--card);border-top:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-label" style="text-align:center">Get started</div>
+    <h2>Three ways to begin.</h2>
+    <div class="next-grid">
+      <div class="ncard">
+        <div class="n-k">Buy devices</div>
+        <div class="n-d">Choose a sensor and a plan, and see your total in minutes.</div>
+        <a class="btn btn-ghost" href="products.html">Explore products →</a>
+      </div>
+      <div class="ncard" style="border-color:var(--accent)">
+        <div class="n-k">Build your solution</div>
+        <div class="n-d">Tell us your assets and risk, and we'll recommend a configuration.</div>
+        <a class="btn btn-primary" href="build-your-solution.html">Build your solution →</a>
+      </div>
+      <div class="ncard">
+        <div class="n-k">Talk to sales</div>
+        <div class="n-d">Discuss a deployment at scale with a solutions expert.</div>
+        <a class="btn btn-ghost" href="request-quote.html">Talk to a solutions expert →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-in">
+    <div class="logo">Nov<span style="color:#7fc6a4">ira</span></div>
+    <div>Trust what you track. Predict what comes next.</div>
+  </div>
+</footer>
+<script src="novira-prototype.js"></script>
+</body>
+</html>

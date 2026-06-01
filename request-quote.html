@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Request a Quote — Novira</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Spline+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#fbfaf7;--surface:#ffffff;--surface-2:#f4f2ec;
+  --ink:#15171c;--ink-2:#54585f;--ink-3:#8b8f97;
+  --line:#e7e4dc;--line-2:#d9d5ca;
+  --accent:#0f6e56;--accent-deep:#0a4f3e;--accent-soft:#e3f1ea;--gold:#b8761a;
+  --display:"Fraunces",Georgia,serif;--sans:"Spline Sans",system-ui,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:400;line-height:1.6}
+a{text-decoration:none;color:inherit}
+.btn{font-family:var(--sans);font-weight:500;font-size:14px;padding:13px 26px;border-radius:8px;cursor:pointer;border:1px solid transparent;display:inline-flex;align-items:center;justify-content:center;gap:8px;transition:transform .25s,background .25s,border-color .25s,color .25s}
+.btn-primary{background:var(--accent);color:#fff}.btn-primary:hover{background:var(--accent-deep);transform:translateY(-1px)}
+.btn-ghost{background:transparent;color:var(--ink);border-color:var(--line-2)}.btn-ghost:hover{border-color:var(--ink-3)}
+.btn-block{width:100%}
+.btn:disabled{opacity:.5;cursor:not-allowed;transform:none}
+nav{position:sticky;top:0;z-index:50;background:rgba(251,250,247,.88);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1180px;margin:0 auto;padding:0 28px;height:64px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-family:var(--display);font-weight:600;font-size:22px}.logo span{color:var(--accent)}
+.nav-back{font-size:14px;color:var(--ink-2);font-weight:500}.nav-back:hover{color:var(--ink)}
+
+.shell{max-width:980px;margin:0 auto;padding:44px 28px 100px;display:grid;grid-template-columns:1fr 360px;gap:36px;align-items:start}
+.head .sec-label{font-family:var(--sans);font-weight:600;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+.head h1{font-family:var(--display);font-weight:500;font-size:clamp(1.9rem,4vw,2.7rem);letter-spacing:-.02em;line-height:1.05}
+.head p{color:var(--ink-2);font-weight:300;margin-top:10px;max-width:480px}
+
+.form-card{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:30px;margin-top:24px}
+.fc-h{font-family:var(--display);font-size:1.25rem;font-weight:600;margin-bottom:4px}
+.fc-sub{font-size:.9rem;color:var(--ink-3);margin-bottom:22px}
+.field{margin-bottom:18px}
+.field label{display:block;font-size:.85rem;font-weight:500;color:var(--ink-2);margin-bottom:7px}
+.field label .req{color:var(--accent)}
+.field input,.field select,.field textarea{width:100%;border:1.5px solid var(--line-2);border-radius:10px;padding:12px 14px;font-family:var(--sans);font-size:.98rem;color:var(--ink);background:var(--surface);transition:border-color .2s}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--accent)}
+.field textarea{resize:vertical;min-height:88px}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:560px){.field-row{grid-template-columns:1fr}}
+.form-note{font-size:.78rem;color:var(--ink-3);margin-top:6px}
+
+/* SUMMARY */
+.summary{position:sticky;top:88px;background:var(--surface);border:1px solid var(--line);border-radius:18px;overflow:hidden}
+.sum-h{background:var(--ink);color:#fff;padding:20px 22px}
+.sum-h .st{font-family:var(--display);font-size:1.2rem;font-weight:600}
+.sum-h .ss{font-size:.8rem;color:#a9adb6;margin-top:2px}
+.sum-body{padding:20px 22px}
+.sum-row{display:flex;justify-content:space-between;align-items:baseline;padding:10px 0;border-bottom:1px solid var(--line);font-size:.9rem}
+.sum-row:last-of-type{border-bottom:none}
+.sum-row .lbl{color:var(--ink-2)}.sum-row .lbl small{display:block;color:var(--ink-3);font-size:.76rem}
+.sum-row .val{font-weight:600;text-align:right;white-space:nowrap}
+.sum-est{margin-top:6px;padding-top:14px;border-top:2px solid var(--ink)}
+.sum-est .e-lbl{font-size:.74rem;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-3);font-weight:600}
+.sum-est .e-row{display:flex;justify-content:space-between;align-items:baseline;margin-top:7px}
+.sum-est .e-v{font-family:var(--display);font-weight:600;font-size:1.3rem}
+.sum-est .indic{font-size:.66rem;color:var(--gold);font-weight:600}
+.deploy-badge{display:inline-block;font-size:.7rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:4px 11px;border-radius:100px;margin-top:14px;background:#eef2fb;color:#1d4e89}
+.sum-edit{display:block;text-align:center;font-size:.82rem;color:var(--accent);font-weight:500;padding:14px 22px;border-top:1px solid var(--line)}
+.sum-fine{font-size:.72rem;color:var(--ink-3);padding:0 22px 20px;text-align:center;line-height:1.5}
+
+/* SUCCESS */
+.success{max-width:600px;margin:80px auto;text-align:center;padding:0 28px}
+.success.hidden{display:none}
+.success .s-ic{width:72px;height:72px;border-radius:50%;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;margin:0 auto 26px}
+.success .s-ic svg{width:36px;height:36px;color:var(--accent)}
+.success h2{font-family:var(--display);font-weight:500;font-size:clamp(1.8rem,4vw,2.5rem);letter-spacing:-.02em;margin-bottom:14px}
+.success p{color:var(--ink-2);font-weight:300;margin-bottom:8px}
+.success .s-ref{font-family:var(--display);font-weight:600;font-size:1.1rem;margin:18px 0;color:var(--ink)}
+.success .s-next{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px;text-align:left;margin:26px 0;font-size:.92rem;color:var(--ink-2)}
+.success .s-next b{color:var(--ink);display:block;margin-bottom:8px;font-family:var(--sans);font-weight:600}
+.success .s-next ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+.success .s-next li{display:flex;gap:9px;align-items:flex-start}
+.success .s-next svg{width:16px;height:16px;color:var(--accent);flex-shrink:0;margin-top:3px}
+.main.hidden{display:none}
+footer{background:var(--surface-2);border-top:1px solid var(--line);padding:36px 0;text-align:center;color:var(--ink-3);font-size:13px}
+@media(max-width:860px){.shell{grid-template-columns:1fr}.summary{position:static;order:-1}}
+</style>
+</head>
+<body>
+
+<nav><div class="nav-in"><div class="logo">Nov<span>ira</span></div><a class="nav-back" href="#">← Back to builder</a></div></nav>
+
+<!-- MAIN -->
+<div class="main" id="main">
+  <div class="shell">
+    <div class="formside">
+      <div class="head">
+        <div class="sec-label">Request a custom quote</div>
+        <h1>You've built it. We'll price it.</h1>
+        <p>Your configuration is ready below. Tell us where to send the quote and a solutions expert will follow up with confirmed pricing.</p>
+      </div>
+
+      <div class="form-card">
+        <div class="fc-h">Where should we send it?</div>
+        <div class="fc-sub">Just the essentials — we already have your configuration.</div>
+
+        <div class="field-row">
+          <div class="field"><label>First name <span class="req">*</span></label><input id="f_first" type="text" oninput="validate()"></div>
+          <div class="field"><label>Last name <span class="req">*</span></label><input id="f_last" type="text" oninput="validate()"></div>
+        </div>
+        <div class="field"><label>Work email <span class="req">*</span></label><input id="f_email" type="email" oninput="validate()"><div class="form-note">We'll send your quote here.</div></div>
+        <div class="field-row">
+          <div class="field"><label>Company <span class="req">*</span></label><input id="f_company" type="text" oninput="validate()"></div>
+          <div class="field"><label>Phone</label><input id="f_phone" type="tel"></div>
+        </div>
+        <div class="field">
+          <label>How soon are you looking to deploy?</label>
+          <select id="f_timeline">
+            <option>Just exploring</option>
+            <option>Within 3 months</option>
+            <option>Within 30 days</option>
+            <option>Immediately</option>
+          </select>
+        </div>
+        <div class="field"><label>Anything else we should know?</label><textarea id="f_notes" placeholder="Specific cargo, routes, integration needs, existing systems…"></textarea></div>
+
+        <button class="btn btn-primary btn-block" id="submitBtn" onclick="submitQuote()" disabled>Send my quote request →</button>
+        <div class="form-note" style="text-align:center;margin-top:12px">No payment is taken. A solutions expert will follow up, typically within one business day.</div>
+      </div>
+    </div>
+
+    <!-- SUMMARY (carried from configurator) -->
+    <aside>
+      <div class="summary">
+        <div class="sum-h"><div class="st">Your configuration</div><div class="ss">Carried from the builder</div></div>
+        <div class="sum-body">
+          <div id="sumLines"></div>
+          <div class="sum-est">
+            <div class="e-lbl">Estimated — confirmed on quote</div>
+            <div class="e-row"><span>Hardware (one-time)</span><span class="e-v" id="hwTotal">—</span></div>
+            <div class="e-row"><span>Subscription / mo</span><span class="e-v" id="moTotal">—</span></div>
+            <span class="deploy-badge" id="deployBadge">Fleet deployment</span>
+          </div>
+        </div>
+        <a class="sum-edit" href="#">← Edit configuration</a>
+        <div class="sum-fine">Hardware prices are final. Subscription pricing is indicative and confirmed on your quote.</div>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<!-- SUCCESS -->
+<div class="success hidden" id="success">
+  <div class="s-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+  <h2>Your quote request is in.</h2>
+  <p>Thanks, <span id="okName">there</span> — we've received your configuration and a solutions expert is on it.</p>
+  <div class="s-ref">Reference: <span id="okRef">NQ-000000</span></div>
+  <div class="s-next">
+    <b>What happens next</b>
+    <ul>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>A solutions expert reviews your configuration and confirms pricing.</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>You'll receive a written quote, typically within one business day.</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>We'll tailor volume pricing and any protection coverage to your deployment.</li>
+    </ul>
+  </div>
+  <a class="btn btn-ghost" href="#">Back to Novira</a>
+</div>
+
+<footer>Novira · Trust what you track. Know what happens next.</footer>
+
+<script>
+// Read configuration carried from the builder (URL params), with a sensible fallback
+function getParams(){
+  var p=new URLSearchParams(window.location.search);
+  return {
+    device:p.get('device')||'NovaFive',
+    price:parseInt(p.get('price'),10)||199,
+    qty:parseInt(p.get('qty'),10)||50,
+    plan:p.get('plan')||'Navigator',
+    planMo:p.get('plan')==='Atlas'?0:(parseInt(p.get('mo'),10)||24),
+    prot:p.get('prot')||'none'
+  };
+}
+var cfg=getParams();
+function money(n){return '$'+n.toLocaleString('en-US');}
+
+function renderSummary(){
+  var hw=cfg.price*cfg.qty;
+  var commander=cfg.plan==='Atlas';
+  var mo=commander?0:cfg.planMo*cfg.qty;
+  var rows='';
+  rows+='<div class="sum-row"><span class="lbl">'+cfg.device+'<small>'+cfg.qty+' × '+money(cfg.price)+'</small></span><span class="val">'+money(hw)+'</span></div>';
+  rows+='<div class="sum-row"><span class="lbl">'+cfg.plan+' plan<small>'+(commander?'custom volume pricing':money(cfg.planMo)+' / device / mo')+'</small></span><span class="val">'+(commander?'Quote':money(mo)+' /mo')+'</span></div>';
+  if(cfg.prot && cfg.prot!=='none'){rows+='<div class="sum-row"><span class="lbl">NovaProtect · '+cfg.prot+'<small>priced per deployment</small></span><span class="val">Quote</span></div>';}
+  document.getElementById('sumLines').innerHTML=rows;
+  document.getElementById('hwTotal').textContent=money(hw);
+  document.getElementById('moTotal').innerHTML=(commander?'Custom':money(mo))+'<span class="indic" style="display:block">indicative</span>';
+  var ent = commander || cfg.prot==='enterprise' || cfg.qty>=250;
+  var badge=document.getElementById('deployBadge');
+  if(ent){badge.textContent='Enterprise deployment';badge.style.background='#f4f0fa';badge.style.color='#5a3a8f';}
+  else{badge.textContent='Fleet deployment';}
+}
+renderSummary();
+
+function validate(){
+  var ok=document.getElementById('f_first').value.trim() && document.getElementById('f_last').value.trim() &&
+         /\S+@\S+\.\S+/.test(document.getElementById('f_email').value) && document.getElementById('f_company').value.trim();
+  document.getElementById('submitBtn').disabled=!ok;
+}
+function submitQuote(){
+  // No backend — show confirmation state client-side
+  var ref='NQ-'+Math.floor(100000+Math.random()*900000);
+  document.getElementById('okName').textContent=document.getElementById('f_first').value.trim()||'there';
+  document.getElementById('okRef').textContent=ref;
+  document.getElementById('main').classList.add('hidden');
+  document.getElementById('success').classList.remove('hidden');
+  window.scrollTo(0,0);
+}
+</script>
+<script src="novira-prototype.js"></script>
+</body>
+</html>

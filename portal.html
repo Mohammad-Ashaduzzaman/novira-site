@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Customer Portal — Novira</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Spline+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fbfaf7;--surface:#fff;--surface-2:#f4f2ec;--ink:#15171c;--ink-2:#54585f;--ink-3:#8b8f97;--line:#e7e4dc;--line-2:#d9d5ca;--accent:#0f6e56;--accent-soft:#e3f1ea;--warn:#b8761a;--alert:#b94a48;--display:"Fraunces",Georgia,serif;--sans:"Spline Sans",system-ui,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.55}a{text-decoration:none;color:inherit}.shell{min-height:100vh;display:grid;grid-template-columns:240px 1fr}.side{background:#101413;color:#f4f1e8;padding:26px 22px;border-right:1px solid rgba(255,255,255,.08)}.logo{font-family:var(--display);font-weight:600;font-size:22px;margin-bottom:30px}.logo span{color:#4fae84}.side nav{display:grid;gap:6px}.side a{color:#a8a89e;padding:10px 12px;border-radius:8px;font-size:14px}.side a:hover,.side a.is-active{background:rgba(79,174,132,.12);color:#f4f1e8}.main{padding:28px;max-width:1180px;width:100%;margin:0 auto}.top{display:flex;justify-content:space-between;align-items:center;gap:18px;margin-bottom:28px}.eyebrow{font-size:12px;text-transform:uppercase;letter-spacing:.16em;font-weight:600;color:var(--accent);margin-bottom:6px}h1{font-family:var(--display);font-size:clamp(2rem,4vw,3rem);font-weight:500;letter-spacing:-.02em;line-height:1.1}.top p{color:var(--ink-2);margin-top:8px}.btn{display:inline-flex;align-items:center;justify-content:center;border:1px solid transparent;border-radius:8px;padding:11px 18px;font-weight:500;font-size:14px;background:var(--accent);color:#fff}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:22px}.metric{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px}.metric .k{font-size:13px;color:var(--ink-3);margin-bottom:8px}.metric .v{font-family:var(--display);font-size:1.8rem;font-weight:600}.metric .s{font-size:13px;color:var(--accent);margin-top:4px}.work{display:grid;grid-template-columns:1.35fr .85fr;gap:18px}.panel{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px}.panel h2{font-family:var(--display);font-weight:500;font-size:1.35rem;margin-bottom:16px}.shipment{display:grid;grid-template-columns:1fr auto;gap:12px;padding:14px 0;border-top:1px solid var(--line)}.shipment:first-of-type{border-top:none}.shipment b{display:block}.shipment span{color:var(--ink-2);font-size:14px}.pill{display:inline-flex;align-items:center;border-radius:100px;padding:5px 10px;font-size:12px;font-weight:600;background:var(--accent-soft);color:var(--accent)}.pill.warn{background:#fbf3e3;color:var(--warn)}.pill.alert{background:#fdebea;color:var(--alert)}.timeline{display:grid;gap:12px}.event{display:grid;grid-template-columns:34px 1fr;gap:12px}.dot{width:12px;height:12px;border-radius:50%;background:var(--accent);margin:7px auto 0;box-shadow:0 0 0 6px var(--accent-soft)}.event b{font-size:15px}.event p{color:var(--ink-2);font-size:14px}.quick{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:18px}.quick a{background:var(--surface-2);border:1px solid var(--line);border-radius:10px;padding:14px;font-size:14px;color:var(--ink-2)}.quick b{display:block;color:var(--ink);margin-bottom:4px}@media(max-width:900px){.shell{grid-template-columns:1fr}.side{position:static}.side nav{grid-template-columns:repeat(2,1fr)}.grid,.work,.quick{grid-template-columns:1fr}.top{align-items:flex-start;flex-direction:column}}
+</style>
+</head>
+<body>
+<div class="shell">
+  <aside class="side">
+    <div class="logo">Nov<span>ira</span></div>
+    <nav>
+      <a class="is-active" href="portal.html">Overview</a>
+      <a href="track.html">Track</a>
+      <a href="novaproof.html">Records</a>
+      <a href="novaprotect.html">Protection</a>
+      <a href="dost.html">DOST</a>
+      <a href="index.html">Website</a>
+    </nav>
+  </aside>
+  <main class="main">
+    <div class="top">
+      <div>
+        <div class="eyebrow">Customer portal prototype</div>
+        <h1>Operational view</h1>
+        <p>Prototype dashboard for assets, verified records, alerts, and prediction signals.</p>
+      </div>
+      <a class="btn" href="build-your-solution.html">Add deployment</a>
+    </div>
+    <section class="grid">
+      <div class="metric"><div class="k">Active assets</div><div class="v">128</div><div class="s">14 in transit</div></div>
+      <div class="metric"><div class="k">Verified records</div><div class="v">4,812</div><div class="s">99.2% clean chain</div></div>
+      <div class="metric"><div class="k">Open alerts</div><div class="v">7</div><div class="s">2 require action</div></div>
+      <div class="metric"><div class="k">Predicted risks</div><div class="v">12</div><div class="s">DOST watching</div></div>
+    </section>
+    <section class="work">
+      <div class="panel">
+        <h2>Live shipments</h2>
+        <div class="shipment"><div><b>SHP-3318 · Dallas to Chicago</b><span>Cold chain · NovaFive · Temp rising near Memphis</span></div><span class="pill alert">Action</span></div>
+        <div class="shipment"><div><b>SHP-4471 · Newark to Toronto</b><span>High-value electronics · NovaGPS · Route on schedule</span></div><span class="pill">Clean</span></div>
+        <div class="shipment"><div><b>SHP-5029 · Austin to Phoenix</b><span>Manufacturing parts · NovaFive · Shock event verified</span></div><span class="pill warn">Review</span></div>
+        <div class="quick">
+          <a href="shipment-journey.html"><b>View journey</b>Follow a shipment through the system</a>
+          <a href="novaproof.html"><b>Open records</b>Inspect sealed proof records</a>
+          <a href="request-quote.html"><b>Contact expert</b>Plan a production rollout</a>
+        </div>
+      </div>
+      <div class="panel">
+        <h2>Recent events</h2>
+        <div class="timeline">
+          <div class="event"><div class="dot"></div><div><b>NovaCheck verified temperature excursion</b><p>SHP-3318 · record NP-7C0A-118E sealed.</p></div></div>
+          <div class="event"><div class="dot"></div><div><b>DOST raised lane risk</b><p>Similar route pattern detected before breach.</p></div></div>
+          <div class="event"><div class="dot"></div><div><b>NovaProtect workflow pending</b><p>Coverage review ready for operations approval.</p></div></div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+<script src="novira-prototype.js"></script>
+</body>
+</html>

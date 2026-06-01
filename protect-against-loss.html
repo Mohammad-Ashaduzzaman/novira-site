@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Protect Against Loss — Novira</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=Spline+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#07090d;
+  --bg-soft:#0c0f15;
+  --ink:#f4f6fb;
+  --ink-dim:#9aa3b2;
+  --ink-faint:#5b6472;
+  --line:rgba(255,255,255,0.08);
+  --cool:#5dcaa5;          /* calm / normal */
+  --calm:#85b7eb;
+  --alert:#ef9f27;         /* the loss event */
+  --alert-hot:#e8593c;
+  --verify:#7c9cff;        /* verification — the trusted record */
+  --protect:#3ed8b0;       /* protection activated — the payoff state */
+  --protect-glow:rgba(62,216,176,0.22);
+  --display:"Fraunces",Georgia,serif;
+  --sans:"Spline Sans",system-ui,sans-serif;
+  --maxw:1080px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:300;line-height:1.6;overflow-x:hidden}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 32px}
+section{position:relative}
+.screen{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:96px 0}
+.eyebrow{font-family:var(--sans);font-weight:500;font-size:13px;letter-spacing:.22em;text-transform:uppercase;color:var(--protect);margin-bottom:28px;opacity:.9}
+
+/* §1 HERO */
+#hero{overflow:hidden}
+.hero-field{position:absolute;inset:0;z-index:0;opacity:.5}
+.hero-inner{position:relative;z-index:2;max-width:900px}
+h1{font-family:var(--display);font-weight:400;font-size:clamp(2.6rem,6.4vw,5rem);line-height:1.04;letter-spacing:-.02em;margin-bottom:30px}
+h1 em{font-style:italic;color:var(--protect)}
+.hero-sub{font-size:clamp(1.05rem,1.7vw,1.35rem);color:var(--ink-dim);max-width:600px;margin:0 auto 44px;font-weight:300}
+.cta-row{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.btn{font-family:var(--sans);font-weight:500;font-size:15px;padding:15px 30px;border-radius:100px;cursor:pointer;border:1px solid transparent;text-decoration:none;display:inline-flex;align-items:center;gap:9px;transition:transform .35s cubic-bezier(.2,.7,.3,1),background .35s,border-color .35s,color .35s}
+.btn-primary{background:var(--protect);color:#04140f}
+.btn-primary:hover{transform:translateY(-2px);background:#5fe6c3}
+.btn-ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn-ghost:hover{border-color:rgba(255,255,255,.35);transform:translateY(-2px)}
+.scroll-hint{position:absolute;bottom:38px;left:50%;transform:translateX(-50%);z-index:2;color:var(--ink-faint);font-size:12px;letter-spacing:.18em;text-transform:uppercase;display:flex;flex-direction:column;align-items:center;gap:10px}
+.scroll-hint .bar{width:1px;height:42px;background:linear-gradient(var(--ink-faint),transparent);animation:drip 2.4s ease-in-out infinite}
+@keyframes drip{0%,100%{opacity:.3;transform:scaleY(.6)}50%{opacity:1;transform:scaleY(1)}}
+
+/* §2 COST */
+#cost{background:linear-gradient(180deg,var(--bg) 0%,#05060a 50%,var(--bg) 100%)}
+.cost-lede{font-family:var(--display);font-style:italic;font-size:clamp(1.5rem,3vw,2.1rem);color:var(--ink);font-weight:300;margin-bottom:60px;max-width:680px}
+.cost-list{display:flex;flex-direction:column;gap:6px;width:100%;max-width:640px}
+.cost-item{font-size:clamp(1.15rem,2.4vw,1.7rem);font-weight:300;color:var(--ink-dim);padding:14px 0;opacity:0;transform:translateY(14px);transition:opacity .7s ease,transform .7s ease,color .7s ease}
+.cost-item.lit{opacity:1;transform:none;color:var(--ink)}
+.cost-item .dash{color:var(--alert-hot);margin-right:14px}
+.cost-foot{margin-top:54px;font-size:clamp(1rem,1.8vw,1.25rem);color:var(--ink-faint);max-width:560px}
+.cost-foot.lit{color:var(--ink-dim)}
+
+/* §3 TRUTH BRIDGE */
+#bridge{background:var(--bg)}
+.bridge-line{font-family:var(--display);font-weight:300;font-size:clamp(2rem,4.8vw,3.4rem);line-height:1.14;letter-spacing:-.015em;max-width:860px}
+.bridge-line b{font-weight:400;font-style:italic;color:var(--protect)}
+
+/* §4 ONE REAL EVENT */
+#event{position:relative}
+.event-scroller{position:relative;height:620vh}
+.event-stage{position:sticky;top:0;height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.stage-canvas{position:relative;width:min(92vw,840px);aspect-ratio:1/.72}
+.event-svg{width:100%;height:100%;overflow:visible}
+.beat-caption{position:absolute;left:50%;bottom:7%;transform:translateX(-50%);width:min(90vw,680px);text-align:center;pointer-events:none}
+.beat-time{font-family:var(--sans);font-weight:500;letter-spacing:.2em;font-size:12px;text-transform:uppercase;color:var(--protect);margin-bottom:12px;opacity:0;transition:opacity .6s}
+.beat-text{font-family:var(--display);font-weight:300;font-size:clamp(1.3rem,3vw,2.05rem);line-height:1.2;color:var(--ink);opacity:0;transform:translateY(10px);transition:opacity .6s ease,transform .6s ease}
+.beat-caption.show .beat-time{opacity:1}
+.beat-caption.show .beat-text{opacity:1;transform:none}
+.event-rail{position:absolute;top:50%;right:max(4vw,28px);transform:translateY(-50%);display:flex;flex-direction:column;gap:14px;z-index:5}
+.rail-dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.16);transition:background .4s,transform .4s}
+.rail-dot.active{background:var(--protect);transform:scale(1.5)}
+.rail-dot.climax.active{background:var(--protect);box-shadow:0 0 12px var(--protect)}
+.event-open,.event-close{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:96px 0}
+.open-cap{font-family:var(--display);font-style:italic;font-weight:300;font-size:clamp(1.4rem,3vw,2.2rem);max-width:720px;color:var(--ink-dim)}
+.open-cap b{color:var(--protect);font-style:normal;font-weight:400}
+.close-cap{font-family:var(--display);font-weight:300;font-size:clamp(1.6rem,3.6vw,2.6rem);line-height:1.2;max-width:800px}
+.close-cap b{font-style:italic;color:var(--protect);font-weight:400}
+.product-credit{position:absolute;bottom:2.5%;left:50%;transform:translateX(-50%);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-faint);opacity:.5;font-weight:400}
+
+/* svg transitions */
+.signal-core{transition:fill .8s ease,r .8s ease}
+.signal-ring{transition:opacity .6s ease,r .8s ease,stroke .8s ease}
+.chain-link{transition:opacity .7s ease,stroke-dashoffset 1s ease}
+.flare{transition:opacity .5s ease,r .6s ease}
+.shield{transition:opacity .9s ease,transform .9s cubic-bezier(.2,.8,.3,1)}
+.field-dot{transition:opacity 1s ease}
+.verify-mark{transition:opacity .7s ease,transform .7s ease}
+
+/* §5 PROOF */
+#proof{background:linear-gradient(180deg,var(--bg),#05060a,var(--bg))}
+.proof-num{font-family:var(--display);font-weight:400;font-size:clamp(3.6rem,12vw,8rem);line-height:1;color:var(--protect);letter-spacing:-.03em}
+.proof-cap{font-size:clamp(1.05rem,2vw,1.4rem);color:var(--ink-dim);max-width:580px;margin-top:24px;font-weight:300}
+.placeholder{outline:1px dashed rgba(62,216,176,.5);outline-offset:6px;border-radius:4px}
+.ph-tag{display:inline-block;font-family:var(--sans);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--protect);background:rgba(62,216,176,.1);padding:4px 10px;border-radius:100px;margin-bottom:18px;font-weight:500}
+
+/* §6 WHERE + CTA */
+#where{padding:120px 0 0}
+.where-h{font-family:var(--display);font-weight:300;font-size:clamp(1.8rem,4vw,2.8rem);text-align:center;margin-bottom:56px;letter-spacing:-.01em}
+.ind-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;max-width:880px;margin:0 auto}
+.ind-card{border:1px solid var(--line);border-radius:18px;padding:30px 26px;background:var(--bg-soft);text-decoration:none;color:var(--ink);display:flex;flex-direction:column;justify-content:space-between;min-height:148px;transition:transform .4s cubic-bezier(.2,.7,.3,1),border-color .4s,background .4s}
+.ind-card:hover{transform:translateY(-4px);border-color:rgba(62,216,176,.4);background:#0e1219}
+.ind-name{font-family:var(--display);font-size:1.3rem;font-weight:400}
+.ind-sub{font-size:.92rem;color:var(--ink-dim);margin-top:8px}
+.ind-arrow{color:var(--protect);font-size:1.2rem;margin-top:22px}
+.final-cta{text-align:center;padding:120px 0 130px}
+.final-h{font-family:var(--display);font-weight:300;font-size:clamp(2.2rem,6vw,4rem);letter-spacing:-.02em;margin-bottom:38px;line-height:1.06}
+.final-h em{font-style:italic;color:var(--protect)}
+.platform-link{display:inline-block;margin-top:30px;color:var(--ink-dim);font-size:14px;letter-spacing:.04em;border-bottom:1px solid var(--line);padding-bottom:3px;text-decoration:none;transition:color .3s,border-color .3s}
+.platform-link:hover{color:var(--ink);border-color:var(--protect)}
+footer{border-top:1px solid var(--line);padding:40px 0;text-align:center;color:var(--ink-faint);font-size:13px;letter-spacing:.04em}
+
+@media(max-width:720px){.ind-grid{grid-template-columns:1fr}.event-rail{display:none}.wrap{padding:0 22px}}
+
+/* reduced motion */
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .event-scroller{height:auto}
+  .event-stage{position:relative;height:auto;flex-direction:column;padding:60px 0}
+  .beat-time,.beat-text{opacity:1!important;transform:none!important}
+  .cost-item{opacity:1!important;transform:none!important;color:var(--ink)!important}
+  .scroll-hint .bar{animation:none}
+  .static-beats{display:block}
+}
+.static-beats{display:none}
+.static-beat{max-width:660px;margin:0 auto 70px;text-align:center}
+</style>
+</head>
+<body>
+
+<!-- §1 HERO -->
+<section id="hero" class="screen">
+  <svg class="hero-field" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g id="heroDots"></g></svg>
+  <div class="hero-inner wrap">
+    <div class="eyebrow">Protect against loss</div>
+    <h1>The loss happens.<br><em>The protection is already moving.</em></h1>
+    <p class="hero-sub">When a verified event occurs, Novira doesn't wait for a phone call, a form, or a review. Protection activates automatically — in the moment it matters.</p>
+    <div class="cta-row">
+      <a href="#event" class="btn btn-primary">See it work →</a>
+      <a href="#where" class="btn btn-ghost">Talk to us</a>
+    </div>
+  </div>
+  <div class="scroll-hint"><span>Scroll</span><span class="bar"></span></div>
+</section>
+
+<!-- §2 COST OF NOT KNOWING -->
+<section id="cost" class="screen">
+  <div class="wrap" style="display:flex;flex-direction:column;align-items:center">
+    <p class="cost-lede">When loss strikes, the clock starts — and the waiting begins.</p>
+    <div class="cost-list">
+      <div class="cost-item"><span class="dash">—</span>The claim that takes months to resolve.</div>
+      <div class="cost-item"><span class="dash">—</span>The dispute over what really happened.</div>
+      <div class="cost-item"><span class="dash">—</span>The paperwork, the back-and-forth, the doubt.</div>
+    </div>
+    <p class="cost-foot">By the time protection arrives the old way, the damage has already compounded.</p>
+  </div>
+</section>
+
+<!-- §3 TRUTH BRIDGE -->
+<section id="bridge" class="screen">
+  <p class="bridge-line wrap">Protection should move <b>the moment the truth is known.</b></p>
+</section>
+
+<!-- §4 ONE REAL EVENT — THE PAGE -->
+<section id="event">
+
+  <div class="event-open wrap">
+    <p class="open-cap">Novira turns a verified event into an <b>active protection workflow</b> — automatically. Watch the chain.</p>
+  </div>
+
+  <div class="event-scroller" id="scroller">
+    <div class="event-stage">
+      <div class="stage-canvas">
+        <svg class="event-svg" id="eventSvg" viewBox="0 0 840 600" role="img" aria-labelledby="evtTitle evtDesc">
+          <title id="evtTitle">A verified event automatically activating protection</title>
+          <desc id="evtDesc">An event occurs and is detected, the event is verified into a trusted record, the record determines eligibility, and protection activates automatically — with no human in the chain. Benefit delivery remains a separate step.</desc>
+
+          <g id="fieldDots" opacity="0.5"></g>
+
+          <!-- chain spine connecting the four nodes -->
+          <path class="chain-link" id="link12" d="M170 300 L350 300" stroke="var(--alert)" stroke-width="2" fill="none" stroke-dasharray="4 6" stroke-dashoffset="200" opacity="0"/>
+          <path class="chain-link" id="link23" d="M350 300 L530 300" stroke="var(--verify)" stroke-width="2" fill="none" stroke-dasharray="4 6" stroke-dashoffset="200" opacity="0"/>
+          <path class="chain-link" id="link34" d="M530 300 L690 300" stroke="var(--protect)" stroke-width="2.4" fill="none" stroke-dasharray="4 6" stroke-dashoffset="180" opacity="0"/>
+
+          <!-- NODE 1: the event / signal -->
+          <g id="node1">
+            <circle class="signal-ring" id="sigRing" cx="170" cy="300" r="18" fill="none" stroke="var(--calm)" stroke-width="2" opacity="0.6"/>
+            <circle class="signal-core" id="sigCore" cx="170" cy="300" r="8" fill="var(--calm)"/>
+            <circle class="flare" id="pulse" cx="170" cy="300" r="20" fill="none" stroke="var(--alert)" stroke-width="2" opacity="0"/>
+          </g>
+
+          <!-- NODE 2: verification (the trusted record) -->
+          <g id="node2" opacity="0">
+            <rect class="verify-mark" x="328" y="278" width="44" height="44" rx="9" fill="none" stroke="var(--verify)" stroke-width="2"/>
+            <path class="verify-mark" d="M340 300 l7 8 l13 -16" fill="none" stroke="var(--verify)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+          </g>
+
+          <!-- NODE 3: eligibility determined -->
+          <g id="node3" opacity="0">
+            <circle cx="530" cy="300" r="20" fill="none" stroke="var(--protect)" stroke-width="2" opacity="0.8"/>
+            <circle cx="530" cy="300" r="5" fill="var(--protect)"/>
+          </g>
+
+          <!-- NODE 4: protection activated (the climax shield) -->
+          <g id="node4">
+            <path class="shield" id="shield" d="M690 268 c 22 0 34 8 34 8 v 22 c 0 26 -18 40 -34 50 c -16 -10 -34 -24 -34 -50 v -22 c 0 0 12 -8 34 -8 z"
+                  fill="none" stroke="var(--protect)" stroke-width="2.4" opacity="0" transform="scale(.6)" transform-origin="690px 300px"/>
+            <circle class="flare" id="shieldGlow" cx="690" cy="305" r="30" fill="none" stroke="var(--protect)" stroke-width="1.5" opacity="0"/>
+          </g>
+        </svg>
+
+        <div class="beat-caption" id="caption">
+          <div class="beat-time" id="capTime"></div>
+          <div class="beat-text" id="capText"></div>
+        </div>
+
+        <div class="product-credit">Detected by Track · verified by NovaCheck · activated by NovaProtect</div>
+      </div>
+
+      <div class="event-rail" aria-hidden="true">
+        <span class="rail-dot" data-beat="0"></span>
+        <span class="rail-dot" data-beat="1"></span>
+        <span class="rail-dot" data-beat="2"></span>
+        <span class="rail-dot climax" data-beat="3"></span>
+      </div>
+    </div>
+
+    <div class="static-beats wrap">
+      <div class="static-beat"><div class="beat-time" style="opacity:1">Beat 1 · the event</div><div class="beat-text" style="opacity:1">a covered loss occurs and is detected the instant it happens.</div></div>
+      <div class="static-beat"><div class="beat-time" style="opacity:1;color:var(--verify)">Beat 2 · verified</div><div class="beat-text" style="opacity:1">NovaCheck turns the event into a trusted, tamper-evident record.</div></div>
+      <div class="static-beat"><div class="beat-time" style="opacity:1">Beat 3 · eligibility determined</div><div class="beat-text" style="opacity:1">the record meets the coverage conditions. No human review.</div></div>
+      <div class="static-beat"><div class="beat-time" style="opacity:1;color:var(--protect)">Beat 4 · protection activated</div><div class="beat-text" style="opacity:1">the protection workflow initiates automatically.</div></div>
+    </div>
+  </div>
+
+  <div class="event-close wrap">
+    <p class="close-cap">No claim filed. No dispute opened. <b>Protection, activated by the truth itself.</b></p>
+  </div>
+</section>
+
+<!-- §5 PROOF -->
+<section id="proof" class="screen">
+  <div class="wrap">
+    <span class="ph-tag">Proof placeholder · activation speed</span>
+    <div class="proof-num placeholder">[ &lt; XX sec ]</div>
+    <p class="proof-cap">from verified event to protection activated.<br><span style="color:var(--ink-faint);font-size:.85em">Insert one true activation-speed or workflows-initiated metric. No invented number ships.</span></p>
+  </div>
+</section>
+
+<!-- §6 WHERE IT MATTERS + CTA -->
+<section id="where">
+  <div class="wrap">
+    <h2 class="where-h">Where protection changes the math.</h2>
+    <div class="ind-grid">
+      <a class="ind-card" href="#">
+        <div><div class="ind-name">Insurance</div><div class="ind-sub">Verified events, activated coverage — without the dispute cycle.</div></div>
+        <div class="ind-arrow">→</div>
+      </a>
+      <a class="ind-card" href="#">
+        <div><div class="ind-name">Cold Chain</div><div class="ind-sub">When a load is lost, protection moves before the spoilage spreads.</div></div>
+        <div class="ind-arrow">→</div>
+      </a>
+      <a class="ind-card" href="#">
+        <div><div class="ind-name">Logistics &amp; Supply Chain</div><div class="ind-sub">Loss, verified and protected against — in the same moment.</div></div>
+        <div class="ind-arrow">→</div>
+      </a>
+    </div>
+  </div>
+  <div class="final-cta wrap">
+    <h2 class="final-h">Stop waiting on <em>the loss.</em></h2>
+    <div class="cta-row">
+      <a href="#" class="btn btn-primary">Request a demo →</a>
+    </div>
+    <br>
+    <a href="#" class="platform-link">Explore the platform →</a>
+  </div>
+</section>
+
+<footer>Novira · Trust what you track. Know what happens next.</footer>
+
+<script>
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+
+  function scatter(target,count,w,h,rmax){
+    var ns='http://www.w3.org/2000/svg',g=document.getElementById(target);
+    if(!g)return;
+    for(var i=0;i<count;i++){
+      var c=document.createElementNS(ns,'circle');
+      c.setAttribute('cx',(Math.random()*w).toFixed(1));
+      c.setAttribute('cy',(Math.random()*h).toFixed(1));
+      c.setAttribute('r',(Math.random()*rmax+0.6).toFixed(1));
+      c.setAttribute('fill','#3ed8b0');
+      c.setAttribute('opacity',(Math.random()*0.22+0.05).toFixed(2));
+      c.setAttribute('class','field-dot');
+      g.appendChild(c);
+    }
+  }
+  scatter('heroDots',60,1200,800,2.2);
+  scatter('fieldDots',34,840,600,2);
+
+  // §2 cost reveal
+  if('IntersectionObserver' in window && !reduce){
+    var items=[].slice.call(document.querySelectorAll('.cost-item'));
+    var foot=document.querySelector('.cost-foot');
+    var co=new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if(e.isIntersecting){
+          items.forEach(function(it,i){setTimeout(function(){it.classList.add('lit')},i*450)});
+          setTimeout(function(){if(foot)foot.classList.add('lit')},items.length*450+300);
+          co.disconnect();
+        }
+      });
+    },{threshold:.4});
+    var cost=document.getElementById('cost');
+    if(cost)co.observe(cost);
+  }
+
+  // §4 — the chain, beat by beat. Verb discipline: activate / verify / determine — never pay / settle / deliver.
+  var beats=[
+    {time:'Beat 1 · the event',           text:'a covered loss occurs and is detected the instant it happens.', color:'var(--protect)'},
+    {time:'Beat 2 · verified',            text:'NovaCheck turns the event into a trusted, tamper-evident record.', color:'var(--verify)'},
+    {time:'Beat 3 · eligibility determined', text:'the record meets the coverage conditions. No human review.', color:'var(--protect)'},
+    {time:'Beat 4 · protection activated', text:'the protection workflow initiates automatically.', color:'var(--protect)'}
+  ];
+
+  var scroller=document.getElementById('scroller');
+  var svg=document.getElementById('eventSvg');
+  var core=document.getElementById('sigCore'),ring=document.getElementById('sigRing'),pulse=document.getElementById('pulse');
+  var link12=document.getElementById('link12'),link23=document.getElementById('link23'),link34=document.getElementById('link34');
+  var node2=document.getElementById('node2'),node3=document.getElementById('node3');
+  var shield=document.getElementById('shield'),shieldGlow=document.getElementById('shieldGlow');
+  var cap=document.getElementById('caption'),capTime=document.getElementById('capTime'),capText=document.getElementById('capText');
+  var rail=[].slice.call(document.querySelectorAll('.rail-dot'));
+  var current=-1;
+
+  function setBeat(b){
+    if(b===current)return;current=b;
+    cap.classList.remove('show');
+    setTimeout(function(){
+      capTime.textContent=beats[b].time;capText.textContent=beats[b].text;
+      capTime.style.color=beats[b].color;cap.classList.add('show');
+    },180);
+    rail.forEach(function(d,i){d.classList.toggle('active',i===b)});
+
+    // reset progressive elements based on beat
+    if(b>=0){ // event detected
+      core.setAttribute('fill','var(--alert)');ring.setAttribute('stroke','var(--alert)');ring.setAttribute('opacity','0.85');
+      pulse.style.opacity = b===0 ? '1':'0'; if(b===0)pulse.setAttribute('r',46);
+    }
+    // link 1->2 and verification node
+    link12.style.opacity = b>=1 ? '1':'0'; link12.setAttribute('stroke-dashoffset', b>=1 ? '0':'200');
+    node2.style.opacity = b>=1 ? '1':'0';
+    // link 2->3 and eligibility node
+    link23.style.opacity = b>=2 ? '1':'0'; link23.setAttribute('stroke-dashoffset', b>=2 ? '0':'200');
+    node3.style.opacity = b>=2 ? '1':'0';
+    // link 3->4 and CLIMAX shield
+    link34.style.opacity = b>=3 ? '1':'0'; link34.setAttribute('stroke-dashoffset', b>=3 ? '0':'180');
+    if(b>=3){
+      shield.style.opacity='1';shield.setAttribute('transform','scale(1)');
+      shieldGlow.style.opacity='1';shieldGlow.setAttribute('r',70);
+      svg.style.filter='drop-shadow(0 0 34px var(--protect-glow))';
+    } else {
+      shield.style.opacity='0';shield.setAttribute('transform','scale(.6)');
+      shieldGlow.style.opacity='0';svg.style.filter='none';
+    }
+  }
+
+  if(!reduce && scroller){
+    var ticking=false;
+    function onScroll(){
+      if(ticking)return;ticking=true;
+      requestAnimationFrame(function(){
+        var rect=scroller.getBoundingClientRect();
+        var total=rect.height-window.innerHeight;
+        var p=Math.min(1,Math.max(0,(-rect.top)/total));
+        var b=Math.min(beats.length-1,Math.floor(p*beats.length));
+        setBeat(b);ticking=false;
+      });
+    }
+    window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+  } else { setBeat(3);cap.classList.add('show'); }
+})();
+</script>
+<script src="novira-prototype.js"></script>
+</body>
+</html>

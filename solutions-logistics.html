@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Logistics & Transportation — Novira</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,400i&family=Spline+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0b0d0e;--bg-2:#0c1112;--bg-card:#11161a;
+  --paper:#f4f3ee;
+  --ink:#eef1f2;--ink-2:#9fa6a8;--ink-3:#646c70;
+  --line:rgba(238,241,242,0.10);
+  --acc:#c9a25a;--acc-deep:#9a7320;--acc-soft:rgba(201,162,90,0.13);
+  --warn:#d98a4a;--gold:#c9a25a;
+  --display:"Fraunces",Georgia,serif;--sans:"Spline Sans",system-ui,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:300;line-height:1.65;overflow-x:hidden}
+.wrap{max-width:1000px;margin:0 auto;padding:0 32px}
+a{text-decoration:none;color:inherit}
+.eyebrow{font-family:var(--sans);font-weight:500;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--acc);margin-bottom:22px}
+nav{position:sticky;top:0;z-index:50;background:rgba(11,13,14,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1180px;margin:0 auto;padding:0 32px;height:64px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-family:var(--display);font-weight:600;font-size:22px;color:var(--ink)}.logo span{color:var(--acc)}
+.nav-links{display:flex;gap:28px;font-size:14px;color:var(--ink-2)}.nav-links a:hover{color:var(--ink)}
+.btn{font-family:var(--sans);font-weight:500;font-size:14px;padding:12px 24px;border-radius:8px;cursor:pointer;border:1px solid transparent;display:inline-flex;align-items:center;gap:9px;transition:transform .3s,background .3s,border-color .3s,color .3s}
+.btn-acc{background:var(--acc);color:#06140e}.btn-acc:hover{transform:translateY(-2px);filter:brightness(1.12)}
+.btn-line{background:transparent;color:var(--ink);border-color:var(--line)}.btn-line:hover{border-color:rgba(238,241,242,.4);transform:translateY(-2px)}
+@media(max-width:820px){.nav-links{display:none}}
+.crumb{font-size:13px;color:var(--ink-3)}.crumb a:hover{color:var(--ink-2)}.crumb span{color:var(--acc)}
+#hero{padding:60px 0 64px;position:relative;overflow:hidden}
+.hero-grain{position:absolute;inset:0;opacity:.4;background-image:radial-gradient(circle at 1px 1px,rgba(201,162,90,0.13) 1px,transparent 0);background-size:30px 30px;pointer-events:none}
+h1{font-family:var(--display);font-weight:400;font-size:clamp(2.4rem,5.5vw,4rem);line-height:1.05;letter-spacing:-.02em;max-width:18ch;margin-top:18px}
+h1 em{font-style:italic;color:var(--acc)}
+.hero-sub{font-size:clamp(1.05rem,1.6vw,1.3rem);color:var(--ink-2);max-width:610px;margin:26px 0 36px;font-weight:300}
+.hero-ctas{display:flex;gap:14px;flex-wrap:wrap}
+section{position:relative}
+.band{padding:96px 0;border-top:1px solid var(--line)}
+.lead{font-family:var(--display);font-weight:300;font-size:clamp(1.8rem,3.8vw,2.8rem);line-height:1.16;letter-spacing:-.015em;max-width:22ch}
+.lead em{font-style:italic;color:var(--warn)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-top:50px}
+.two h3{font-family:var(--sans);font-weight:600;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin-bottom:14px}
+.two p{color:var(--ink-2);font-size:1.05rem;font-weight:300}
+@media(max-width:760px){.two{grid-template-columns:1fr;gap:32px}}
+#chain{background:var(--bg-2)}
+.maps{display:flex;flex-direction:column;gap:0;margin-top:50px;max-width:760px}
+.map{display:flex;gap:22px;align-items:flex-start;padding-bottom:30px;position:relative}
+.map:last-child{padding-bottom:0}
+.map::before{content:"";position:absolute;left:21px;top:46px;bottom:0;width:1px;background:var(--line)}
+.map:last-child::before{display:none}
+.map .mk{width:44px;height:44px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:var(--bg-card);border:1px solid var(--line);font-family:var(--display);font-weight:600;font-size:1rem;color:var(--acc);position:relative;z-index:2}
+.map .mtxt .mt-step{font-size:.74rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--acc);margin-bottom:3px}
+.map .mtxt .mt-t{font-family:var(--display);font-size:1.25rem;font-weight:400;color:var(--ink);line-height:1.3}
+.map .mtxt .mt-d{color:var(--ink-2);font-size:.98rem;margin-top:6px;font-weight:300}
+.outs{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-top:50px}
+.out{background:var(--bg);padding:30px 26px}
+.out .o-n{font-family:var(--display);font-size:1.15rem;font-weight:500;margin-bottom:8px}
+.out .o-d{color:var(--ink-2);font-size:.95rem;font-weight:300}
+@media(max-width:760px){.outs{grid-template-columns:1fr}}
+.belief{text-align:center}
+.belief-q{font-family:var(--display);font-weight:300;font-style:italic;font-size:clamp(1.8rem,4.4vw,3rem);line-height:1.18;letter-spacing:-.01em;max-width:22ch;margin:0 auto}
+.belief-q .u{font-style:normal;color:var(--acc)}
+#cta{text-align:center;padding:110px 0}
+#cta h2{font-family:var(--display);font-weight:400;font-size:clamp(2rem,4.4vw,3rem);letter-spacing:-.02em;margin-bottom:16px}
+#cta h2 em{font-style:italic;color:var(--acc)}
+#cta p{color:var(--ink-2);font-weight:300;max-width:480px;margin:0 auto 30px}
+.cta-ctas{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+footer{border-top:1px solid var(--line);padding:38px 0;text-align:center;color:var(--ink-3);font-size:13px}
+.rv{opacity:0;transform:translateY(20px);transition:opacity .9s ease,transform .9s ease}
+.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-in">
+    <div class="logo">Nov<span>ira</span></div>
+    <div class="nav-links"><a href="#">Solutions</a><a href="#">Platform</a><a href="#">Products</a><a href="#">Pricing</a><a href="#">Resources</a><a href="#">About Us</a></div>
+    <a class="btn btn-line" href="#">Build your solution</a>
+  </div>
+</nav>
+<section id="hero">
+  <div class="hero-grain"></div>
+  <div class="wrap" style="position:relative;z-index:2">
+    <div class="crumb"><a href="#">Solutions</a> / <span>Logistics & transportation</span></div>
+    <h1>When cargo goes wrong, <em>stop arguing about whose fault it is.</em></h1>
+    <p class="hero-sub">Damage, delay, loss — and weeks of dispute over who's responsible. Novira gives every shipment one verified record of what happened, shared with everyone, so the argument ends before it starts.</p>
+    <div class="hero-ctas">
+      <a class="btn btn-acc" href="#chain">How Novira helps →</a>
+      <a class="btn btn-line" href="#">Talk to a solutions expert</a>
+    </div>
+  </div>
+</section>
+<section class="band">
+  <div class="wrap">
+    <div class="eyebrow rv">The problem you know too well</div>
+    <p class="lead rv">The cargo is one loss. The <em>dispute</em> is another.</p>
+    <div class="two">
+      <div class="rv"><h3>Things go wrong in transit</h3><p>Across handoffs, modes, and miles, cargo gets dropped, delayed, mishandled, and lost. By the time it surfaces, the trail of what actually happened has gone cold.</p></div>
+      <div class="rv"><h3>And no one can prove their case</h3><p>Shipper, carrier, broker, receiver — each has a version, none has proof. Claims drag for weeks, chargebacks fly, and the relationship takes the damage along with the cargo.</p></div>
+    </div>
+  </div>
+</section>
+<section id="chain" class="band">
+  <div class="wrap">
+    <div class="eyebrow rv">How Novira helps</div>
+    <p class="lead rv" style="max-width:26ch;color:var(--ink)">The same six steps — across <em style="color:var(--acc)">your</em> network.</p>
+    <div class="maps">
+      <div class="map rv">
+        <div class="mk">1</div>
+        <div class="mtxt"><div class="mt-step">Track · observe</div><div class="mt-t">A device travels with the shipment.</div><div class="mt-d">Location, shock, tilt, and condition captured continuously — across every handoff and mode, tied to that specific load.</div></div>
+      </div>
+      <div class="map rv">
+        <div class="mk">2</div>
+        <div class="mtxt"><div class="mt-step">NovaCheck · verify</div><div class="mt-t">An incident is confirmed, not just logged.</div><div class="mt-d">When a shock, delay, or deviation occurs, NovaCheck verifies the reading is real, unaltered, and from the right shipment — so it holds up later.</div></div>
+      </div>
+      <div class="map rv">
+        <div class="mk">3</div>
+        <div class="mtxt"><div class="mt-step">NovaProof · trust</div><div class="mt-t">What happened becomes evidence.</div><div class="mt-d">A sealed, tamper-evident record of the event — where, when, and how. The document that settles a chargeback or a claim without a fight.</div></div>
+      </div>
+      <div class="map rv">
+        <div class="mk">4</div>
+        <div class="mtxt"><div class="mt-step">NovaLink · share</div><div class="mt-t">Every party works from one record.</div><div class="mt-d">Shipper, carrier, broker, and receiver reference the same verified truth — not conflicting copies. The blame game ends before it begins.</div></div>
+      </div>
+      <div class="map rv">
+        <div class="mk">5</div>
+        <div class="mtxt"><div class="mt-step">NovaProtect · act</div><div class="mt-t">Protection activates on the verified event.</div><div class="mt-d">The moment an incident is confirmed, the protection workflow initiates — not weeks of back-and-forth later. Benefit delivery is handled with you.</div></div>
+      </div>
+      <div class="map rv">
+        <div class="mk">6</div>
+        <div class="mtxt"><div class="mt-step">DOST · learn</div><div class="mt-t">The next problem is flagged early.</div><div class="mt-d">DOST reads patterns across your lanes and carriers and surfaces the shipments likely to run into trouble — early enough to intervene.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="band">
+  <div class="wrap">
+    <div class="eyebrow rv">What changes</div>
+    <p class="lead rv" style="max-width:24ch">From <em style="color:var(--ink)">"who's at fault?"</em> to "here's what happened."</p>
+    <div class="outs">
+      <div class="out rv"><div class="o-n">Disputes end faster</div><div class="o-d">One shared, verified record means there's nothing to argue about — claims and chargebacks resolve in days, not weeks.</div></div>
+      <div class="out rv"><div class="o-n">Recover more</div><div class="o-d">Verified evidence means valid claims get paid and invalid ones get caught — you stop eating losses that weren't yours.</div></div>
+      <div class="out rv"><div class="o-n">Stronger carrier relationships</div><div class="o-d">When the facts are clear, partners stop pointing fingers and focus on moving freight.</div></div>
+    </div>
+  </div>
+</section>
+<section class="band belief">
+  <div class="wrap"><p class="belief-q rv">In logistics, everyone has a story.<br>Novira gives you <span class="u">the record.</span></p></div>
+</section>
+<section id="cta">
+  <div class="wrap">
+    <h2>Settle your <em>cargo disputes</em> with proof.</h2>
+    <p>See how Novira gives every shipment a single verified record — and protection that acts the moment something goes wrong.</p>
+    <div class="cta-ctas">
+      <a class="btn btn-acc" href="#">Talk to a solutions expert →</a>
+      <a class="btn btn-line" href="#">Build your solution</a>
+    </div>
+  </div>
+</section>
+<footer>Novira · Trust what you track. Know what happens next.</footer>
+<script>
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:.14});
+document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
+</script>
+<script src="novira-prototype.js"></script>
+</body>
+</html>

@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Products — Novira</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Spline+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#fbfaf7;
+  --surface:#ffffff;
+  --surface-2:#f4f2ec;
+  --ink:#15171c;
+  --ink-2:#54585f;
+  --ink-3:#8b8f97;
+  --line:#e7e4dc;
+  --line-2:#d9d5ca;
+  --accent:#0f6e56;
+  --accent-deep:#0a4f3e;
+  --accent-soft:#e3f1ea;
+  --gold:#b8761a;
+  --display:"Fraunces",Georgia,serif;
+  --sans:"Spline Sans",system-ui,sans-serif;
+  --maxw:1180px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:400;line-height:1.6}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+a{text-decoration:none;color:inherit}
+section{position:relative}
+.sec-label{font-family:var(--sans);font-weight:600;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:50;background:rgba(251,250,247,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-in{max-width:var(--maxw);margin:0 auto;padding:0 28px;height:64px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-family:var(--display);font-weight:600;font-size:22px;letter-spacing:-.01em}
+.logo span{color:var(--accent)}
+.nav-links{display:flex;gap:30px;font-size:14px;font-weight:500;color:var(--ink-2)}
+.nav-links a:hover{color:var(--ink)}
+.nav-cta{display:flex;gap:12px;align-items:center}
+.btn{font-family:var(--sans);font-weight:500;font-size:14px;padding:10px 20px;border-radius:8px;cursor:pointer;border:1px solid transparent;display:inline-flex;align-items:center;gap:8px;transition:transform .25s,background .25s,border-color .25s,color .25s;white-space:nowrap}
+.btn-primary{background:var(--accent);color:#fff}
+.btn-primary:hover{background:var(--accent-deep);transform:translateY(-1px)}
+.btn-ghost{background:transparent;color:var(--ink);border-color:var(--line-2)}
+.btn-ghost:hover{border-color:var(--ink-3);transform:translateY(-1px)}
+.btn-block{width:100%;justify-content:center}
+@media(max-width:860px){.nav-links{display:none}}
+
+/* HERO */
+#hero{padding:96px 0 80px;text-align:center;position:relative;overflow:hidden}
+.hero-tag{display:inline-block;font-size:13px;font-weight:500;color:var(--accent-deep);background:var(--accent-soft);padding:6px 16px;border-radius:100px;margin-bottom:28px}
+h1{font-family:var(--display);font-weight:500;font-size:clamp(2.4rem,5.6vw,4rem);line-height:1.05;letter-spacing:-.02em;max-width:820px;margin:0 auto 22px}
+h1 em{font-style:italic;color:var(--accent)}
+.hero-sub{font-size:clamp(1.05rem,1.6vw,1.25rem);color:var(--ink-2);max-width:560px;margin:0 auto 36px;font-weight:300}
+.hero-ctas{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.btn-lg{padding:14px 28px;font-size:15px}
+
+/* ROUTER */
+#router{padding:20px 0 64px}
+.router-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.route{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:26px 22px;cursor:pointer;transition:transform .3s cubic-bezier(.2,.7,.3,1),border-color .3s,box-shadow .3s;display:flex;flex-direction:column;gap:8px}
+.route:hover{transform:translateY(-4px);border-color:var(--accent);box-shadow:0 14px 30px -18px rgba(15,110,86,.4)}
+.route .r-pre{font-size:13px;color:var(--ink-3);font-weight:500}
+.route .r-main{font-family:var(--display);font-size:1.32rem;font-weight:500;letter-spacing:-.01em}
+.route .r-arrow{color:var(--accent);margin-top:10px;font-size:1.1rem}
+@media(max-width:860px){.router-grid{grid-template-columns:1fr}}
+
+/* SECTION SHELL */
+.band{padding:80px 0;border-top:1px solid var(--line)}
+.band-head{max-width:680px;margin-bottom:44px}
+.band-head h2{font-family:var(--display);font-weight:500;font-size:clamp(1.9rem,3.6vw,2.7rem);letter-spacing:-.015em;line-height:1.1;margin-bottom:14px}
+.band-head p{font-size:1.05rem;color:var(--ink-2);font-weight:300}
+
+/* HARDWARE */
+.hw-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.hw-card{background:var(--surface);border:1px solid var(--line);border-radius:18px;overflow:hidden;display:flex;flex-direction:column;transition:transform .3s cubic-bezier(.2,.7,.3,1),box-shadow .3s,border-color .3s}
+.hw-card:hover{transform:translateY(-5px);box-shadow:0 22px 44px -26px rgba(0,0,0,.28);border-color:var(--line-2)}
+.hw-img{height:188px;background:linear-gradient(150deg,#f4f2ec,#eceae2);display:flex;align-items:center;justify-content:center;position:relative}
+.hw-img svg{width:88px;height:88px;opacity:.82}
+.hw-soon{position:absolute;top:14px;right:14px;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);background:#fbf3e3;padding:4px 10px;border-radius:100px}
+.hw-body{padding:24px;display:flex;flex-direction:column;flex:1}
+.hw-name{font-family:var(--display);font-size:1.4rem;font-weight:600;letter-spacing:-.01em}
+.hw-outcome{font-family:var(--display);font-style:italic;font-size:1.02rem;color:var(--accent);margin-bottom:6px;line-height:1.25}
+.hw-cap{font-size:.95rem;color:var(--ink-2);margin-top:6px;min-height:44px}
+.hw-tagline{font-size:.8rem;font-weight:600;letter-spacing:.02em;color:var(--accent);margin-top:3px}
+.hw-price{font-family:var(--display);font-size:1.7rem;font-weight:600;margin-top:14px}
+.hw-price .from{font-family:var(--sans);font-size:.8rem;font-weight:500;color:var(--ink-3);margin-right:4px}
+.hw-sub{display:flex;align-items:center;gap:7px;margin-top:12px;font-size:.82rem;color:var(--accent-deep);background:var(--accent-soft);padding:8px 12px;border-radius:8px}
+.hw-sub svg{width:14px;height:14px;flex-shrink:0}
+.hw-variant{display:flex;gap:8px;margin-top:14px}
+.hw-variant button{flex:1;font-family:var(--sans);font-size:12.5px;font-weight:500;padding:7px;border-radius:7px;border:1px solid var(--line-2);background:var(--surface);color:var(--ink-2);cursor:pointer;transition:.2s}
+.hw-variant button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.hw-ctas{margin-top:auto;padding-top:18px;display:flex;flex-direction:column;gap:10px}
+@media(max-width:860px){.hw-grid{grid-template-columns:1fr}}
+
+/* COMPARE */
+.cmp{background:var(--surface);border:1px solid var(--line);border-radius:18px;overflow:hidden}
+table{width:100%;border-collapse:collapse;font-size:.92rem}
+th,td{padding:15px 18px;text-align:left;border-bottom:1px solid var(--line)}
+th{font-family:var(--sans);font-weight:600;font-size:.8rem;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-3);background:var(--surface-2)}
+td:first-child{font-weight:500;color:var(--ink-2)}
+.cmp tr:last-child td{border-bottom:none}
+.tick{color:var(--accent);font-weight:600}
+.dash{color:var(--ink-3)}
+.cmp-scroll{overflow-x:auto}
+
+/* PLANS */
+#plans{background:var(--surface-2)}
+.plan-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.plan{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:30px 26px;display:flex;flex-direction:column;position:relative;transition:transform .3s,box-shadow .3s}
+.plan.feat{border-color:var(--accent);box-shadow:0 18px 44px -24px rgba(15,110,86,.45)}
+.plan.feat:hover,.plan:hover{transform:translateY(-4px)}
+.plan-badge{position:absolute;top:-11px;left:26px;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#fff;background:var(--accent);padding:4px 12px;border-radius:100px}
+.plan-name{font-family:var(--display);font-size:1.5rem;font-weight:600}
+.plan-for{font-size:.9rem;color:var(--ink-3);margin-top:4px;min-height:40px}
+.plan-price{font-family:var(--display);font-size:2rem;font-weight:600;margin:16px 0 4px}
+.plan-price .per{font-family:var(--sans);font-size:.85rem;font-weight:400;color:var(--ink-3)}
+.plan-list{list-style:none;margin:20px 0 24px;display:flex;flex-direction:column;gap:11px;font-size:.92rem;color:var(--ink-2)}
+.plan-list li{display:flex;gap:9px;align-items:flex-start}
+.plan-list svg{width:16px;height:16px;color:var(--accent);flex-shrink:0;margin-top:2px}
+.plan .btn{margin-top:auto}
+@media(max-width:860px){.plan-grid{grid-template-columns:1fr}}
+
+/* INCLUDED */
+.inc-head{text-align:center;max-width:640px;margin:0 auto 40px}
+.inc-head h2{font-family:var(--display);font-weight:500;font-size:clamp(1.8rem,3.4vw,2.5rem);letter-spacing:-.015em;margin-bottom:12px}
+.inc-head p{color:var(--ink-2);font-weight:300}
+.inc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.inc{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:20px 18px;display:flex;align-items:center;gap:12px;font-size:.95rem;font-weight:500}
+.inc svg{width:20px;height:20px;color:var(--accent);flex-shrink:0}
+@media(max-width:860px){.inc-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.inc-grid{grid-template-columns:1fr}}
+
+/* PLATFORM OVERVIEW */
+#platform{background:var(--ink);color:#fff}
+.journey{display:flex;align-items:stretch;gap:0;margin-top:8px;overflow-x:auto;padding-bottom:8px}
+.jstep{flex:1;min-width:150px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:22px 18px;text-align:center;position:relative;transition:background .25s,transform .25s,border-color .25s;cursor:default}
+.jstep:hover{background:rgba(255,255,255,.08);transform:translateY(-3px);border-color:rgba(127,198,164,.4)}
+.jstep .j-ic{width:42px;height:42px;margin:0 auto 14px;border-radius:11px;background:rgba(127,198,164,.14);display:flex;align-items:center;justify-content:center;color:#7fc6a4}
+.jstep .j-ic svg{width:21px;height:21px}
+.jstep .j-verb{font-size:.68rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#7fc6a4;margin-bottom:5px}
+.jstep .j-name{font-family:var(--display);font-size:1.12rem;font-weight:500;color:#fff;margin-bottom:7px}
+.jstep .j-out{font-size:.8rem;color:#b8bcbc;line-height:1.4}
+.jstep .j-art{margin-top:12px;padding-top:11px;border-top:1px solid rgba(255,255,255,.1);font-size:.72rem;color:#7fc6a4;font-weight:500;display:flex;align-items:center;justify-content:center;gap:6px}
+.jarrow{display:flex;align-items:center;color:rgba(255,255,255,.3);font-size:1.1rem;padding:0 4px;flex-shrink:0}
+@media(max-width:760px){.jarrow{display:none}.journey{gap:10px}}
+#platform .band-head h2{color:#fff}
+#platform .sec-label{color:#7fd9bd}
+.plat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.1);border-radius:16px;overflow:hidden}
+.plat{background:var(--ink);padding:26px 24px}
+.plat-name{font-family:var(--display);font-size:1.25rem;font-weight:500}
+.plat-verb{font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:#7fd9bd;margin:6px 0 8px}
+.plat-desc{font-size:.9rem;color:#a9adb6;font-weight:300}
+.plat-foot{margin-top:34px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
+.plat-philos{font-family:var(--display);font-style:italic;font-size:1.25rem;font-weight:400;color:#fff}
+@media(max-width:860px){.plat-grid{grid-template-columns:1fr}}
+
+/* FORK */
+.fork-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.fork{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:30px 28px;display:flex;flex-direction:column;transition:transform .3s,border-color .3s}
+.fork:hover{transform:translateY(-4px);border-color:var(--accent)}
+.fork-k{font-family:var(--display);font-size:1.35rem;font-weight:600}
+.fork-d{font-size:.95rem;color:var(--ink-2);margin:8px 0 22px;font-weight:300}
+.fork .btn{margin-top:auto}
+@media(max-width:860px){.fork-grid{grid-template-columns:1fr}}
+
+/* CLOSING */
+#close{text-align:center;padding:96px 0}
+#close h2{font-family:var(--display);font-weight:500;font-size:clamp(2rem,4.4vw,3rem);letter-spacing:-.02em;margin-bottom:14px}
+#close h2 em{font-style:italic;color:var(--accent)}
+#close p{color:var(--ink-2);font-weight:300;max-width:480px;margin:0 auto 32px}
+
+/* STICKY MOBILE BAR */
+.mbar{position:fixed;bottom:0;left:0;right:0;z-index:60;display:none;gap:10px;padding:12px 16px;background:rgba(255,255,255,.94);backdrop-filter:blur(12px);border-top:1px solid var(--line)}
+@media(max-width:860px){.mbar{display:flex}body{padding-bottom:72px}}
+
+footer{background:var(--surface-2);border-top:1px solid var(--line);padding:40px 0;text-align:center;color:var(--ink-3);font-size:13px}
+
+/* --- polish pass additions --- */
+/* hero brand texture */
+#hero::before{content:"";position:absolute;inset:0;z-index:0;opacity:.5;
+  background-image:radial-gradient(circle at 1px 1px, rgba(15,110,86,.07) 1px, transparent 0);
+  background-size:26px 26px;
+  -webkit-mask-image:radial-gradient(ellipse 60% 60% at 50% 30%,#000,transparent);
+  mask-image:radial-gradient(ellipse 60% 60% at 50% 30%,#000,transparent)}
+#hero .wrap{position:relative;z-index:1}
+/* premium device render frame */
+.hw-img{height:200px;background:radial-gradient(circle at 50% 38%,#fbfaf7,#edeae1);position:relative}
+.hw-render{width:100%;height:100%;display:flex;align-items:center;justify-content:center}
+.hw-render svg{width:104px;height:104px;filter:drop-shadow(0 8px 18px rgba(15,110,86,.18))}
+.hw-tier-tag{position:absolute;top:14px;left:14px;font-size:10.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-deep);background:rgba(255,255,255,.8);backdrop-filter:blur(4px);padding:4px 10px;border-radius:100px}
+.hw-card{position:relative}
+/* Lite visibility row */
+.hw-lite{display:flex;align-items:center;justify-content:space-between;margin-top:12px;padding:10px 12px;border:1px dashed var(--line-2);border-radius:9px;font-size:.82rem;color:var(--ink-2)}
+.hw-lite b{font-weight:600;color:var(--ink)}
+.hw-lite a{font-size:.8rem;color:var(--accent);font-weight:500}
+/* complete-solution visual */
+#solution{background:var(--accent-soft);border-top:1px solid var(--line)}
+.sol-eq{display:flex;align-items:center;justify-content:center;gap:18px;flex-wrap:wrap;margin-top:8px}
+.sol-card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:24px 26px;text-align:center;min-width:180px}
+.sol-card .s-ic{width:40px;height:40px;margin:0 auto 12px;color:var(--accent)}
+.sol-card .s-k{font-family:var(--display);font-size:1.15rem;font-weight:600}
+.sol-card .s-d{font-size:.85rem;color:var(--ink-3);margin-top:4px}
+.sol-op{font-family:var(--display);font-size:2rem;font-weight:400;color:var(--accent)}
+.sol-result{background:var(--accent);color:#fff;border-color:var(--accent)}
+.sol-result .s-k{color:#fff}.sol-result .s-d{color:#cfe9df}.sol-result .s-ic{color:#fff}
+@media(max-width:860px){.sol-eq{flex-direction:column}.sol-op{transform:rotate(90deg)}}
+/* placeholder pricing note */
+.price-note{display:inline-block;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--gold);background:#fbf3e3;padding:4px 11px;border-radius:100px;margin-bottom:18px}
+.plan-price .indic{font-family:var(--sans);font-size:.7rem;font-weight:500;color:var(--gold);display:block;margin-top:2px;letter-spacing:.04em}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-in">
+    <div class="logo">Nov<span>ira</span></div>
+    <div class="nav-links">
+      <a href="#">Solutions</a><a href="#">Platform</a><a href="#">Products</a><a href="#">Pricing</a><a href="#">Resources</a><a href="#">About Us</a>
+    </div>
+    <div class="nav-cta">
+      <a class="btn btn-ghost" href="#plans">See pricing</a>
+      <a class="btn btn-primary" href="#fork">Build your solution</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="wrap">
+    <span class="hero-tag">Devices · Platform · Protection</span>
+    <h1>Trust what you track. <em>Predict what comes next.</em></h1>
+    <p class="hero-sub">Track what matters. Verify what happened. Act before risk becomes loss.</p>
+    <div class="hero-ctas">
+      <a class="btn btn-primary btn-lg" href="#fork">Build your solution →</a>
+      <a class="btn btn-ghost btn-lg" href="#plans">See pricing</a>
+    </div>
+  </div>
+</section>
+
+<!-- WHY NOVIRA -->
+<section id="why" class="band" style="padding-bottom:0">
+  <div class="wrap">
+    <div style="max-width:720px;margin:0 auto;text-align:center">
+      <div class="sec-label" style="text-align:center">Why Novira</div>
+      <h2 style="margin-bottom:18px">Most platforms stop at tracking.</h2>
+      <p style="font-size:1.15rem;color:var(--ink-2);margin-bottom:36px">Knowing where something is has become a commodity. Knowing — and proving — <em style="font-style:italic;color:var(--accent)">what happened to it</em>, and what's likely next, is where loss is actually prevented.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:0;max-width:880px;margin:0 auto">
+      <div style="text-align:center;padding:0 18px;position:relative">
+        <div style="font-family:var(--display);font-size:1.3rem;font-weight:600;color:var(--ink)">Track</div>
+        <div style="font-size:.9rem;color:var(--ink-2);margin-top:6px">Know where it is.</div>
+      </div>
+      <div style="text-align:center;padding:0 18px;border-left:1px solid var(--line)">
+        <div style="font-family:var(--display);font-size:1.3rem;font-weight:600;color:var(--ink)">Verify</div>
+        <div style="font-size:.9rem;color:var(--ink-2);margin-top:6px">Know what happened.</div>
+      </div>
+      <div style="text-align:center;padding:0 18px;border-left:1px solid var(--line)">
+        <div style="font-family:var(--display);font-size:1.3rem;font-weight:600;color:var(--ink)">Protect</div>
+        <div style="font-size:.9rem;color:var(--ink-2);margin-top:6px">Respond automatically.</div>
+      </div>
+      <div style="text-align:center;padding:0 18px;border-left:1px solid var(--line)">
+        <div style="font-family:var(--display);font-size:1.3rem;font-weight:600;color:var(--ink)">Predict</div>
+        <div style="font-size:.9rem;color:var(--ink-2);margin-top:6px">Know what's coming next.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CAPABILITIES (no numbers — capability-led) -->
+<section id="metrics" class="band" style="padding-top:0">
+  <div class="wrap">
+    <div style="background:var(--ink);border-radius:18px;padding:40px 40px;color:#f4f1e8">
+      <div style="font-family:var(--sans);font-weight:600;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#7fc6a4;margin-bottom:6px">Monitor · Verify · Protect · Predict</div>
+      <div style="font-family:var(--display);font-weight:500;font-size:clamp(1.3rem,2.4vw,1.7rem);margin-bottom:30px">One platform, working across your assets.</div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px">
+        <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:22px 20px">
+          <div style="width:38px;height:38px;border-radius:10px;background:rgba(127,198,164,.14);display:flex;align-items:center;justify-content:center;color:#7fc6a4;margin-bottom:14px"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3" stroke-linecap="round"/></svg></div>
+          <div style="font-family:var(--display);font-size:1.05rem;font-weight:500;margin-bottom:5px">Real-time visibility</div>
+          <div style="font-size:.82rem;color:#9aa0a0">Monitor every asset as it moves.</div>
+        </div>
+        <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:22px 20px">
+          <div style="width:38px;height:38px;border-radius:10px;background:rgba(127,198,164,.14);display:flex;align-items:center;justify-content:center;color:#7fc6a4;margin-bottom:14px"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div style="font-family:var(--display);font-size:1.05rem;font-weight:500;margin-bottom:5px">Tamper-evident records</div>
+          <div style="font-size:.82rem;color:#9aa0a0">Verify what happened, beyond dispute.</div>
+        </div>
+        <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:22px 20px">
+          <div style="width:38px;height:38px;border-radius:10px;background:rgba(127,198,164,.14);display:flex;align-items:center;justify-content:center;color:#7fc6a4;margin-bottom:14px"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M13 3L4 14h7l-1 7 9-11h-7l1-7z" stroke-linejoin="round"/></svg></div>
+          <div style="font-family:var(--display);font-size:1.05rem;font-weight:500;margin-bottom:5px">Automated protection</div>
+          <div style="font-size:.82rem;color:#9aa0a0">Act the moment an event is verified.</div>
+        </div>
+        <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:22px 20px">
+          <div style="width:38px;height:38px;border-radius:10px;background:rgba(127,198,164,.14);display:flex;align-items:center;justify-content:center;color:#7fc6a4;margin-bottom:14px"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 18l5-6 4 4 7-9" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div style="font-family:var(--display);font-size:1.05rem;font-weight:500;margin-bottom:5px">AI risk intelligence</div>
+          <div style="font-size:.82rem;color:#9aa0a0">See what's likely — early enough to act.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ROUTER -->
+<section id="router">
+  <div class="wrap">
+    <div class="router-grid">
+      <a class="route" href="#hardware"><span class="r-pre">I need</span><span class="r-main">Hardware</span><span class="r-arrow">→</span></a>
+      <a class="route" href="#platform"><span class="r-pre">I need</span><span class="r-main">Visibility</span><span class="r-arrow">→</span></a>
+      <a class="route" href="#fork"><span class="r-pre">I need</span><span class="r-main">Protection</span><span class="r-arrow">→</span></a>
+      <a class="route" href="#platform"><span class="r-pre">I need</span><span class="r-main">Prediction</span><span class="r-arrow">→</span></a>
+    </div>
+  </div>
+</section>
+
+
+<!-- HARDWARE -->
+<section id="hardware" class="band">
+  <div class="wrap">
+    <div class="band-head">
+      <div class="sec-label">Hardware</div>
+      <h2>Start with a device.</h2>
+      <p>Rugged, multi-sensor devices that capture what happens in the physical world — and connect it straight to the Novira platform.</p>
+    </div>
+    <div class="hw-grid">
+
+      <div class="hw-card">
+        <span class="hw-tier-tag">Flagship</span>
+        <div class="hw-img">
+          <div class="hw-render"><svg viewBox="0 0 24 24" fill="none" stroke="#0f6e56" stroke-width="1.3"><rect x="5" y="2.5" width="14" height="19" rx="3.2"/><circle cx="12" cy="8.5" r="2.6"/><path d="M7.5 14h9M7.5 17h6" stroke-linecap="round"/><path d="M9.5 5h5" stroke-linecap="round" opacity=".5"/></svg></div>
+        </div>
+        <div class="hw-body">
+          <div class="hw-outcome">"Know exactly what happened."</div><div class="hw-name">NovaFive</div>
+          <div class="hw-tagline">The Complete Intelligence Tracker</div>
+          <div class="hw-cap">Flagship multi-sensor tracker. GPS plus full environmental intelligence.</div>
+          <div class="hw-price">$199</div>
+          <div class="hw-lite"><span><b>NovaFive Lite</b> · core sensors</span><span><b>$99</b> &nbsp;<a href="#">Buy →</a></span></div>
+          <div class="hw-sub"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6l7-3z" stroke-linejoin="round"/></svg>Requires Novira platform subscription</div>
+          <div class="hw-ctas"><a class="btn btn-primary btn-block" href="#">Buy online</a><a class="btn btn-ghost btn-block" href="#">View details →</a></div>
+        </div>
+      </div>
+
+      <div class="hw-card">
+        <span class="hw-tier-tag">Essential</span>
+        <div class="hw-img">
+          <div class="hw-render"><svg viewBox="0 0 24 24" fill="none" stroke="#0f6e56" stroke-width="1.3"><path d="M12 22s7-6.8 7-12.5A7 7 0 1 0 5 9.5C5 15.2 12 22 12 22z" stroke-linejoin="round"/><circle cx="12" cy="9.2" r="2.8"/></svg></div>
+        </div>
+        <div class="hw-body">
+          <div class="hw-outcome">"Always know where it is."</div><div class="hw-name">NovaGPS</div>
+          <div class="hw-tagline">The Essential Location Tracker</div>
+          <div class="hw-cap">Location-focused tracker. Precise, reliable positioning at the lowest entry cost.</div>
+          <div class="hw-price">$99</div>
+          <div class="hw-lite"><span><b>NovaGPS Lite</b> · core location</span><span><b>$49</b> &nbsp;<a href="#">Buy →</a></span></div>
+          <div class="hw-sub"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6l7-3z" stroke-linejoin="round"/></svg>Requires Novira platform subscription</div>
+          <div class="hw-ctas"><a class="btn btn-primary btn-block" href="#">Buy online</a><a class="btn btn-ghost btn-block" href="#">View details →</a></div>
+        </div>
+      </div>
+
+      <div class="hw-card">
+        <span class="hw-tier-tag">Specialist</span>
+        <div class="hw-img">
+          <div class="hw-render"><svg viewBox="0 0 24 24" fill="none" stroke="#0f6e56" stroke-width="1.3"><path d="M12 2.5s6.5 7 6.5 11.8a6.5 6.5 0 0 1-13 0C5.5 9.5 12 2.5 12 2.5z" stroke-linejoin="round"/><path d="M9 14.5a3 3 0 0 0 3 3" stroke-linecap="round"/></svg></div>
+        </div>
+        <div class="hw-body">
+          <div class="hw-outcome">"Protect condition-sensitive cargo."</div><div class="hw-name">NovaAqua</div>
+          <div class="hw-tagline">The Condition Protection Tracker</div>
+          <div class="hw-cap">Water and environmental monitoring for the most condition-sensitive cargo.</div>
+          <div class="hw-price">$299</div>
+          <div class="hw-lite" style="border-style:solid;border-color:var(--line);color:var(--ink-3)"><span>Single configuration</span><span>Full sensor suite</span></div>
+          <div class="hw-sub"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6l7-3z" stroke-linejoin="round"/></svg>Requires Novira platform subscription</div>
+          <div class="hw-ctas"><a class="btn btn-primary btn-block" href="#">Buy online</a><a class="btn btn-ghost btn-block" href="#">View details →</a></div>
+        </div>
+      </div>
+
+      <div class="hw-card">
+        <span class="hw-soon">Coming soon</span>
+        <div class="hw-img">
+          <div class="hw-render"><svg viewBox="0 0 24 24" fill="none" stroke="#0f6e56" stroke-width="1.3"><rect x="2.5" y="7" width="19" height="10" rx="3.5"/><path d="M7 11v2M11 11v2M15 11v2M19 11v2" stroke-linecap="round" opacity=".7"/></svg></div>
+        </div>
+        <div class="hw-body">
+          <div class="hw-outcome">"Tracking at massive scale."</div><div class="hw-name">NovaFlex</div>
+          <div class="hw-tagline">The High-Volume Smart Label</div>
+          <div class="hw-cap">Next-generation tracking label. Ultra-thin form factor for high-volume deployment.</div>
+          <div class="hw-price" style="color:var(--ink-3);font-size:1.3rem">Pricing soon</div>
+          <div class="hw-lite" style="border-style:solid;border-color:var(--line);color:var(--ink-3)"><span>In development</span><span>Join the waitlist</span></div>
+          <div class="hw-sub"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6l7-3z" stroke-linejoin="round"/></svg>Requires Novira platform subscription</div>
+          <div class="hw-ctas"><a class="btn btn-ghost btn-block" href="#">Notify me →</a></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- COMPARE -->
+<section id="compare" class="band">
+  <div class="wrap">
+    <div class="band-head">
+      <div class="sec-label">Compare devices</div>
+      <h2>Which device fits your cargo?</h2>
+    </div>
+    <div class="cmp cmp-scroll">
+      <table>
+        <thead><tr><th>Capability</th><th>NovaFive</th><th>NovaGPS</th><th>NovaAqua</th><th>NovaFlex</th></tr></thead>
+        <tbody>
+          <tr><td>GPS location</td><td class="tick">✓</td><td class="tick">✓</td><td class="tick">✓</td><td class="tick">✓</td></tr>
+          <tr><td>Temperature</td><td class="tick">✓</td><td class="dash">—</td><td class="tick">✓</td><td class="dash">—</td></tr>
+          <tr><td>Shock &amp; tilt</td><td class="tick">✓</td><td class="dash">—</td><td class="tick">✓</td><td class="dash">—</td></tr>
+          <tr><td>Humidity / water</td><td class="tick">✓</td><td class="dash">—</td><td class="tick">✓</td><td class="dash">—</td></tr>
+          <tr><td>Light / tamper</td><td class="tick">✓</td><td class="dash">—</td><td class="tick">✓</td><td class="dash">—</td></tr>
+          <tr><td>Ultra-thin form</td><td class="dash">—</td><td class="dash">—</td><td class="dash">—</td><td class="tick">✓</td></tr>
+          <tr><td>Lite version</td><td class="tick">✓ &nbsp;$99</td><td class="tick">✓ &nbsp;$49</td><td class="dash">—</td><td class="dash">—</td></tr>
+          <tr><td>Best for</td><td>High-value, sensitive cargo</td><td>Location-first fleets</td><td>Cold chain &amp; liquids</td><td>High-volume labels</td></tr>
+          <tr><td>Recommended for</td><td>Pharma · Insurance · High-value</td><td>Fleet · Equipment · Assets</td><td>Cold chain · Food · Water</td><td>High-volume shipments</td></tr>
+          <tr><td>Starting price</td><td><b>$99</b></td><td><b>$49</b></td><td><b>$299</b></td><td>Soon</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div style="margin-top:22px"><a class="btn btn-ghost" href="#">Full comparison →</a></div>
+  </div>
+</section>
+
+<!-- PLANS -->
+<section id="plans" class="band">
+  <div class="wrap">
+    <div class="band-head">
+      <div class="sec-label">Subscription plans</div>
+      <span class="price-note">Indicative · subscription pricing not final</span>
+      <h2>The platform is the product.</h2>
+      <p>Every device connects to a Novira subscription. The plan is where intelligence, proof, and protection actually happen.</p>
+    </div>
+    <div class="plan-grid">
+
+      <div class="plan">
+        <div class="plan-name">Explorer</div>
+        <div class="plan-for">For small teams getting started with real-time visibility.</div>
+        <div class="plan-price">Starting at $12<span class="per"> / device / mo</span><span class="indic">indicative — not final</span></div>
+        <ul class="plan-list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>Everything in "what's included"</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>Up to 25 devices</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>Standard support</li>
+        </ul>
+        <a class="btn btn-ghost btn-block" href="#fork">Choose Explorer</a>
+      </div>
+
+      <div class="plan feat">
+        <span class="plan-badge">Most popular</span>
+        <div class="plan-name">Navigator</div>
+        <div class="plan-for">For growing operations that need prediction and proof.</div>
+        <div class="plan-price">Starting at $24<span class="per"> / device / mo</span><span class="indic">indicative — not final</span></div>
+        <ul class="plan-list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>Everything in Explorer</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>Predictive analytics &amp; risk scores</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>NovaProof verified records</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>Priority support</li>
+        </ul>
+        <a class="btn btn-primary btn-block" href="#fork">Choose Navigator</a>
+      </div>
+
+      <div class="plan">
+        <div class="plan-name">Atlas</div>
+        <div class="plan-for">Enterprise intelligence &amp; protection — command every asset, predict every risk.</div>
+        <div class="plan-price">Custom</div>
+        <ul class="plan-list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>Everything in Navigator</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>NovaProtect coverage workflows</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>Unlimited devices &amp; custom integration</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>Dedicated success manager</li>
+        </ul>
+        <a class="btn btn-ghost btn-block" href="#fork">Talk to sales</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- WHAT'S INCLUDED -->
+<section class="band">
+  <div class="wrap">
+    <div class="inc-head">
+      <div class="sec-label" style="text-align:center">What's included</div>
+      <h2>Every subscription includes the essentials.</h2>
+      <p>No matter which plan you choose, every Novira subscription comes with the full visibility foundation. Tiers add scale, prediction, proof, and protection.</p>
+    </div>
+    <div class="inc-grid">
+      <div class="inc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/></svg>Real-time tracking</div>
+      <div class="inc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3a6 6 0 0 0-6 6c0 5-2 6-2 6h16s-2-1-2-6a6 6 0 0 0-6-6z"/><path d="M10 20a2 2 0 0 0 4 0"/></svg>Real-time alerts</div>
+      <div class="inc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8l9-5 9 5v8l-9 5-9-5z" stroke-linejoin="round"/></svg>Asset intelligence</div>
+      <div class="inc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 18l5-6 4 4 7-9" stroke-linecap="round" stroke-linejoin="round"/></svg>Risk scores</div>
+      <div class="inc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="7" cy="12" r="3"/><circle cx="17" cy="6" r="3"/><circle cx="17" cy="18" r="3"/><path d="M9.5 10.5l5-3M9.5 13.5l5 3"/></svg>NovaLink sharing</div>
+      <div class="inc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="7" y="3" width="10" height="18" rx="2"/><path d="M11 18h2" stroke-linecap="round"/></svg>Mobile app</div>
+      <div class="inc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 9h18"/></svg>Dashboard access</div>
+      <div class="inc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5" stroke-linecap="round" stroke-linejoin="round"/></svg>API access</div>
+    </div>
+  </div>
+</section>
+
+<!-- PLATFORM OVERVIEW -->
+<section id="platform" class="band">
+  <div class="wrap">
+    <div class="band-head">
+      <div class="sec-label">The platform</div>
+      <h2>The device is the key. The platform is the product.</h2>
+    </div>
+    <div class="journey">
+      <div class="jstep">
+        <div class="j-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3" stroke-linecap="round"/></svg></div>
+        <div class="j-verb">Observe</div><div class="j-name">Track</div>
+        <div class="j-out">Capture what happens, bound to the asset.</div><div class="j-art">→ Location event</div>
+      </div>
+      <div class="jarrow">→</div>
+      <div class="jstep">
+        <div class="j-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="j-verb">Verify</div><div class="j-name">NovaCheck</div>
+        <div class="j-out">Confirm the reading is genuine and unaltered.</div><div class="j-art">→ Verified event</div>
+      </div>
+      <div class="jarrow">→</div>
+      <div class="jstep">
+        <div class="j-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="j-verb">Trust</div><div class="j-name">NovaProof</div>
+        <div class="j-out">Seal it as tamper-evident proof.</div><div class="j-art">→ Sealed record</div>
+      </div>
+      <div class="jarrow">→</div>
+      <div class="jstep">
+        <div class="j-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="6" cy="12" r="2.4"/><circle cx="18" cy="6" r="2.4"/><circle cx="18" cy="18" r="2.4"/><path d="M8 11l8-4M8 13l8 4" stroke-linecap="round"/></svg></div>
+        <div class="j-verb">Share</div><div class="j-name">NovaLink</div>
+        <div class="j-out">One record, referenced by every party.</div><div class="j-art">→ Shared link</div>
+      </div>
+      <div class="jarrow">→</div>
+      <div class="jstep">
+        <div class="j-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M13 3L4 14h7l-1 7 9-11h-7l1-7z" stroke-linejoin="round"/></svg></div>
+        <div class="j-verb">Protect</div><div class="j-name">NovaProtect</div>
+        <div class="j-out">Activate protection the moment it's verified.</div><div class="j-art">→ Protection activated</div>
+      </div>
+      <div class="jarrow">→</div>
+      <div class="jstep">
+        <div class="j-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 18l5-6 4 4 7-9" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="j-verb">Predict</div><div class="j-name">DOST</div>
+        <div class="j-out">See what's likely — early enough to act.</div>
+        <div class="j-art">→ Risk predicted</div>
+      </div>
+    </div>
+    <div class="plat-foot">
+      <div class="plat-philos">Hardware gets you on. The platform is what you stay for.</div>
+      <a class="btn btn-ghost" href="#" style="color:#fff;border-color:rgba(255,255,255,.25)">Explore the platform →</a>
+    </div>
+  </div>
+</section>
+
+<!-- PLATFORM VIEW PREVIEW (static card) -->
+<section class="band" style="background:var(--ink);padding-top:0">
+  <div class="wrap">
+    <div style="text-align:center;margin-bottom:28px">
+      <div style="font-family:var(--sans);font-weight:600;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#7fc6a4;margin-bottom:10px">What you see every day</div>
+      <div style="font-family:var(--display);font-weight:500;font-size:clamp(1.3rem,2.4vw,1.7rem);color:#fff">Every shipment, one clear status.</div>
+    </div>
+    <div style="max-width:440px;margin:0 auto;background:#0f1311;border:1px solid rgba(255,255,255,.12);border-radius:20px;padding:28px 30px;box-shadow:0 30px 70px rgba(0,0,0,.45)">
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:22px">
+        <div>
+          <div style="font-family:var(--mono),monospace;font-size:.8rem;color:#9aa0a0">Shipment #124</div>
+          <div style="font-family:var(--display);font-size:1.5rem;font-weight:500;color:#fff;margin-top:4px">Protected</div>
+        </div>
+        <span style="display:inline-flex;align-items:center;gap:7px;background:rgba(79,174,132,.16);border:1px solid rgba(79,174,132,.4);border-radius:100px;padding:6px 13px;font-size:.78rem;font-weight:500;color:#7fc6a4"><span style="width:7px;height:7px;border-radius:50%;background:#7fc6a4"></span>Active</span>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:22px">
+        <div style="background:rgba(255,255,255,.04);border-radius:11px;padding:14px 16px"><div style="font-size:.72rem;color:#9aa0a0">Risk status</div><div style="font-size:1.3rem;font-weight:500;color:#fff;margin-top:3px">Low</div></div>
+        <div style="background:rgba(255,255,255,.04);border-radius:11px;padding:14px 16px"><div style="font-size:.72rem;color:#9aa0a0">Location</div><div style="font-size:1.05rem;font-weight:500;color:#fff;margin-top:5px">San Francisco</div></div>
+        <div style="background:rgba(255,255,255,.04);border-radius:11px;padding:14px 16px"><div style="font-size:.72rem;color:#9aa0a0">Temperature</div><div style="font-size:1.05rem;font-weight:500;color:#fff;margin-top:5px">Stable</div></div>
+        <div style="background:rgba(255,255,255,.04);border-radius:11px;padding:14px 16px"><div style="font-size:.72rem;color:#9aa0a0">Updated</div><div style="font-size:1.05rem;font-weight:500;color:#fff;margin-top:5px">Just now</div></div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <div style="display:flex;align-items:center;gap:10px;font-size:.9rem;color:#d8dcdc"><span style="width:20px;height:20px;border-radius:6px;background:rgba(79,174,132,.16);color:#7fc6a4;display:flex;align-items:center;justify-content:center"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Verified</div>
+        <div style="display:flex;align-items:center;gap:10px;font-size:.9rem;color:#d8dcdc"><span style="width:20px;height:20px;border-radius:6px;background:rgba(79,174,132,.16);color:#7fc6a4;display:flex;align-items:center;justify-content:center"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Protected</div>
+        <div style="display:flex;align-items:center;gap:10px;font-size:.9rem;color:#d8dcdc"><span style="width:20px;height:20px;border-radius:6px;background:rgba(79,174,132,.16);color:#7fc6a4;display:flex;align-items:center;justify-content:center"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Shared</div>
+        <div style="display:flex;align-items:center;gap:10px;font-size:.9rem;color:#d8dcdc"><span style="width:20px;height:20px;border-radius:6px;background:rgba(79,174,132,.16);color:#7fc6a4;display:flex;align-items:center;justify-content:center"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Predicted</div>
+      </div>
+    </div>
+    <div style="text-align:center;font-size:.76rem;color:#646b6b;margin-top:16px;font-style:italic">Representative platform view — not a live product screenshot.</div>
+  </div>
+</section>
+
+<!-- COMPLETE SOLUTION VISUAL -->
+<section id="solution" class="band">
+  <div class="wrap">
+    <div class="inc-head">
+      <div class="sec-label" style="text-align:center">The complete solution</div>
+      <h2>Device + plan = complete solution.</h2>
+      <p>A device on its own is hardware. Connected to a Novira plan, it becomes visibility, proof, and protection.</p>
+    </div>
+    <div class="sol-eq">
+      <div class="sol-card">
+        <div class="s-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="6" y="2.5" width="12" height="19" rx="3"/><circle cx="12" cy="8" r="2.2"/><path d="M8.5 14h7" stroke-linecap="round"/></svg></div>
+        <div class="s-k">A device</div>
+        <div class="s-d">Captures the signal</div>
+      </div>
+      <div class="sol-op">+</div>
+      <div class="sol-card">
+        <div class="s-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="14" rx="2.5"/><path d="M3 9h18M7 13h6" stroke-linecap="round"/></svg></div>
+        <div class="s-k">A plan</div>
+        <div class="s-d">Adds the intelligence</div>
+      </div>
+      <div class="sol-op">=</div>
+      <div class="sol-card sol-result">
+        <div class="s-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6l7-3z" stroke-linejoin="round"/><path d="M9 11.5l2 2 4-4.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="s-k">Complete solution</div>
+        <div class="s-d">Visibility · proof · protection</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ILLUSTRATIVE SCENARIO -->
+<section class="band" style="padding-top:0">
+  <div class="wrap">
+    <div style="background:var(--ink);border-radius:16px;padding:34px 38px;color:#f4f1e8">
+      <div style="font-family:var(--sans);font-weight:600;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#7fc6a4;margin-bottom:16px">Illustrative scenario · how it comes together</div>
+      <div style="font-family:var(--display);font-size:clamp(1.15rem,2vw,1.5rem);font-weight:400;line-height:1.4;max-width:60ch">A temperature excursion is detected in transit. Novira <em style="font-style:italic;color:#7fc6a4">verifies</em> the event, seals it as <em style="font-style:italic;color:#7fc6a4">proof</em>, shares it with every stakeholder, <em style="font-style:italic;color:#7fc6a4">activates</em> a protection workflow in the moment — and flags the next shipment on that lane as likely to breach, early enough to act.</div>
+      <div style="font-size:.76rem;color:#646b6b;margin-top:18px;font-style:italic">An illustrative example, not a specific customer. It shows how the chain works end to end.</div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT CUSTOMERS GET -->
+<section id="outcomes" class="band" style="background:var(--accent-soft)">
+  <div class="wrap">
+    <div class="band-head" style="text-align:center">
+      <div class="sec-label" style="text-align:center">Outcomes</div>
+      <h2>What you actually get.</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:34px">
+      <div style="background:#fff;border:1px solid var(--line);border-radius:12px;padding:22px 16px;text-align:center"><div style="font-weight:600;font-size:.92rem;margin-bottom:6px;color:var(--ink)">Prevent loss</div><div style="font-size:.8rem;color:var(--ink-2)">Catch issues before they become write-offs.</div></div>
+      <div style="background:#fff;border:1px solid var(--line);border-radius:12px;padding:22px 16px;text-align:center"><div style="font-weight:600;font-size:.92rem;margin-bottom:6px;color:var(--ink)">Detect problems early</div><div style="font-size:.8rem;color:var(--ink-2)">See problems while there's still time to act.</div></div>
+      <div style="background:#fff;border:1px solid var(--line);border-radius:12px;padding:22px 16px;text-align:center"><div style="font-weight:600;font-size:.92rem;margin-bottom:6px;color:var(--ink)">Verify what happened</div><div style="font-size:.8rem;color:var(--ink-2)">Proof, beyond dispute.</div></div>
+      <div style="background:#fff;border:1px solid var(--line);border-radius:12px;padding:22px 16px;text-align:center"><div style="font-weight:600;font-size:.92rem;margin-bottom:6px;color:var(--ink)">Resolve claims faster</div><div style="font-size:.8rem;color:var(--ink-2)">Settle on evidence, not argument.</div></div>
+      <div style="background:#fff;border:1px solid var(--line);border-radius:12px;padding:22px 16px;text-align:center"><div style="font-weight:600;font-size:.92rem;margin-bottom:6px;color:var(--ink)">Predict future risk</div><div style="font-size:.8rem;color:var(--ink-2)">Act on what's likely, before it happens.</div></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FORK -->
+<section id="fork" class="band">
+  <div class="wrap">
+    <div class="band-head">
+      <div class="sec-label">How to buy</div>
+      <h2>Build your solution.</h2>
+      <p>Buy a few units online, or build a quote for a fleet. Either way, you'll leave knowing your device, your plan, and your total.</p>
+    </div>
+    <div class="fork-grid">
+      <div class="fork">
+        <div class="fork-k">Buy online</div>
+        <div class="fork-d">For small orders. Pick your devices and plan, check out today.</div>
+        <a class="btn btn-primary btn-block" href="#">Start an order</a>
+      </div>
+      <div class="fork">
+        <div class="fork-k">Build a quote</div>
+        <div class="fork-d">For fleets. Configure devices, quantities, plan, and protection.</div>
+        <a class="btn btn-primary btn-block" href="#">Build a quote</a>
+      </div>
+      <div class="fork">
+        <div class="fork-k">Talk to sales</div>
+        <div class="fork-d">For enterprise deployments with custom integration and coverage.</div>
+        <a class="btn btn-ghost btn-block" href="#">Contact sales</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST LAYER (reusable) -->
+<section id="trust" class="band" style="background:var(--accent-soft)">
+  <div class="wrap">
+    <div class="band-head" style="text-align:center">
+      <div class="sec-label" style="text-align:center">Why organizations trust Novira</div>
+      <h2>Five layers between a signal and a decision.</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:36px">
+      <div style="background:#fff;border:1px solid var(--line);border-radius:12px;padding:22px 18px;text-align:center">
+        <div style="width:38px;height:38px;margin:0 auto 14px;border-radius:9px;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;color:var(--accent)"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3" stroke-linecap="round"/></svg></div>
+        <div style="font-weight:600;font-size:.95rem;margin-bottom:6px">Sensors</div>
+        <div style="font-size:.82rem;color:var(--ink-2)">Capture what happens, bound to the asset.</div>
+      </div>
+      <div style="background:#fff;border:1px solid var(--line);border-radius:12px;padding:22px 18px;text-align:center">
+        <div style="width:38px;height:38px;margin:0 auto 14px;border-radius:9px;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;color:var(--accent)"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div style="font-weight:600;font-size:.95rem;margin-bottom:6px">Verification</div>
+        <div style="font-size:.82rem;color:var(--ink-2)">Confirm each reading is genuine and unaltered.</div>
+      </div>
+      <div style="background:#fff;border:1px solid var(--line);border-radius:12px;padding:22px 18px;text-align:center">
+        <div style="width:38px;height:38px;margin:0 auto 14px;border-radius:9px;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;color:var(--accent)"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z" stroke-linejoin="round"/></svg></div>
+        <div style="font-weight:600;font-size:.95rem;margin-bottom:6px">Sealed records</div>
+        <div style="font-size:.82rem;color:var(--ink-2)">Tamper-evident proof that holds up.</div>
+      </div>
+      <div style="background:#fff;border:1px solid var(--line);border-radius:12px;padding:22px 18px;text-align:center">
+        <div style="width:38px;height:38px;margin:0 auto 14px;border-radius:9px;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;color:var(--accent)"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M13 3L4 14h7l-1 7 9-11h-7l1-7z" stroke-linejoin="round"/></svg></div>
+        <div style="font-weight:600;font-size:.95rem;margin-bottom:6px">Protection workflows</div>
+        <div style="font-size:.82rem;color:var(--ink-2)">Act the moment an event is verified.</div>
+      </div>
+      <div style="background:#fff;border:1px solid var(--line);border-radius:12px;padding:22px 18px;text-align:center">
+        <div style="width:38px;height:38px;margin:0 auto 14px;border-radius:9px;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;color:var(--accent)"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 18l5-6 4 4 7-9" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div style="font-weight:600;font-size:.95rem;margin-bottom:6px">Predictive intelligence</div>
+        <div style="font-size:.82rem;color:var(--ink-2)">See what's likely — early enough to act.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BUILT FOR (reusable social-proof strip) -->
+<section class="band" style="padding-top:0">
+  <div class="wrap">
+    <div style="text-align:center;font-family:var(--sans);font-weight:600;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-3);margin-bottom:26px">Used across — industries where proof matters</div>
+    <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center">
+      <span style="display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:100px;padding:10px 20px;font-size:.92rem;color:var(--ink-2)"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="var(--accent)" stroke-width="1.7"><rect x="3" y="7" width="13" height="10" rx="1"/><path d="M16 10h4l1 3v4h-5" stroke-linejoin="round"/><circle cx="7" cy="18" r="1.6"/><circle cx="18" cy="18" r="1.6"/></svg>Logistics</span>
+      <span style="display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:100px;padding:10px 20px;font-size:.92rem;color:var(--ink-2)"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="var(--accent)" stroke-width="1.7"><path d="M12 3v18M6 8l6-4 6 4M6 8v8l6 4 6-4V8" stroke-linejoin="round"/></svg>Cold chain</span>
+      <span style="display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:100px;padding:10px 20px;font-size:.92rem;color:var(--ink-2)"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="var(--accent)" stroke-width="1.7"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7l8-4z" stroke-linejoin="round"/></svg>Insurance</span>
+      <span style="display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:100px;padding:10px 20px;font-size:.92rem;color:var(--ink-2)"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="var(--accent)" stroke-width="1.7"><path d="M4 20V10l5-3v3l5-3v3l6-3v13z" stroke-linejoin="round"/></svg>Manufacturing</span>
+      <span style="display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:100px;padding:10px 20px;font-size:.92rem;color:var(--ink-2)"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="var(--accent)" stroke-width="1.7"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7l8-4z" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke-linecap="round"/></svg>Critical assets</span>
+    </div>
+    <div style="text-align:center;font-family:var(--sans);font-weight:600;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-3);margin:38px 0 22px">Built for enterprise</div>
+    <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center">
+      <span style="display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:100px;padding:10px 20px;font-size:.92rem;color:var(--ink-2)"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="var(--accent)" stroke-width="1.7"><path d="M8 8l-4 4 4 4M16 8l4 4-4 4M13 5l-2 14" stroke-linecap="round" stroke-linejoin="round"/></svg>Built to integrate</span>
+      <span style="display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:100px;padding:10px 20px;font-size:.92rem;color:var(--ink-2)"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="var(--accent)" stroke-width="1.7"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke-linecap="round"/></svg>Tamper-evident security</span>
+      <span style="display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:100px;padding:10px 20px;font-size:.92rem;color:var(--ink-2)"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="var(--accent)" stroke-width="1.7"><circle cx="9" cy="8" r="3"/><path d="M3 19a6 6 0 0 1 12 0M16 6l2 2 4-4" stroke-linecap="round" stroke-linejoin="round"/></svg>Role-based access</span>
+      <span style="display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:100px;padding:10px 20px;font-size:.92rem;color:var(--ink-2)"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="var(--accent)" stroke-width="1.7"><path d="M5 4h14v16H5z" stroke-linejoin="round"/><path d="M8 9h8M8 13h8M8 17h5" stroke-linecap="round"/></svg>Audit trails</span>
+      <span style="display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:100px;padding:10px 20px;font-size:.92rem;color:var(--ink-2)"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="var(--accent)" stroke-width="1.7"><path d="M4 18l5-6 4 4 7-9" stroke-linecap="round" stroke-linejoin="round"/></svg>AI risk intelligence</span>
+    </div>
+    <div style="text-align:center;font-size:.74rem;color:var(--ink-3);margin-top:18px;font-style:italic">Platform capabilities and design principles. Some enterprise features are on the roadmap — talk to us about your requirements.</div>
+  </div>
+</section>
+
+<!-- CLOSING -->
+<section id="close">
+  <div class="wrap">
+    <h2>Know what happened.<br><em>Prove</em> what happened.<br>Act before it happens again.</h2>
+    <p>Start with a device, choose your plan, and see your total in minutes.</p>
+    <div class="hero-ctas">
+      <a class="btn btn-primary btn-lg" href="#fork">Build your solution →</a>
+      <a class="btn btn-ghost btn-lg" href="#plans">See pricing</a>
+    </div>
+  </div>
+</section>
+
+<footer>Novira · Trust what you track. Know what happens next.</footer>
+
+<div class="mbar">
+  <a class="btn btn-ghost btn-block" href="#hardware">Buy</a>
+  <a class="btn btn-primary btn-block" href="#fork">Build your solution</a>
+</div>
+<script src="novira-prototype.js"></script>
+</body>
+</html>

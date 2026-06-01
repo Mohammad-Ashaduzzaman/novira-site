@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Checkout — Novira</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Spline+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#fbfaf7;--surface:#ffffff;--surface-2:#f4f2ec;
+  --ink:#15171c;--ink-2:#54585f;--ink-3:#8b8f97;
+  --line:#e7e4dc;--line-2:#d9d5ca;
+  --accent:#0f6e56;--accent-deep:#0a4f3e;--accent-soft:#e3f1ea;--gold:#b8761a;
+  --display:"Fraunces",Georgia,serif;--sans:"Spline Sans",system-ui,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:400;line-height:1.6}
+a{text-decoration:none;color:inherit}
+.btn{font-family:var(--sans);font-weight:500;font-size:14px;padding:13px 26px;border-radius:8px;cursor:pointer;border:1px solid transparent;display:inline-flex;align-items:center;justify-content:center;gap:8px;transition:transform .25s,background .25s,border-color .25s,color .25s}
+.btn-primary{background:var(--accent);color:#fff}.btn-primary:hover{background:var(--accent-deep);transform:translateY(-1px)}
+.btn-ghost{background:transparent;color:var(--ink);border-color:var(--line-2)}.btn-ghost:hover{border-color:var(--ink-3)}
+.btn-block{width:100%}.btn:disabled{opacity:.5;cursor:not-allowed;transform:none}
+nav{position:sticky;top:0;z-index:50;background:rgba(251,250,247,.88);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1180px;margin:0 auto;padding:0 28px;height:64px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-family:var(--display);font-weight:600;font-size:22px}.logo span{color:var(--accent)}
+.nav-back{font-size:14px;color:var(--ink-2);font-weight:500}.nav-back:hover{color:var(--ink)}
+.secure{font-size:12px;color:var(--ink-3);display:flex;align-items:center;gap:6px}
+.secure svg{width:14px;height:14px;color:var(--accent)}
+
+.shell{max-width:980px;margin:0 auto;padding:44px 28px 100px;display:grid;grid-template-columns:1fr 360px;gap:36px;align-items:start}
+.head .sec-label{font-family:var(--sans);font-weight:600;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+.head h1{font-family:var(--display);font-weight:500;font-size:clamp(1.9rem,4vw,2.6rem);letter-spacing:-.02em;line-height:1.05}
+.head p{color:var(--ink-2);font-weight:300;margin-top:10px;max-width:480px}
+
+.sec-card{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:28px 30px;margin-top:22px}
+.sc-h{display:flex;align-items:center;gap:10px;margin-bottom:6px}
+.sc-n{width:24px;height:24px;border-radius:50%;background:var(--accent-soft);color:var(--accent-deep);font-weight:600;font-size:12px;display:flex;align-items:center;justify-content:center}
+.sc-t{font-family:var(--display);font-size:1.2rem;font-weight:600}
+.sc-sub{font-size:.85rem;color:var(--ink-3);margin-bottom:20px;margin-left:34px}
+.field{margin-bottom:16px}
+.field label{display:block;font-size:.84rem;font-weight:500;color:var(--ink-2);margin-bottom:7px}
+.field label .req{color:var(--accent)}
+.field input,.field select{width:100%;border:1.5px solid var(--line-2);border-radius:10px;padding:12px 14px;font-family:var(--sans);font-size:.96rem;color:var(--ink);background:var(--surface);transition:border-color .2s}
+.field input:focus,.field select:focus{outline:none;border-color:var(--accent)}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.field-row-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px}
+@media(max-width:560px){.field-row,.field-row-3{grid-template-columns:1fr}}
+
+/* subscription notice — the honesty hinge */
+.sub-notice{background:var(--accent-soft);border:1px solid #c7e6d8;border-radius:14px;padding:20px 22px;margin-top:22px;display:flex;gap:14px;align-items:flex-start}
+.sub-notice svg{width:22px;height:22px;color:var(--accent);flex-shrink:0;margin-top:2px}
+.sub-notice .sn-t{font-weight:600;font-size:1rem;margin-bottom:4px}
+.sub-notice .sn-d{font-size:.88rem;color:var(--ink-2);font-weight:300}
+
+.pay-placeholder{border:1.5px dashed var(--line-2);border-radius:12px;padding:18px;text-align:center;color:var(--ink-3);font-size:.86rem;background:var(--surface-2)}
+.pay-placeholder b{color:var(--ink-2);display:block;margin-bottom:4px}
+
+/* SUMMARY */
+.summary{position:sticky;top:88px;background:var(--surface);border:1px solid var(--line);border-radius:18px;overflow:hidden}
+.sum-h{background:var(--ink);color:#fff;padding:20px 22px}
+.sum-h .st{font-family:var(--display);font-size:1.2rem;font-weight:600}.sum-h .ss{font-size:.8rem;color:#a9adb6;margin-top:2px}
+.sum-body{padding:20px 22px}
+.sum-row{display:flex;justify-content:space-between;align-items:baseline;padding:10px 0;border-bottom:1px solid var(--line);font-size:.9rem}
+.sum-row:last-of-type{border-bottom:none}
+.sum-row .lbl{color:var(--ink-2)}.sum-row .lbl small{display:block;color:var(--ink-3);font-size:.76rem}
+.sum-row .val{font-weight:600;text-align:right;white-space:nowrap}
+.charge-now{margin-top:6px;padding-top:14px;border-top:2px solid var(--ink)}
+.charge-now .cn-lbl{font-size:.74rem;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-3);font-weight:600}
+.charge-now .cn-row{display:flex;justify-content:space-between;align-items:baseline;margin-top:6px}
+.charge-now .cn-v{font-family:var(--display);font-weight:600;font-size:1.7rem}
+.then{margin-top:14px;font-size:.82rem;color:var(--ink-2);background:var(--surface-2);border-radius:10px;padding:12px 14px}
+.then b{color:var(--ink)}
+.then .indic{color:var(--gold);font-weight:600;font-size:.76rem}
+.sum-fine{font-size:.72rem;color:var(--ink-3);padding:0 22px 20px;text-align:center;line-height:1.5}
+
+/* SUCCESS */
+.success{max-width:600px;margin:80px auto;text-align:center;padding:0 28px}
+.success.hidden{display:none}
+.success .s-ic{width:72px;height:72px;border-radius:50%;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;margin:0 auto 26px}
+.success .s-ic svg{width:36px;height:36px;color:var(--accent)}
+.success h2{font-family:var(--display);font-weight:500;font-size:clamp(1.8rem,4vw,2.5rem);letter-spacing:-.02em;margin-bottom:14px}
+.success p{color:var(--ink-2);font-weight:300;margin-bottom:8px}
+.success .s-ref{font-family:var(--display);font-weight:600;font-size:1.1rem;margin:18px 0;color:var(--ink)}
+.success .s-next{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px;text-align:left;margin:26px 0;font-size:.92rem;color:var(--ink-2)}
+.success .s-next b{color:var(--ink);display:block;margin-bottom:8px;font-weight:600}
+.success .s-next ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+.success .s-next li{display:flex;gap:9px;align-items:flex-start}
+.success .s-next svg{width:16px;height:16px;color:var(--accent);flex-shrink:0;margin-top:3px}
+.main.hidden{display:none}
+footer{background:var(--surface-2);border-top:1px solid var(--line);padding:36px 0;text-align:center;color:var(--ink-3);font-size:13px}
+@media(max-width:860px){.shell{grid-template-columns:1fr}.summary{position:static;order:-1}}
+</style>
+</head>
+<body>
+
+<nav><div class="nav-in"><div class="logo">Nov<span>ira</span></div><div class="secure"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>Secure checkout</div></div></nav>
+
+<div class="main" id="main">
+  <div class="shell">
+    <div class="formside">
+      <div class="head">
+        <div class="sec-label">Checkout</div>
+        <h1>Complete your order.</h1>
+        <p>Pay for your devices today. Your platform subscription activates with your account — no surprise charges.</p>
+      </div>
+
+      <!-- 1 CONTACT -->
+      <div class="sec-card">
+        <div class="sc-h"><span class="sc-n">1</span><span class="sc-t">Account &amp; contact</span></div>
+        <div class="sc-sub">We'll create your Novira account with this email.</div>
+        <div class="field-row">
+          <div class="field"><label>First name <span class="req">*</span></label><input id="f_first" type="text" oninput="validate()"></div>
+          <div class="field"><label>Last name <span class="req">*</span></label><input id="f_last" type="text" oninput="validate()"></div>
+        </div>
+        <div class="field"><label>Work email <span class="req">*</span></label><input id="f_email" type="email" oninput="validate()"></div>
+        <div class="field"><label>Company</label><input id="f_company" type="text"></div>
+      </div>
+
+      <!-- 2 SHIPPING -->
+      <div class="sec-card">
+        <div class="sc-h"><span class="sc-n">2</span><span class="sc-t">Shipping</span></div>
+        <div class="sc-sub">Where should we send your devices?</div>
+        <div class="field"><label>Address <span class="req">*</span></label><input id="f_addr" type="text" oninput="validate()"></div>
+        <div class="field-row-3">
+          <div class="field"><label>City <span class="req">*</span></label><input id="f_city" type="text" oninput="validate()"></div>
+          <div class="field"><label>State / Region</label><input id="f_state" type="text"></div>
+          <div class="field"><label>Postal code <span class="req">*</span></label><input id="f_zip" type="text" oninput="validate()"></div>
+        </div>
+        <div class="field"><label>Country <span class="req">*</span></label><select id="f_country" onchange="validate()"><option>United States</option><option>Canada</option><option>United Kingdom</option><option>Other</option></select></div>
+      </div>
+
+      <!-- 3 PAYMENT -->
+      <div class="sec-card">
+        <div class="sc-h"><span class="sc-n">3</span><span class="sc-t">Payment</span></div>
+        <div class="sc-sub">You're paying for hardware today. Charged once.</div>
+        <div class="pay-placeholder">
+          <b>Secure payment field</b>
+          Card payment is processed here by Novira's payment provider.<br>This is where the live payment integration connects.
+        </div>
+      </div>
+
+      <!-- SUBSCRIPTION NOTICE — the honesty hinge -->
+      <div class="sub-notice">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01" stroke-linecap="round"/></svg>
+        <div>
+          <div class="sn-t">Your platform subscription is set up separately</div>
+          <div class="sn-d">We confirm your plan and final subscription pricing when your account is activated — you're not billed for the subscription at checkout. Only your hardware is charged today.</div>
+        </div>
+      </div>
+
+      <button class="btn btn-primary btn-block" id="payBtn" onclick="placeOrder()" disabled style="margin-top:22px">Pay for hardware →</button>
+      <div class="sum-fine" style="margin-top:12px">By placing this order you agree to Novira's terms. Hardware is charged once, today.</div>
+    </div>
+
+    <!-- SUMMARY -->
+    <aside>
+      <div class="summary">
+        <div class="sum-h"><div class="st">Order summary</div><div class="ss">Carried from your build</div></div>
+        <div class="sum-body">
+          <div id="sumLines"></div>
+          <div class="charge-now">
+            <div class="cn-lbl">Charged today — hardware</div>
+            <div class="cn-row"><span>Total</span><span class="cn-v" id="hwTotal">$0</span></div>
+          </div>
+          <div class="then">
+            <b>Then, after activation:</b> your <span id="planName">Navigator</span> subscription
+            <span id="moLine">at $24 / device / mo <span class="indic">(indicative — confirmed at activation)</span></span>.
+          </div>
+        </div>
+        <div class="sum-fine">Hardware prices are final. Subscription pricing is confirmed when your account is activated — not charged here.</div>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<!-- SUCCESS -->
+<div class="success hidden" id="success">
+  <div class="s-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+  <h2>Order confirmed.</h2>
+  <p>Thanks, <span id="okName">there</span> — your devices are on the way.</p>
+  <div class="s-ref">Order: <span id="okRef">NV-000000</span></div>
+  <div class="s-next">
+    <b>What happens next</b>
+    <ul>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>We'll email your order confirmation and shipping details.</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>Your Novira account is created — we'll confirm your plan and subscription pricing at activation.</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>Once your devices arrive, connect them and you're live.</li>
+    </ul>
+  </div>
+  <a class="btn btn-ghost" href="#">Go to my account</a>
+</div>
+
+<footer>Novira · Trust what you track. Know what happens next.</footer>
+
+<script>
+function getParams(){
+  var p=new URLSearchParams(window.location.search);
+  return {
+    device:p.get('device')||'NovaFive',
+    price:parseInt(p.get('price'),10)||199,
+    qty:parseInt(p.get('qty'),10)||5,
+    plan:p.get('plan')||'Navigator',
+    planMo:p.get('plan')==='Atlas'?0:(parseInt(p.get('mo'),10)||24)
+  };
+}
+var cfg=getParams();
+function money(n){return '$'+n.toLocaleString('en-US');}
+
+function renderSummary(){
+  var hw=cfg.price*cfg.qty;
+  var rows='';
+  rows+='<div class="sum-row"><span class="lbl">'+cfg.device+'<small>'+cfg.qty+' × '+money(cfg.price)+'</small></span><span class="val">'+money(hw)+'</span></div>';
+  rows+='<div class="sum-row"><span class="lbl">Shipping<small>calculated at activation</small></span><span class="val">—</span></div>';
+  document.getElementById('sumLines').innerHTML=rows;
+  document.getElementById('hwTotal').textContent=money(hw);
+  document.getElementById('planName').textContent=cfg.plan;
+  if(cfg.plan==='Atlas'){
+    document.getElementById('moLine').innerHTML='at custom volume pricing <span class="indic">(confirmed at activation)</span>';
+  } else {
+    document.getElementById('moLine').innerHTML='at '+money(cfg.planMo)+' / device / mo <span class="indic">(indicative — confirmed at activation)</span>';
+  }
+}
+renderSummary();
+
+function validate(){
+  var v=function(id){return document.getElementById(id).value.trim();};
+  var ok=v('f_first')&&v('f_last')&&/\S+@\S+\.\S+/.test(v('f_email'))&&v('f_addr')&&v('f_city')&&v('f_zip');
+  document.getElementById('payBtn').disabled=!ok;
+}
+function placeOrder(){
+  var ref='NV-'+Math.floor(100000+Math.random()*900000);
+  document.getElementById('okName').textContent=document.getElementById('f_first').value.trim()||'there';
+  document.getElementById('okRef').textContent=ref;
+  document.getElementById('main').classList.add('hidden');
+  document.getElementById('success').classList.remove('hidden');
+  window.scrollTo(0,0);
+}
+</script>
+<script src="novira-prototype.js"></script>
+</body>
+</html>
