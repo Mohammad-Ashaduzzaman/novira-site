@@ -398,7 +398,7 @@
         allLabel: 'Open resource center',
         cols: [
           ['Articles', [
-            [pages.blog, 'Recent Articles', 'Latest Novira intelligence and field notes'],
+            [pages.blog, 'Blog Home', 'Main blog page and article index'],
             [pages.trackingBlog, 'Verification Series', 'Tracking, proof, and chain-of-custody'],
             [pages.claimsBlog, 'Claims & Insurance', 'Claims friction and parametric protection'],
             [pages.tempBlog, 'Cold Chain Risk', 'Temperature excursions and pharma records']
@@ -465,7 +465,7 @@
           mobileGroup('Solutions', [[pages.logistics, 'Logistics'], [pages.coldChain, 'Cold Chain'], [pages.insurance, 'Insurance'], [pages.manufacturing, 'Manufacturing'], [pages.assetProtection, 'Asset Protection']]) +
           mobileGroup('Platform', [[pages.platform, 'Platform overview'], [pages.track, 'Track'], [pages.novacheck, 'NovaCheck'], [pages.novaproof, 'NovaProof'], [pages.novalink, 'NovaLink'], [pages.novaprotect, 'NovaProtect'], [pages.dost, 'DOST']]) +
           mobileGroup('Products', [[pages.products, 'Products'], [pages.compare, 'Compare devices'], [pages.pricing, 'Pricing'], [pages.build, 'Build your solution'], [pages.quote, 'Request a quote']]) +
-          mobileGroup('Resources', [[pages.resources, 'Resource center'], [pages.blog, 'Recent articles'], [pages.trackingBlog, 'Verification series'], [pages.claimsBlog, 'Claims & insurance'], [pages.docs, 'Documentation'], [pages.useCases, 'Use cases']]) +
+          mobileGroup('Resources', [[pages.resources, 'Resource center'], [pages.blog, 'Blog home'], [pages.trackingBlog, 'Verification series'], [pages.claimsBlog, 'Claims & insurance'], [pages.docs, 'Documentation'], [pages.useCases, 'Use cases']]) +
           mobileGroup('Documentation', [[pages.gettingStarted, 'Getting Started'], [pages.productsOverview, 'Products Overview'], [pages.useCases, 'Use Cases'], [pages.security, 'Security & Trust'], [pages.faq, 'FAQ'], [pages.api, 'API & Integrations'], [pages.portal, 'Developer Portal']]) +
           mobileGroup('Use Cases', [[pages.coldUse, 'Cold Chain Excursion'], [pages.insuranceUse, 'Insurance Validation'], [pages.manufacturingUse, 'Manufacturing Compliance'], [pages.theftUse, 'Theft Prevention'], [pages.journey, 'High Risk Shipment']]) +
           mobileGroup('Company', [[pages.about, 'About'], [pages.contact, 'Contact']]) +
