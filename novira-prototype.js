@@ -51,6 +51,8 @@
     protectLoss: 'protect-against-loss.html'
   };
 
+  var campaignPages = [pages.happened, pages.next, pages.protectLoss];
+
   function normalize(value) {
     return (value || '')
       .replace(/[\u2190-\u21ff]/g, ' ')
@@ -86,8 +88,9 @@
 
   function currentSection() {
     var file = currentFile();
+    if (campaignPages.indexOf(file) !== -1) return '';
     if ([pages.solutions, pages.logistics, pages.coldChain, pages.insurance, pages.manufacturing, pages.assetProtection, pages.useCases, pages.coldUse, pages.insuranceUse, pages.manufacturingUse, pages.theftUse].indexOf(file) !== -1) return 'solutions';
-    if ([pages.platform, pages.journey, pages.track, pages.novacheck, pages.novaproof, pages.novalink, pages.novaprotect, pages.dost, pages.happened, pages.next, pages.protectLoss].indexOf(file) !== -1) return 'platform';
+    if ([pages.platform, pages.journey, pages.track, pages.novacheck, pages.novaproof, pages.novalink, pages.novaprotect, pages.dost].indexOf(file) !== -1) return 'platform';
     if ([pages.products, pages.compare, pages.build, pages.checkout, pages.quote].indexOf(file) !== -1) return 'products';
     if (file === pages.pricing) return 'pricing';
     if ([pages.blog, pages.cargoBlog, pages.chainBlog, pages.parametricBlog, pages.nobodyBlog, pages.tempBlog, pages.trackingBlog, pages.claimsBlog].indexOf(file) !== -1) return 'blog';
@@ -645,6 +648,109 @@
     });
   }
 
+  function campaignType() {
+    var file = currentFile();
+    if (file === pages.happened) return 'truth_verification_novaproof';
+    if (file === pages.next) return 'prediction_ai_dost';
+    if (file === pages.protectLoss) return 'protection_risk_novaprotect';
+    return '';
+  }
+
+  function trackingMeta(name) {
+    var meta = document.querySelector('meta[name="' + name + '"]');
+    return meta ? (meta.getAttribute('content') || '').trim() : '';
+  }
+
+  function ensureCampaignMeta() {
+    if (!document.querySelector('meta[name="robots"]')) {
+      var robots = document.createElement('meta');
+      robots.setAttribute('name', 'robots');
+      robots.setAttribute('content', 'index,follow');
+      document.head.appendChild(robots);
+    }
+    if (!document.querySelector('meta[name="novira-campaign-type"]')) {
+      var campaign = document.createElement('meta');
+      campaign.setAttribute('name', 'novira-campaign-type');
+      campaign.setAttribute('content', campaignType());
+      document.head.appendChild(campaign);
+    }
+  }
+
+  function ensureAnalyticsRuntime() {
+    window.dataLayer = window.dataLayer || [];
+    if (typeof window.gtag !== 'function') {
+      window.gtag = function () { window.dataLayer.push(arguments); };
+    }
+    var gaId = trackingMeta('novira-ga-id') || window.NOVIRA_GA_ID || '';
+    if (gaId && !document.querySelector('script[data-novira-ga]')) {
+      var script = document.createElement('script');
+      script.async = true;
+      script.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(gaId);
+      script.setAttribute('data-novira-ga', gaId);
+      document.head.appendChild(script);
+      window.gtag('js', new Date());
+      window.gtag('config', gaId, {
+        page_path: window.location.pathname,
+        page_title: document.title
+      });
+    }
+    window.gtag('event', 'campaign_page_view', {
+      campaign_page: currentFile(),
+      campaign_type: campaignType()
+    });
+  }
+
+  function campaignCtaLabel(anchor) {
+    var explicit = anchor.getAttribute('data-campaign-cta');
+    if (explicit) return explicit;
+    var label = normalize(anchor.textContent);
+    var href = anchor.getAttribute('href') || '';
+    if (href.indexOf(pages.build) !== -1 || label.indexOf('build your solution') !== -1) return 'build';
+    if (href.indexOf(pages.quote) !== -1 || label.indexOf('request quote') !== -1) return 'request_quote';
+    if (label.indexOf('talk to sales') !== -1 || label.indexOf('talk to us') !== -1) return 'talk_sales';
+    return '';
+  }
+
+  function trackCampaignCta(kind, anchor) {
+    var eventName = {
+      build: 'build_your_solution_conversion',
+      request_quote: 'request_quote_conversion',
+      talk_sales: 'talk_to_sales_conversion'
+    }[kind];
+    if (!eventName) return;
+    var payload = {
+      campaign_page: currentFile(),
+      campaign_type: campaignType(),
+      cta_label: (anchor.textContent || '').trim(),
+      cta_href: anchor.getAttribute('href') || ''
+    };
+    window.gtag('event', eventName, payload);
+    var sendTo = trackingMeta('novira-ads-' + kind.replace('_', '-') + '-conversion');
+    if (sendTo) {
+      window.gtag('event', 'conversion', {
+        send_to: sendTo,
+        campaign_page: currentFile(),
+        event_category: 'Campaign CTA',
+        event_label: eventName
+      });
+    }
+  }
+
+  function wireCampaignLandingPages() {
+    if (campaignPages.indexOf(currentFile()) === -1) return;
+    document.body.classList.add('campaign-landing-page');
+    ensureCampaignMeta();
+    ensureAnalyticsRuntime();
+    document.querySelectorAll('a').forEach(function (anchor) {
+      var kind = campaignCtaLabel(anchor);
+      if (!kind) return;
+      anchor.setAttribute('data-campaign-cta', kind);
+      anchor.addEventListener('click', function () {
+        trackCampaignCta(kind, anchor);
+      });
+    });
+  }
+
   addPrototypeStyle();
   wirePlaceholderLinks();
   injectUnifiedNav();
@@ -652,4 +758,5 @@
   markActiveLinks();
   wireBuilderFlow();
   wirePrototypeStubs();
+  wireCampaignLandingPages();
 }());
