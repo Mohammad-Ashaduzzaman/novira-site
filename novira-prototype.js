@@ -364,8 +364,7 @@
           ['Capabilities', [
             [pages.novalink, 'NovaLink', 'Share one trusted version with every party'],
             [pages.novaprotect, 'NovaProtect', 'Activate response after verified events'],
-            [pages.dost, 'DOST', 'Predict likely risk while there is still time'],
-            [pages.security, 'Security & trust', 'How the records stay credible']
+            [pages.dost, 'DOST', 'Predict likely risk while there is still time']
           ]]
         ]
       },
@@ -396,14 +395,14 @@
         all: pages.resources,
         allLabel: 'Open resource center',
         cols: [
-          ['Resource library', [
+          ['Documentation', [
             [pages.docs, 'Documentation', 'Start here, setup, platform, products, trust'],
+            [pages.security, 'Security & trust', 'Verification, integrity, and evidence model'],
             [pages.gettingStarted, 'Getting started', 'First deployment and account setup'],
             [pages.useCases, 'Use cases', 'Real-world scenarios and outcomes'],
             [pages.faq, 'FAQ', 'Answers for common buying and platform questions']
           ]],
           ['Team & company', [
-            [pages.security, 'Security & trust', 'Verification, integrity, and evidence model'],
             [pages.about, 'About Novira', 'Company story and operating philosophy'],
             [pages.login, 'Customer portal', 'Prototype account and operations view'],
             [pages.quote, 'Talk to the team', 'Contact a solutions expert']
