@@ -371,16 +371,14 @@
         all: pages.products,
         allLabel: 'Explore products',
         cols: [
-          ['Shop', [
-            [pages.products, 'Products', 'Device family and platform plans'],
-            [pages.compare, 'Compare devices', 'Side-by-side specs and fit'],
+          ['Product paths', [
+            [pages.compare, 'Compare Devices', 'Side-by-side specs and fit'],
             [pages.pricing, 'Pricing', 'Hardware and platform plan guidance'],
-            [pages.checkout, 'Checkout', 'Prototype online order flow']
+            [pages.build, 'Build your solution', 'Configure devices, plan, and protection']
           ]],
-          ['Plan', [
-            [pages.build, 'Build your solution', 'Configure devices, plan, and protection'],
-            [pages.quote, 'Request a quote', 'For fleets, coverage, and enterprise needs'],
-            [pages.productsOverview, 'Products overview', 'Documentation for product selection']
+          ['Product paths', [
+            [pages.checkout, 'Checkout', 'Prototype online order flow'],
+            [pages.quote, 'Request Quote', 'For fleets, coverage, and enterprise needs']
           ]]
         ]
       },
