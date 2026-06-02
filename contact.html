@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Novira</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,400i&family=Spline+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0d0f0e;--bg-2:#111513;--card:#14171a;
+  --ink:#f4f1e8;--muted:#a8a89e;--soft:#73736b;
+  --line:rgba(244,241,232,.12);--seal:#4fae84;--gold:#c9a25a;
+  --display:"Fraunces",Georgia,serif;--sans:"Spline Sans",system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:300;line-height:1.65;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1120px;margin:0 auto;padding:0 32px}
+.hero{min-height:72vh;display:flex;align-items:center;padding:96px 0 70px;background:radial-gradient(circle at 70% 20%,rgba(79,174,132,.16),transparent 34%),linear-gradient(180deg,#0d0f0e 0%,#101311 100%)}
+.eyebrow{font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--seal);margin-bottom:18px}
+h1{font-family:var(--display);font-size:clamp(2.9rem,7vw,5.8rem);line-height:.98;font-weight:500;letter-spacing:-.03em;max-width:760px}
+h1 em{font-style:italic;color:var(--seal)}
+.lead{font-size:clamp(1.05rem,1.8vw,1.28rem);color:var(--muted);max-width:620px;margin-top:24px}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
+.btn{display:inline-flex;align-items:center;justify-content:center;border-radius:8px;padding:13px 22px;font-size:14px;font-weight:600;border:1px solid var(--line);transition:transform .25s,border-color .25s,background .25s}
+.btn:hover{transform:translateY(-2px);border-color:rgba(244,241,232,.28)}
+.btn-primary{background:var(--seal);border-color:var(--seal);color:#06140e}
+.btn-secondary{background:transparent;color:var(--ink)}
+.band{padding:78px 0;border-top:1px solid var(--line)}
+.section-head{max-width:660px;margin-bottom:28px}
+.section-head h2{font-family:var(--display);font-size:clamp(1.9rem,4vw,3rem);font-weight:500;line-height:1.08;letter-spacing:-.02em}
+.section-head p{color:var(--muted);margin-top:12px}
+.contact-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.contact-card{display:grid;align-content:start;gap:10px;min-height:214px;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:24px;transition:transform .25s,border-color .25s}
+.contact-card:hover{transform:translateY(-3px);border-color:rgba(79,174,132,.38)}
+.card-kicker{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+.contact-card h3{font-family:var(--display);font-size:1.35rem;font-weight:500;line-height:1.15}
+.contact-card p{color:var(--muted);font-size:.94rem}
+.card-link{color:var(--seal);font-size:.9rem;font-weight:700;margin-top:auto}
+.split{display:grid;grid-template-columns:.9fr 1.1fr;gap:28px;align-items:start}
+.panel{border:1px solid var(--line);border-radius:8px;background:var(--bg-2);padding:28px}
+.panel h3{font-family:var(--display);font-size:1.55rem;font-weight:500;margin-bottom:12px}
+.panel p,.panel li{color:var(--muted)}
+.panel ul{list-style:none;display:grid;gap:12px;margin-top:18px}
+.panel li{display:flex;gap:10px}
+.panel li:before{content:"";width:7px;height:7px;border-radius:50%;background:var(--seal);flex:0 0 auto;margin-top:10px}
+footer{border-top:1px solid var(--line);padding:34px 0;text-align:center;color:var(--soft);font-size:13px}
+@media(max-width:940px){.contact-grid{grid-template-columns:1fr 1fr}.split{grid-template-columns:1fr}}
+@media(max-width:560px){.wrap{padding:0 22px}.hero{min-height:auto;padding:92px 0 56px}.contact-grid{grid-template-columns:1fr}.cta-row{display:grid}}
+</style>
+</head>
+<body>
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <div class="eyebrow">Contact Novira</div>
+      <h1>Talk with the team building <em>trusted movement.</em></h1>
+      <p class="lead">Whether you are planning a pilot, pricing a fleet deployment, validating a claim workflow, or exploring a partnership, start here.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="build-your-solution.html">Build your solution</a>
+        <a class="btn btn-secondary" href="request-quote.html">Request quote</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Start with the right path</div>
+        <h2>Choose the conversation that matches where you are.</h2>
+        <p>These paths keep the prototype direct: sales and deployment requests go to quote, product fit starts in the builder, and technical questions stay close to documentation.</p>
+      </div>
+      <div class="contact-grid">
+        <a class="contact-card" href="request-quote.html">
+          <div class="card-kicker">Sales</div>
+          <h3>Talk to Sales</h3>
+          <p>For fleet deployments, commercial fit, pilot planning, and protection workflows.</p>
+          <span class="card-link">Request quote</span>
+        </a>
+        <a class="contact-card" href="build-your-solution.html">
+          <div class="card-kicker">Solution</div>
+          <h3>Build a Fit</h3>
+          <p>Configure device, plan, quantity, and coverage needs before speaking with Novira.</p>
+          <span class="card-link">Open builder</span>
+        </a>
+        <a class="contact-card" href="docs.html">
+          <div class="card-kicker">Support</div>
+          <h3>Documentation</h3>
+          <p>Find setup guidance, API notes, product details, security notes, and FAQs.</p>
+          <span class="card-link">Open docs</span>
+        </a>
+        <a class="contact-card" href="about.html">
+          <div class="card-kicker">Company</div>
+          <h3>About Novira</h3>
+          <p>Learn why Novira exists and how the platform turns physical events into proof.</p>
+          <span class="card-link">Meet Novira</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap split">
+      <div class="panel">
+        <h3>Best first step</h3>
+        <p>If you are not sure where to go, start with Build Your Solution. It turns your use case into a concrete configuration before the sales conversation.</p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="build-your-solution.html">Build your solution</a>
+        </div>
+      </div>
+      <div class="panel">
+        <h3>What to include</h3>
+        <p>A little context helps the team answer faster.</p>
+        <ul>
+          <li>What assets, shipments, or process events you need to trust.</li>
+          <li>Which risks matter most: loss, temperature, custody, compliance, or claims.</li>
+          <li>Approximate shipment volume, device count, or deployment timeline.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</main>
+<footer>Novira. Trust what you track. Know what happens next.</footer>
+<script src="novira-prototype.js?v=nav-resources-v1"></script>
+</body>
+</html>
