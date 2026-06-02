@@ -300,9 +300,9 @@
       '.site-logo{grid-column:1;justify-self:start;font-family:var(--display,"Fraunces",Georgia,serif);font-size:23px;font-weight:600;letter-spacing:-.01em;color:var(--site-nav-ink);text-decoration:none;white-space:nowrap}.site-logo span{color:var(--site-nav-accent)}',
       '.site-main-nav{grid-column:2;justify-self:center;display:flex;align-items:center;gap:4px;width:max-content;height:100%;white-space:nowrap}.site-nav-item{height:100%;display:flex;align-items:center}.site-nav-link{display:inline-flex;align-items:center;gap:6px;height:100%;padding:0 12px;color:var(--site-nav-muted);font-size:14px;font-weight:500;text-decoration:none;white-space:nowrap}.site-nav-link:hover,.site-nav-item:focus-within>.site-nav-link,.site-nav-link.is-active{color:var(--site-nav-ink)!important}.site-nav-item>.site-nav-link::after{content:"";width:5px;height:5px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg);margin-top:-3px;opacity:.6}.site-nav-item[data-section="company"] .site-nav-link::after{display:none}',
       '.site-nav-actions{grid-column:3;justify-self:end;display:flex;align-items:center;gap:10px}.site-nav-action{display:inline-flex;align-items:center;justify-content:center;height:38px;padding:0 15px;border-radius:8px;border:1px solid var(--site-nav-line);font-size:13px;font-weight:600;text-decoration:none;color:var(--site-nav-ink);white-space:nowrap}.site-nav-action.primary{background:var(--site-nav-accent);border-color:var(--site-nav-accent);color:#fff}.site-shell-nav.theme-dark .site-nav-action.primary{color:#06140e}.site-nav-action:hover{transform:translateY(-1px)}',
-      '.site-mega{position:absolute;left:50%;top:68px;transform:translateX(-50%) translateY(8px);width:min(1040px,calc(100vw - 32px));display:grid;grid-template-columns:1.1fr .9fr .9fr;gap:18px;padding:20px;border:1px solid var(--site-nav-line);border-radius:8px;background:var(--site-mega-bg,#fff);color:var(--site-nav-ink);box-shadow:0 24px 60px rgba(21,23,28,.16);white-space:normal;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .18s ease,transform .18s ease,visibility .18s ease}.site-shell-nav.theme-dark .site-mega{--site-mega-bg:#14171a;box-shadow:0 24px 60px rgba(0,0,0,.38)}.site-nav-item:hover>.site-mega,.site-nav-item:focus-within>.site-mega,.site-nav-item.open>.site-mega{opacity:1;visibility:visible;pointer-events:auto;transform:translateX(-50%) translateY(0)}',
+      '.site-mega{position:absolute;left:50%;top:68px;transform:translateX(-50%) translateY(8px);width:min(1040px,calc(100vw - 32px));display:grid;grid-template-columns:1.1fr .9fr .9fr;gap:18px;padding:20px;border:1px solid var(--site-nav-line);border-radius:8px;background:var(--site-mega-bg,#fff);color:var(--site-nav-ink);box-shadow:0 24px 60px rgba(21,23,28,.16);white-space:normal;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .18s ease,transform .18s ease,visibility .18s ease}.site-mega-resources{grid-template-columns:minmax(210px,.8fr) repeat(3,minmax(0,1fr));gap:14px}.site-shell-nav.theme-dark .site-mega{--site-mega-bg:#14171a;box-shadow:0 24px 60px rgba(0,0,0,.38)}.site-nav-item:hover>.site-mega,.site-nav-item:focus-within>.site-mega,.site-nav-item.open>.site-mega{opacity:1;visibility:visible;pointer-events:auto;transform:translateX(-50%) translateY(0)}',
       '.site-mega::before{content:"";position:absolute;left:0;right:0;top:-14px;height:14px}.mega-lead{min-width:0;border:1px solid var(--site-nav-line);border-radius:8px;padding:18px;background:var(--site-mega-lead,#fbfaf7)}.site-shell-nav.theme-dark .mega-lead{--site-mega-lead:#0d0f0e}.mega-eyebrow{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--site-nav-accent);margin-bottom:10px}.mega-title{font-family:var(--display,"Fraunces",Georgia,serif);font-size:1.35rem;font-weight:500;line-height:1.15;margin-bottom:8px}.mega-copy{font-size:13px;line-height:1.55;color:var(--site-nav-muted);margin-bottom:14px;overflow-wrap:break-word}.mega-all{display:inline-flex;color:var(--site-nav-accent);font-size:13px;font-weight:700;text-decoration:none}',
-      '.mega-col{min-width:0;display:grid;gap:8px;align-content:start}.mega-heading{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#8b8f97;margin:0 0 4px}.mega-card{min-width:0;display:grid;gap:2px;padding:10px 11px;border-radius:8px;color:var(--site-nav-ink);text-decoration:none}.mega-card:hover,.mega-card:focus{background:var(--site-mega-hover,#f4f2ec);outline:none}.site-shell-nav.theme-dark .mega-card:hover,.site-shell-nav.theme-dark .mega-card:focus{--site-mega-hover:rgba(244,241,232,.08)}.mega-card b{font-size:14px;font-weight:700}.mega-card span{font-size:12px;color:var(--site-nav-muted);line-height:1.35;overflow-wrap:break-word}',
+      '.mega-col{min-width:0;display:grid;gap:8px;align-content:start}.mega-heading{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#8b8f97;margin:0 0 4px}.mega-card{min-width:0;display:grid;gap:2px;padding:10px 11px;border-radius:8px;color:var(--site-nav-ink);text-decoration:none}.mega-card:hover,.mega-card:focus{background:var(--site-mega-hover,#f4f2ec);outline:none}.site-shell-nav.theme-dark .mega-card:hover,.site-shell-nav.theme-dark .mega-card:focus{--site-mega-hover:rgba(244,241,232,.08)}.mega-card b{font-size:14px;font-weight:700}.mega-card span{font-size:12px;color:var(--site-nav-muted);line-height:1.35;overflow-wrap:break-word}.site-mega-resources .mega-card{padding:8px 9px}.site-mega-resources .mega-card b{font-size:13px;line-height:1.25}.site-mega-resources .mega-card span{display:none}',
       '.site-mobile-toggle{grid-column:3;justify-self:end;display:none;align-items:center;justify-content:center;width:40px;height:40px;border-radius:8px;border:1px solid var(--site-nav-line);background:var(--site-mobile-button,#fff);color:var(--site-nav-ink);cursor:pointer}.site-shell-nav.theme-dark .site-mobile-toggle{--site-mobile-button:#14171a}.site-mobile-toggle span{display:block;width:18px;height:2px;background:currentColor;box-shadow:0 6px 0 currentColor,0 -6px 0 currentColor}',
       '.site-mobile-panel{display:none;position:absolute;top:68px;left:16px;right:16px;max-height:calc(100vh - 92px);overflow:auto;border:1px solid var(--site-nav-line);border-radius:8px;background:var(--site-mobile-bg,#fff);box-shadow:0 22px 52px rgba(21,23,28,.18);padding:12px}.site-shell-nav.theme-dark .site-mobile-panel{--site-mobile-bg:#14171a;box-shadow:0 22px 52px rgba(0,0,0,.38)}.site-mobile-group{border-bottom:1px solid var(--site-nav-line);padding:8px 0}.site-mobile-group:last-child{border-bottom:none}.site-mobile-title{font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:800;color:var(--site-nav-accent);padding:8px 10px}.site-mobile-panel a{display:block;padding:10px;border-radius:8px;color:var(--site-nav-ink);text-decoration:none;font-size:14px}.site-mobile-panel a:hover{background:var(--site-mobile-hover,#f4f2ec)}.site-shell-nav.theme-dark .site-mobile-panel a:hover{--site-mobile-hover:rgba(244,241,232,.08)}.site-shell-nav.mobile-open .site-mobile-panel{display:block}',
       '.site-page-polish a:focus-visible,.site-shell-nav a:focus-visible,.site-shell-nav button:focus-visible{outline:2px solid var(--site-nav-accent);outline-offset:3px}.site-page-polish .btn,.site-page-polish button,.site-page-polish input,.site-page-polish select,.site-page-polish textarea{max-width:100%}.site-page-polish img,.site-page-polish svg{max-width:100%}',
@@ -384,22 +384,36 @@
       },
       resources: {
         eyebrow: 'Resources',
-        title: 'Everything in one folder.',
-        copy: 'Documentation, use cases, support, trust, and company pages in one reliable place.',
+        title: 'Choose a resource lane.',
+        copy: 'Blog articles, documentation, and use-case playbooks grouped into one resource network.',
         all: pages.resources,
         allLabel: 'Open resource center',
         cols: [
-          ['Documentation', [
-            [pages.docs, 'Documentation', 'Start here, setup, platform, products, trust'],
-            [pages.security, 'Security & trust', 'Verification, integrity, and evidence model'],
-            [pages.gettingStarted, 'Getting started', 'First deployment and account setup'],
-            [pages.useCases, 'Use cases', 'Real-world scenarios and outcomes'],
-            [pages.faq, 'FAQ', 'Answers for common buying and platform questions']
+          ['Blog', [
+            [pages.blog, 'Blog', 'All articles and field notes'],
+            [pages.trackingBlog, "Why Tracking Isn't Enough", 'Visibility is only the first layer'],
+            [pages.cargoBlog, 'How Cargo Disputes Cost Supply Chains Millions', 'Damage arguments and claims friction'],
+            [pages.tempBlog, 'The Hidden Cost of Temperature Excursions', 'Cold-chain breaches and verified records'],
+            [pages.chainBlog, 'Why Most Chain-of-Custody Records Fail', 'Where evidence breaks down'],
+            [pages.nobodyBlog, 'What Happens When Nobody Can Agree What Happened', 'How disputes grow when evidence is weak'],
+            [pages.claimsBlog, 'How Verified Events Reduce Claims Friction', 'Reducing claim friction with proof'],
+            [pages.parametricBlog, 'The Future of Parametric Insurance', 'Coverage built on verified events']
           ]],
-          ['Team & company', [
-            [pages.about, 'About Novira', 'Company story and operating philosophy'],
-            [pages.login, 'Customer portal', 'Prototype account and operations view'],
-            [pages.quote, 'Talk to the team', 'Contact a solutions expert']
+          ['Documentation', [
+            [pages.gettingStarted, 'Getting Started', 'First deployment and account setup'],
+            [pages.productsOverview, 'Products Overview', 'Documentation for product selection'],
+            [pages.useCases, 'Use Cases', 'Real-world scenarios and outcomes'],
+            [pages.security, 'Security & Trust', 'Verification, integrity, and evidence model'],
+            [pages.faq, 'FAQ', 'Common buying and platform questions'],
+            [pages.api, 'API & Integrations', 'Integration patterns and API guidance'],
+            [pages.portal, 'Developer Portal', 'Prototype developer workspace']
+          ]],
+          ['Use Cases', [
+            [pages.coldUse, 'Cold Chain Excursion', 'Verified breach and response workflow'],
+            [pages.insuranceUse, 'Insurance Validation', 'Trusted evidence for claim decisions'],
+            [pages.manufacturingUse, 'Manufacturing Compliance', 'Audit-ready records for process events'],
+            [pages.theftUse, 'Theft Prevention', 'Detect, verify, and trigger response'],
+            [pages.journey, 'High Risk Shipment', 'Shipment journey and risk timeline']
           ]]
         ]
       },
@@ -470,8 +484,10 @@
           mobileGroup('Solutions', [[pages.logistics, 'Logistics'], [pages.coldChain, 'Cold Chain'], [pages.insurance, 'Insurance'], [pages.manufacturing, 'Manufacturing'], [pages.assetProtection, 'Asset Protection']]) +
           mobileGroup('Platform', [[pages.platform, 'Platform overview'], [pages.track, 'Track'], [pages.novacheck, 'NovaCheck'], [pages.novaproof, 'NovaProof'], [pages.novalink, 'NovaLink'], [pages.novaprotect, 'NovaProtect'], [pages.dost, 'DOST']]) +
           mobileGroup('Products', [[pages.products, 'Products'], [pages.compare, 'Compare devices'], [pages.pricing, 'Pricing'], [pages.build, 'Build your solution'], [pages.quote, 'Request a quote']]) +
-          mobileGroup('Resources', [[pages.resources, 'Resource center'], [pages.docs, 'Documentation'], [pages.gettingStarted, 'Getting started'], [pages.useCases, 'Use cases'], [pages.faq, 'FAQ'], [pages.security, 'Security & trust'], [pages.about, 'About Novira']]) +
-          mobileGroup('Blog', [[pages.blog, 'All posts'], [pages.trackingBlog, 'Why tracking is not enough'], [pages.nobodyBlog, 'Nobody can agree'], [pages.chainBlog, 'Chain-of-custody failures'], [pages.cargoBlog, 'Cargo disputes'], [pages.claimsBlog, 'Verified events and claims'], [pages.parametricBlog, 'Parametric insurance'], [pages.tempBlog, 'Temperature excursions']]) +
+          mobileGroup('Resources', [[pages.resources, 'Resource center'], [pages.blog, 'Blog'], [pages.docs, 'Documentation'], [pages.useCases, 'Use cases']]) +
+          mobileGroup('Documentation', [[pages.gettingStarted, 'Getting Started'], [pages.productsOverview, 'Products Overview'], [pages.useCases, 'Use Cases'], [pages.security, 'Security & Trust'], [pages.faq, 'FAQ'], [pages.api, 'API & Integrations'], [pages.portal, 'Developer Portal']]) +
+          mobileGroup('Use Cases', [[pages.coldUse, 'Cold Chain Excursion'], [pages.insuranceUse, 'Insurance Validation'], [pages.manufacturingUse, 'Manufacturing Compliance'], [pages.theftUse, 'Theft Prevention'], [pages.journey, 'High Risk Shipment']]) +
+          mobileGroup('Blog', [[pages.blog, 'All posts'], [pages.trackingBlog, "Why Tracking Isn't Enough"], [pages.cargoBlog, 'Cargo Disputes'], [pages.tempBlog, 'Temperature Excursions'], [pages.chainBlog, 'Chain-of-Custody Records'], [pages.nobodyBlog, 'Nobody Can Agree'], [pages.claimsBlog, 'Verified Events and Claims'], [pages.parametricBlog, 'Parametric Insurance']]) +
         '</div>' +
       '</div>';
 
