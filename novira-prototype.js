@@ -356,7 +356,6 @@
         allLabel: 'Open platform overview',
         cols: [
           ['Methodology', [
-            [pages.journey, 'Shipment journey', 'One shipment through the full Novira chain'],
             [pages.track, 'Track', 'Where physical events enter the record'],
             [pages.novacheck, 'NovaCheck', 'Make raw readings trustworthy'],
             [pages.novaproof, 'NovaProof', 'Create sealed evidence records']
@@ -474,7 +473,7 @@
         '<button class="site-mobile-toggle" type="button" aria-label="Open navigation menu" aria-expanded="false"><span aria-hidden="true"></span></button>' +
         '<div class="site-mobile-panel" aria-label="Mobile navigation">' +
           mobileGroup('Solutions', [[pages.solutions, 'All solutions'], [pages.logistics, 'Logistics'], [pages.coldChain, 'Cold chain'], [pages.insurance, 'Insurance'], [pages.manufacturing, 'Manufacturing'], [pages.assetProtection, 'Asset protection'], [pages.useCases, 'Use cases']]) +
-          mobileGroup('Platform', [[pages.platform, 'Platform overview'], [pages.journey, 'Shipment journey'], [pages.track, 'Track'], [pages.novacheck, 'NovaCheck'], [pages.novaproof, 'NovaProof'], [pages.novalink, 'NovaLink'], [pages.novaprotect, 'NovaProtect'], [pages.dost, 'DOST']]) +
+          mobileGroup('Platform', [[pages.platform, 'Platform overview'], [pages.track, 'Track'], [pages.novacheck, 'NovaCheck'], [pages.novaproof, 'NovaProof'], [pages.novalink, 'NovaLink'], [pages.novaprotect, 'NovaProtect'], [pages.dost, 'DOST']]) +
           mobileGroup('Products', [[pages.products, 'Products'], [pages.compare, 'Compare devices'], [pages.pricing, 'Pricing'], [pages.build, 'Build your solution'], [pages.quote, 'Request a quote']]) +
           mobileGroup('Resources', [[pages.resources, 'Resource center'], [pages.docs, 'Documentation'], [pages.gettingStarted, 'Getting started'], [pages.useCases, 'Use cases'], [pages.faq, 'FAQ'], [pages.security, 'Security & trust'], [pages.about, 'About Novira']]) +
           mobileGroup('Blog', [[pages.blog, 'All posts'], [pages.trackingBlog, 'Why tracking is not enough'], [pages.nobodyBlog, 'Nobody can agree'], [pages.chainBlog, 'Chain-of-custody failures'], [pages.cargoBlog, 'Cargo disputes'], [pages.claimsBlog, 'Verified events and claims'], [pages.parametricBlog, 'Parametric insurance'], [pages.tempBlog, 'Temperature excursions']]) +
