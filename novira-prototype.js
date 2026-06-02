@@ -300,7 +300,7 @@
       '.site-logo{grid-column:1;justify-self:start;font-family:var(--display,"Fraunces",Georgia,serif);font-size:23px;font-weight:600;letter-spacing:-.01em;color:var(--site-nav-ink);text-decoration:none;white-space:nowrap}.site-logo span{color:var(--site-nav-accent)}',
       '.site-main-nav{grid-column:2;justify-self:center;display:flex;align-items:center;gap:4px;width:max-content;height:100%;white-space:nowrap}.site-nav-item{height:100%;display:flex;align-items:center}.site-nav-link{display:inline-flex;align-items:center;gap:6px;height:100%;padding:0 12px;color:var(--site-nav-muted);font-size:14px;font-weight:500;text-decoration:none;white-space:nowrap}.site-nav-link:hover,.site-nav-item:focus-within>.site-nav-link,.site-nav-link.is-active{color:var(--site-nav-ink)!important}.site-nav-item>.site-nav-link::after{content:"";width:5px;height:5px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg);margin-top:-3px;opacity:.6}.site-nav-item[data-section="company"] .site-nav-link::after{display:none}',
       '.site-nav-actions{grid-column:3;justify-self:end;display:flex;align-items:center;gap:10px}.site-nav-action{display:inline-flex;align-items:center;justify-content:center;height:38px;padding:0 15px;border-radius:8px;border:1px solid var(--site-nav-line);font-size:13px;font-weight:600;text-decoration:none;color:var(--site-nav-ink);white-space:nowrap}.site-nav-action.primary{background:var(--site-nav-accent);border-color:var(--site-nav-accent);color:#fff}.site-shell-nav.theme-dark .site-nav-action.primary{color:#06140e}.site-nav-action:hover{transform:translateY(-1px)}',
-      '.site-mega{position:absolute;left:50%;top:68px;transform:translateX(-50%) translateY(8px);width:min(1040px,calc(100vw - 32px));display:grid;grid-template-columns:1.1fr .9fr .9fr;gap:18px;padding:20px;border:1px solid var(--site-nav-line);border-radius:8px;background:var(--site-mega-bg,#fff);color:var(--site-nav-ink);box-shadow:0 24px 60px rgba(21,23,28,.16);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .18s ease,transform .18s ease,visibility .18s ease}.site-shell-nav.theme-dark .site-mega{--site-mega-bg:#14171a;box-shadow:0 24px 60px rgba(0,0,0,.38)}.site-nav-item:hover>.site-mega,.site-nav-item:focus-within>.site-mega,.site-nav-item.open>.site-mega{opacity:1;visibility:visible;pointer-events:auto;transform:translateX(-50%) translateY(0)}',
+      '.site-mega{position:absolute;left:50%;top:68px;transform:translateX(-50%) translateY(8px);width:min(1040px,calc(100vw - 32px));display:grid;grid-template-columns:1.1fr .9fr .9fr;gap:18px;padding:20px;border:1px solid var(--site-nav-line);border-radius:8px;background:var(--site-mega-bg,#fff);color:var(--site-nav-ink);box-shadow:0 24px 60px rgba(21,23,28,.16);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .18s ease,transform .18s ease,visibility .18s ease}.site-mega-solutions{width:min(760px,calc(100vw - 32px));grid-template-columns:minmax(230px,.85fr) minmax(280px,1fr)}.site-shell-nav.theme-dark .site-mega{--site-mega-bg:#14171a;box-shadow:0 24px 60px rgba(0,0,0,.38)}.site-nav-item:hover>.site-mega,.site-nav-item:focus-within>.site-mega,.site-nav-item.open>.site-mega{opacity:1;visibility:visible;pointer-events:auto;transform:translateX(-50%) translateY(0)}',
       '.site-mega::before{content:"";position:absolute;left:0;right:0;top:-14px;height:14px}.mega-lead{border:1px solid var(--site-nav-line);border-radius:8px;padding:18px;background:var(--site-mega-lead,#fbfaf7)}.site-shell-nav.theme-dark .mega-lead{--site-mega-lead:#0d0f0e}.mega-eyebrow{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--site-nav-accent);margin-bottom:10px}.mega-title{font-family:var(--display,"Fraunces",Georgia,serif);font-size:1.35rem;font-weight:500;line-height:1.15;margin-bottom:8px}.mega-copy{font-size:13px;line-height:1.55;color:var(--site-nav-muted);margin-bottom:14px}.mega-all{display:inline-flex;color:var(--site-nav-accent);font-size:13px;font-weight:700;text-decoration:none}',
       '.mega-col{display:grid;gap:8px;align-content:start}.mega-heading{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#8b8f97;margin:0 0 4px}.mega-card{display:grid;gap:2px;padding:10px 11px;border-radius:8px;color:var(--site-nav-ink);text-decoration:none}.mega-card:hover,.mega-card:focus{background:var(--site-mega-hover,#f4f2ec);outline:none}.site-shell-nav.theme-dark .mega-card:hover,.site-shell-nav.theme-dark .mega-card:focus{--site-mega-hover:rgba(244,241,232,.08)}.mega-card b{font-size:14px;font-weight:700}.mega-card span{font-size:12px;color:var(--site-nav-muted);line-height:1.35}',
       '.site-mobile-toggle{grid-column:3;justify-self:end;display:none;align-items:center;justify-content:center;width:40px;height:40px;border-radius:8px;border:1px solid var(--site-nav-line);background:var(--site-mobile-button,#fff);color:var(--site-nav-ink);cursor:pointer}.site-shell-nav.theme-dark .site-mobile-toggle{--site-mobile-button:#14171a}.site-mobile-toggle span{display:block;width:18px;height:2px;background:currentColor;box-shadow:0 6px 0 currentColor,0 -6px 0 currentColor}',
@@ -329,23 +329,17 @@
     var panels = {
       solutions: {
         eyebrow: 'Solutions',
-        title: 'Choose the operating problem.',
-        copy: 'Industry pages and use cases organized around where loss, dispute, and uncertainty appear.',
+        title: 'Choose the solution network.',
+        copy: 'Five focused operating areas for teams that need verified movement, condition, and risk evidence.',
         all: pages.solutions,
-        allLabel: 'View all solutions',
+        allLabel: '',
         cols: [
-          ['Industries', [
+          ['Solution network', [
             [pages.logistics, 'Logistics', 'Cargo damage, route risk, and handoff disputes'],
-            [pages.coldChain, 'Cold chain', 'Temperature-sensitive pharma and food shipments'],
+            [pages.coldChain, 'Cold Chain', 'Temperature-sensitive pharma and food shipments'],
             [pages.insurance, 'Insurance', 'Claims validation and risk evidence'],
             [pages.manufacturing, 'Manufacturing', 'Compliance events and condition proof'],
-            [pages.assetProtection, 'Asset protection', 'Theft, route deviation, and high-value assets']
-          ]],
-          ['Use cases', [
-            [pages.coldUse, 'Cold chain excursion', 'Verified breach and response workflow'],
-            [pages.insuranceUse, 'Insurance validation', 'Trusted evidence for claim decisions'],
-            [pages.manufacturingUse, 'Manufacturing compliance', 'Audit-ready records for process events'],
-            [pages.theftUse, 'Theft prevention', 'Detect, verify, and trigger response']
+            [pages.assetProtection, 'Asset Protection', 'Theft, route deviation, and high-value assets']
           ]]
         ]
       },
@@ -431,8 +425,8 @@
       }
     };
     var panel = panels[kind];
-    return '<div class="site-mega" role="group" aria-label="' + panel.eyebrow + ' menu">' +
-      '<div class="mega-lead"><div class="mega-eyebrow">' + panel.eyebrow + '</div><div class="mega-title">' + panel.title + '</div><div class="mega-copy">' + panel.copy + '</div><a class="mega-all" href="' + routeHref(panel.all) + '">' + panel.allLabel + ' &rarr;</a></div>' +
+    return '<div class="site-mega site-mega-' + kind + '" role="group" aria-label="' + panel.eyebrow + ' menu">' +
+      '<div class="mega-lead"><div class="mega-eyebrow">' + panel.eyebrow + '</div><div class="mega-title">' + panel.title + '</div><div class="mega-copy">' + panel.copy + '</div>' + (panel.allLabel ? '<a class="mega-all" href="' + routeHref(panel.all) + '">' + panel.allLabel + ' &rarr;</a>' : '') + '</div>' +
       panel.cols.map(function (col) {
         return '<div class="mega-col"><div class="mega-heading">' + col[0] + '</div>' + col[1].map(function (item) { return navLink(item[0], item[1], item[2]); }).join('') + '</div>';
       }).join('') +
@@ -473,7 +467,7 @@
         '<div class="site-nav-actions"><a class="site-nav-action" href="' + routeHref(pages.login) + '">Sign in</a><a class="site-nav-action primary" href="' + routeHref(pages.build) + '">Build your solution</a></div>' +
         '<button class="site-mobile-toggle" type="button" aria-label="Open navigation menu" aria-expanded="false"><span aria-hidden="true"></span></button>' +
         '<div class="site-mobile-panel" aria-label="Mobile navigation">' +
-          mobileGroup('Solutions', [[pages.solutions, 'All solutions'], [pages.logistics, 'Logistics'], [pages.coldChain, 'Cold chain'], [pages.insurance, 'Insurance'], [pages.manufacturing, 'Manufacturing'], [pages.assetProtection, 'Asset protection'], [pages.useCases, 'Use cases']]) +
+          mobileGroup('Solutions', [[pages.logistics, 'Logistics'], [pages.coldChain, 'Cold Chain'], [pages.insurance, 'Insurance'], [pages.manufacturing, 'Manufacturing'], [pages.assetProtection, 'Asset Protection']]) +
           mobileGroup('Platform', [[pages.platform, 'Platform overview'], [pages.track, 'Track'], [pages.novacheck, 'NovaCheck'], [pages.novaproof, 'NovaProof'], [pages.novalink, 'NovaLink'], [pages.novaprotect, 'NovaProtect'], [pages.dost, 'DOST']]) +
           mobileGroup('Products', [[pages.products, 'Products'], [pages.compare, 'Compare devices'], [pages.pricing, 'Pricing'], [pages.build, 'Build your solution'], [pages.quote, 'Request a quote']]) +
           mobileGroup('Resources', [[pages.resources, 'Resource center'], [pages.docs, 'Documentation'], [pages.gettingStarted, 'Getting started'], [pages.useCases, 'Use cases'], [pages.faq, 'FAQ'], [pages.security, 'Security & trust'], [pages.about, 'About Novira']]) +
