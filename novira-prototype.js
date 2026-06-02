@@ -694,10 +694,22 @@
         page_title: document.title
       });
     }
-    window.gtag('event', 'campaign_page_view', {
+    fireTrackingEvent('campaign_page_view', {
       campaign_page: currentFile(),
       campaign_type: campaignType()
     });
+  }
+
+  function fireTrackingEvent(eventName, payload) {
+    window.dataLayer = window.dataLayer || [];
+    var eventPayload = { event: eventName };
+    Object.keys(payload || {}).forEach(function (key) {
+      eventPayload[key] = payload[key];
+    });
+    window.dataLayer.push(eventPayload);
+    if (typeof window.gtag === 'function') {
+      window.gtag('event', eventName, payload || {});
+    }
   }
 
   function campaignCtaLabel(anchor) {
@@ -724,10 +736,10 @@
       cta_label: (anchor.textContent || '').trim(),
       cta_href: anchor.getAttribute('href') || ''
     };
-    window.gtag('event', eventName, payload);
+    fireTrackingEvent(eventName, payload);
     var sendTo = trackingMeta('novira-ads-' + kind.replace('_', '-') + '-conversion');
     if (sendTo) {
-      window.gtag('event', 'conversion', {
+      fireTrackingEvent('conversion', {
         send_to: sendTo,
         campaign_page: currentFile(),
         event_category: 'Campaign CTA',
